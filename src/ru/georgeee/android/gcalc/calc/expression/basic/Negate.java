@@ -1,8 +1,8 @@
 package ru.georgeee.android.gcalc.calc.expression.basic;
 
-import ru.georgeee.android.gcalc.calc.GNumber;
 import ru.georgeee.android.gcalc.calc.expression.Expression;
 import ru.georgeee.android.gcalc.calc.expression.UnaryOperator;
+import ru.georgeee.android.gcalc.calc.number.GNumber;
 
 /**
  * Created with IntelliJ IDEA.

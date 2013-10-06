@@ -1,19 +1,15 @@
 package ru.georgeee.android.gcalc.calc.parser.token;
 
-import ru.georgeee.android.gcalc.calc.GNumber;
 import ru.georgeee.android.gcalc.calc.exception.WrongOperandsException;
 import ru.georgeee.android.gcalc.calc.expression.Expression;
 import ru.georgeee.android.gcalc.calc.expression.basic.*;
 import ru.georgeee.android.gcalc.calc.expression.integer.*;
 import ru.georgeee.android.gcalc.calc.expression.real.*;
-import ru.georgeee.android.gcalc.calc.expression.real.atrig.ArcCos;
-import ru.georgeee.android.gcalc.calc.expression.real.atrig.ArcCot;
-import ru.georgeee.android.gcalc.calc.expression.real.atrig.ArcSin;
-import ru.georgeee.android.gcalc.calc.expression.real.atrig.ArcTan;
-import ru.georgeee.android.gcalc.calc.expression.real.trig.Cos;
-import ru.georgeee.android.gcalc.calc.expression.real.trig.Cot;
-import ru.georgeee.android.gcalc.calc.expression.real.trig.Sin;
-import ru.georgeee.android.gcalc.calc.expression.real.trig.Tan;
+import ru.georgeee.android.gcalc.calc.expression.real.atrig.*;
+import ru.georgeee.android.gcalc.calc.expression.real.trig.*;
+import ru.georgeee.android.gcalc.calc.expression.real.ahyp.*;
+import ru.georgeee.android.gcalc.calc.expression.real.hyp.*;
+import ru.georgeee.android.gcalc.calc.number.GNumber;
 
 /**
  * Created with IntelliJ IDEA.
@@ -29,15 +25,70 @@ public class Tokens {
     public static final int FACTORIAL_LEVEL = 3;
     public static final int POWER_LEVEL = 4;
     public static final int MULTIPLY_LEVEL = 5;
-    public static final int ADD_LEVEL = 6;
-    public static final int NOT_LEVEL = 7;
+    public static final int NOT_LEVEL = 6;
+    public static final int ADD_LEVEL = 7;
     public static final int SHIFT_LEVEL = 8;
     public static final int AND_LEVEL = 9;
     public static final int XOR_LEVEL = 10;
     public static final int OR_LEVEL = 11;
 
-    public static <T extends GNumber> TokenType[] getTokens() {
-        return new TokenType[]{
+    public static final AhoTokenType MULTIPLY_TOKEN_TYPE = new AhoBothAssocTokenType() {
+        @Override
+        public int getPriority() {
+            return MULTIPLY_LEVEL;
+        }
+
+        @Override
+        public String getMatchString() {
+            return "*";
+        }
+
+        @Override
+        protected Expression getExpressionImpl(Expression leftOperand, Expression rightOperand) {
+            return new Multiply(leftOperand, rightOperand);
+        }
+    };
+
+    public static ManualTokenTypeFactory[] getManualTokenTypeFabrics(final GNumber number) {
+        return new ManualTokenTypeFactory[]{
+                new ManualTokenTypeFactory() {
+                    @Override
+                    public TokenType getTokenType(final String part) {
+                        try {
+                            return new TokenType() {
+                                GNumber value = number.parseFromString(part);
+
+                                @Override
+                                public Expression getExpression(Expression leftOperand, Expression rightOperand) {
+                                    return value == null ? null : new Constant(value);
+                                }
+
+                                @Override
+                                public boolean isLeftOperandUsed() {
+                                    return false;
+                                }
+
+                                @Override
+                                public boolean isRightOperandUsed() {
+                                    return false;
+                                }
+
+                                @Override
+                                public int getPriority() {
+                                    return CONST_LEVEL;
+                                }
+                            };
+
+                        } catch (NumberFormatException ex) {
+                            return null;
+                        }
+                    }
+                },
+        };
+    }
+
+    public static AhoTokenType[] getAhoTokenTypes() {
+        return new AhoTokenType[]{
             /*Basic operators*/
                 //Unary +, Add
                 new AhoAbstractTokenType() {
@@ -123,22 +174,7 @@ public class Tokens {
                     }
                 },
                 //Multiply
-                new AhoBothAssocTokenType() {
-                    @Override
-                    public int getPriority() {
-                        return MULTIPLY_LEVEL;
-                    }
-
-                    @Override
-                    public String getMatchString() {
-                        return "*";
-                    }
-
-                    @Override
-                    protected Expression getExpressionImpl(Expression leftOperand, Expression rightOperand) {
-                        return new Multiply(leftOperand, rightOperand);
-                    }
-                },
+                MULTIPLY_TOKEN_TYPE,
                 //Power
                 new AhoBothAssocTokenType() {
                     @Override
@@ -294,55 +330,6 @@ public class Tokens {
                         return NOT_LEVEL;
                     }
                 },
-            /*Brackets*/
-                new BracketTokenType() {
-                    @Override
-                    public String getMatchString() {
-                        return "(";
-                    }
-                },
-                new BracketTokenType() {
-                    @Override
-                    public String getMatchString() {
-                        return ")";
-                    }
-                },
-
-            /*Consts*/
-                //Pi
-                new AhoNoAssocTokenType() {
-                    @Override
-                    public String getMatchString() {
-                        return "π";//pi
-                    }
-
-                    @Override
-                    public Expression getExpression(Expression leftOperand, Expression rightOperand) {
-                        return new Pi();
-                    }
-
-                    @Override
-                    public int getPriority() {
-                        return CONST_LEVEL;
-                    }
-                },
-                //e
-                new AhoNoAssocTokenType() {
-                    @Override
-                    public String getMatchString() {
-                        return "e";
-                    }
-
-                    @Override
-                    public Expression getExpression(Expression leftOperand, Expression rightOperand) {
-                        return new ExponentConst();
-                    }
-
-                    @Override
-                    public int getPriority() {
-                        return CONST_LEVEL;
-                    }
-                },
 
             /*Functions*/
                 //exp
@@ -393,7 +380,7 @@ public class Tokens {
                         return new Log2(rightOperand);
                     }
                 },
-                //arccos
+                //acos
                 new FunctionTokenType() {
                     @Override
                     public String getMatchString() {
@@ -402,10 +389,10 @@ public class Tokens {
 
                     @Override
                     protected Expression getExpressionImpl(Expression rightOperand) {
-                        return new ArcCos(rightOperand);
+                        return new ACos(rightOperand);
                     }
                 },
-                //arcsin
+                //asin
                 new FunctionTokenType() {
                     @Override
                     public String getMatchString() {
@@ -414,10 +401,10 @@ public class Tokens {
 
                     @Override
                     protected Expression getExpressionImpl(Expression rightOperand) {
-                        return new ArcSin(rightOperand);
+                        return new ASin(rightOperand);
                     }
                 },
-                //arctan
+                //atan
                 new FunctionTokenType() {
                     @Override
                     public String getMatchString() {
@@ -426,10 +413,10 @@ public class Tokens {
 
                     @Override
                     protected Expression getExpressionImpl(Expression rightOperand) {
-                        return new ArcTan(rightOperand);
+                        return new ATan(rightOperand);
                     }
                 },
-                //arccot
+                //acot
                 new FunctionTokenType() {
                     @Override
                     public String getMatchString() {
@@ -438,7 +425,7 @@ public class Tokens {
 
                     @Override
                     protected Expression getExpressionImpl(Expression rightOperand) {
-                        return new ArcCot(rightOperand);
+                        return new ACot(rightOperand);
                     }
                 },
                 //sin
@@ -457,7 +444,7 @@ public class Tokens {
                 new FunctionTokenType() {
                     @Override
                     public String getMatchString() {
-                        return "sin";
+                        return "cos";
                     }
 
                     @Override
@@ -489,10 +476,160 @@ public class Tokens {
                         return new Cot(rightOperand);
                     }
                 },
-                new NumberTokenType<T>(),
+                //acosh
+                new FunctionTokenType() {
+                    @Override
+                    public String getMatchString() {
+                        return "acosh";
+                    }
+
+                    @Override
+                    protected Expression getExpressionImpl(Expression rightOperand) {
+                        return new ACosh(rightOperand);
+                    }
+                },
+                //asinh
+                new FunctionTokenType() {
+                    @Override
+                    public String getMatchString() {
+                        return "asinh";
+                    }
+
+                    @Override
+                    protected Expression getExpressionImpl(Expression rightOperand) {
+                        return new ASinh(rightOperand);
+                    }
+                },
+                //atanh
+                new FunctionTokenType() {
+                    @Override
+                    public String getMatchString() {
+                        return "atanh";
+                    }
+
+                    @Override
+                    protected Expression getExpressionImpl(Expression rightOperand) {
+                        return new ATanh(rightOperand);
+                    }
+                },
+                //acoth
+                new FunctionTokenType() {
+                    @Override
+                    public String getMatchString() {
+                        return "acoth";
+                    }
+
+                    @Override
+                    protected Expression getExpressionImpl(Expression rightOperand) {
+                        return new ACoth(rightOperand);
+                    }
+                },
+                //sinh
+                new FunctionTokenType() {
+                    @Override
+                    public String getMatchString() {
+                        return "sinh";
+                    }
+
+                    @Override
+                    protected Expression getExpressionImpl(Expression rightOperand) {
+                        return new Sinh(rightOperand);
+                    }
+                },
+                //cosh
+                new FunctionTokenType() {
+                    @Override
+                    public String getMatchString() {
+                        return "cosh";
+                    }
+
+                    @Override
+                    protected Expression getExpressionImpl(Expression rightOperand) {
+                        return new Cosh(rightOperand);
+                    }
+                },
+                //tanh
+                new FunctionTokenType() {
+                    @Override
+                    public String getMatchString() {
+                        return "tanh";
+                    }
+
+                    @Override
+                    protected Expression getExpressionImpl(Expression rightOperand) {
+                        return new Tanh(rightOperand);
+                    }
+                },
+                //coth
+                new FunctionTokenType() {
+                    @Override
+                    public String getMatchString() {
+                        return "coth";
+                    }
+
+                    @Override
+                    protected Expression getExpressionImpl(Expression rightOperand) {
+                        return new Coth(rightOperand);
+                    }
+                },
+            /*Brackets*/
+                new OpenningBracketTokenType(),
+                new ClosingBracketTokenType(),
+
+            /*Consts*/
+                //Pi
+                new AhoNoAssocTokenType() {
+                    @Override
+                    public String getMatchString() {
+                        return "π";//pi
+                    }
+
+                    @Override
+                    public Expression getExpression(Expression leftOperand, Expression rightOperand) {
+                        return new Pi();
+                    }
+
+                    @Override
+                    public int getPriority() {
+                        return CONST_LEVEL;
+                    }
+                },
+                //Pi
+                new AhoNoAssocTokenType() {
+                    @Override
+                    public String getMatchString() {
+                        return "pi";
+                    }
+
+                    @Override
+                    public Expression getExpression(Expression leftOperand, Expression rightOperand) {
+                        return new Pi();
+                    }
+
+                    @Override
+                    public int getPriority() {
+                        return CONST_LEVEL;
+                    }
+                },
+                //e
+                new AhoNoAssocTokenType() {
+                    @Override
+                    public String getMatchString() {
+                        return "e";
+                    }
+
+                    @Override
+                    public Expression getExpression(Expression leftOperand, Expression rightOperand) {
+                        return new ExponentConst();
+                    }
+
+                    @Override
+                    public int getPriority() {
+                        return CONST_LEVEL;
+                    }
+                },
         };
     }
-
 
     abstract static class FunctionTokenType extends RightAssocTokenType implements AhoTokenType {
         @Override
@@ -501,10 +638,10 @@ public class Tokens {
         }
     }
 
-    abstract static class AhoAbstractTokenType extends TokenType implements AhoTokenType {
+    abstract static class AhoAbstractTokenType implements AhoTokenType {
     }
 
-    abstract static class AhoNoAssocTokenType extends TokenType implements AhoTokenType {
+    abstract static class AhoNoAssocTokenType implements AhoTokenType {
         @Override
         public boolean isLeftOperandUsed() {
             return false;
@@ -516,37 +653,29 @@ public class Tokens {
         }
     }
 
-    static class NumberTokenType<T extends GNumber> extends TokenType implements ManualTokenType {
-        T value = null;
+    public static class OpenningBracketTokenType extends BracketTokenType {
 
         @Override
-        public Expression getExpression(Expression leftOperand, Expression rightOperand) {
-            return value == null ? null : new Constant(value);
+        public boolean isOpenning() {
+            return true;
         }
 
         @Override
-        public boolean isLeftOperandUsed() {
+        public String getMatchString() {
+            return "(";
+        }
+    }
+
+    public static class ClosingBracketTokenType extends BracketTokenType {
+
+        @Override
+        public boolean isOpenning() {
             return false;
         }
 
         @Override
-        public boolean isRightOperandUsed() {
-            return false;
-        }
-
-        @Override
-        public int getPriority() {
-            return CONST_LEVEL;
-        }
-
-        @Override
-        public boolean match(String string) {
-            try {
-                value = (T) T.parseFromString(string);
-                return true;
-            } catch (NumberFormatException ex) {
-                return false;
-            }
+        public String getMatchString() {
+            return ")";
         }
     }
 
@@ -561,9 +690,7 @@ public class Tokens {
             return BRACKET_LEVEL;
         }
 
-        public boolean isOpenning() {
-            return getMatchString().equals("(");
-        }
+        public abstract boolean isOpenning();
     }
 
     abstract static class AhoLeftAssocTokenType extends LeftAssocTokenType implements AhoTokenType {

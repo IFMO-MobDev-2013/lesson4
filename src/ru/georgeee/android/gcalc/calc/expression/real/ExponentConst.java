@@ -1,8 +1,8 @@
 package ru.georgeee.android.gcalc.calc.expression.real;
 
-import ru.georgeee.android.gcalc.calc.Constants;
-import ru.georgeee.android.gcalc.calc.GRealNumber;
 import ru.georgeee.android.gcalc.calc.expression.Expression;
+import ru.georgeee.android.gcalc.calc.number.Constants;
+import ru.georgeee.android.gcalc.calc.number.GRealNumber;
 
 /**
  * Created with IntelliJ IDEA.

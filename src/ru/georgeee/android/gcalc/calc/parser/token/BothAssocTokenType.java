@@ -10,7 +10,7 @@ import ru.georgeee.android.gcalc.calc.expression.Expression;
  * Time: 6:36
  * To change this template use File | Settings | File Templates.
  */
-public abstract class BothAssocTokenType extends TokenType {
+public abstract class BothAssocTokenType implements TokenType {
     @Override
     public Expression getExpression(Expression leftOperand, Expression rightOperand) {
         if (leftOperand == null) {

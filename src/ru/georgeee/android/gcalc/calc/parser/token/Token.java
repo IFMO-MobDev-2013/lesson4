@@ -1,7 +1,6 @@
 package ru.georgeee.android.gcalc.calc.parser.token;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
+import ru.georgeee.android.gcalc.calc.expression.Expression;
 
 /**
  * Created with IntelliJ IDEA.
@@ -10,18 +9,19 @@ import java.util.LinkedList;
  * Time: 8:51
  * To change this template use File | Settings | File Templates.
  */
-public class Token{
-        public Token(int start, int end,TokenType type) {
-            this.type = type;
-            this.start = start;
-            this.end = end;
-        }
+public class Token {
+    public TokenType type = null;
+    public Expression expression = null;
 
-        public Token(int start, int end) {
-            this.start = start;
-            this.end = end;
-        }
+    public Token(TokenType type) {
+        this.type = type;
+    }
 
-        public TokenType type = null;
-        public int start, end;
+    public Expression computeExpression(Expression leftOperand, Expression rightOperand) {
+        if (expression == null) {
+            expression = type.getExpression(leftOperand, rightOperand);
+        }
+        return expression;
+    }
+
 }

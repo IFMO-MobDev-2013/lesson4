@@ -1,4 +1,4 @@
-package ru.georgeee.android.gcalc.calc;
+package ru.georgeee.android.gcalc.calc.number;
 
 /**
  * Created with IntelliJ IDEA.
@@ -8,7 +8,12 @@ package ru.georgeee.android.gcalc.calc;
  * To change this template use File | Settings | File Templates.
  */
 public class GDouble extends GRealNumber {
+    public static final GDouble ZERO = new GDouble(0);
     double value;
+
+    public GDouble(double value) {
+        this.value = value;
+    }
 
     public double getValue() {
         return value;
@@ -21,10 +26,6 @@ public class GDouble extends GRealNumber {
         } else {
             throw new UnsupportedOperationException("Supports only GBigInt/GLong as operand!");
         }
-    }
-
-    public GDouble(double value) {
-        this.value = value;
     }
 
     @Override
@@ -48,17 +49,17 @@ public class GDouble extends GRealNumber {
     }
 
     @Override
-    public GRealNumber arccos() {
+    public GRealNumber acos() {
         return new GDouble(Math.acos(value));
     }
 
     @Override
-    public GRealNumber arccot() {
+    public GRealNumber acot() {
         return new GDouble(Math.PI / 2 - Math.atan(value));
     }
 
     @Override
-    public GRealNumber arctan() {
+    public GRealNumber atan() {
         return new GDouble(Math.atan(value));
     }
 
@@ -68,7 +69,7 @@ public class GDouble extends GRealNumber {
     }
 
     @Override
-    public GRealNumber arcsin() {
+    public GRealNumber asin() {
         return new GDouble(Math.asin(value));
     }
 
@@ -85,6 +86,40 @@ public class GDouble extends GRealNumber {
     @Override
     public GRealNumber lg() {
         return new GDouble(Math.log10(value));
+    }
+
+    @Override
+    public GRealNumber sinh() {
+        return new GDouble(Math.sinh(value));
+    }
+    @Override
+    public GRealNumber cosh() {
+        return new GDouble(Math.cosh(value));
+    }
+    @Override
+    public GRealNumber tanh() {
+        return new GDouble(Math.tanh(value));
+    }
+    @Override
+    public GRealNumber coth() {
+        return new GDouble(1/Math.tanh(value));
+    }
+
+    @Override
+    public GRealNumber asinh() {
+        return new GDouble(Math.log(value + Math.sqrt(value * value + 1)));
+    }
+    @Override
+    public GRealNumber acosh() {
+        return new GDouble(Math.log(value + Math.sqrt(value * value - 1)));
+    }
+    @Override
+    public GRealNumber atanh() {
+        return new GDouble(0.5*Math.log((1+value)/(1-value)));
+    }
+    @Override
+    public GRealNumber acoth() {
+        return new GDouble(0.5*Math.log((1 + value) / (value - 1)));
     }
 
     @Override
@@ -117,7 +152,13 @@ public class GDouble extends GRealNumber {
         return new GDouble(Math.pow(value, getGDouble(operand).getValue()));
     }
 
-    public static GDouble parseFromString(String string) {
+    @Override
+    public GDouble parseFromString(String string) {
         return new GDouble(Double.parseDouble(string));
+    }
+
+    @Override
+    public String toString() {
+        return Double.toString(value);
     }
 }

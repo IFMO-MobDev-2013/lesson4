@@ -1,4 +1,4 @@
-package ru.georgeee.android.gcalc.calc;
+package ru.georgeee.android.gcalc.calc.number;
 
 /**
  * Created with IntelliJ IDEA.
@@ -8,11 +8,19 @@ package ru.georgeee.android.gcalc.calc;
  * To change this template use File | Settings | File Templates.
  */
 public class GLong extends GIntegerNumber {
+    public static final GLong ZERO = new GLong(0);
     long value;
+    int radix;
+
+    public GLong(long value, int radix) {
+        this.value = value;
+        this.radix = radix;
+    }
 
     public GLong(long value) {
-        this.value = value;
+        this(value, 10);
     }
+
 
     public long getValue() {
         return value;
@@ -55,10 +63,6 @@ public class GLong extends GIntegerNumber {
     @Override
     public GLong not() {
         return new GLong(~value);
-    }
-
-    public static GNumber parseFromString(String string) {
-        return new GLong(Long.parseLong(string));
     }
 
     @Override
@@ -105,5 +109,15 @@ public class GLong extends GIntegerNumber {
     @Override
     public GIntegerNumber mod(GIntegerNumber _operand) {
         return new GLong(value % getGLong(_operand).getValue());
+    }
+
+    @Override
+    public String toString() {
+        return Long.toString(value);
+    }
+
+    @Override
+    public GLong parseFromString(String string) {
+        return new GLong(Long.parseLong(string, radix), radix);
     }
 }

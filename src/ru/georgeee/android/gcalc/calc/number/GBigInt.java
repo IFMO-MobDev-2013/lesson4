@@ -1,4 +1,4 @@
-package ru.georgeee.android.gcalc.calc;
+package ru.georgeee.android.gcalc.calc.number;
 
 import java.math.BigInteger;
 
@@ -10,10 +10,18 @@ import java.math.BigInteger;
  * To change this template use File | Settings | File Templates.
  */
 public class GBigInt extends GIntegerNumber {
+
+    public static final GBigInt ZERO = new GBigInt(BigInteger.ZERO);
     BigInteger value;
+    final int radix;
+
+    public GBigInt(BigInteger value, int radix) {
+        this.value = value;
+        this.radix = radix;
+    }
 
     public GBigInt(BigInteger value) {
-        this.value = value;
+        this(value, 10);
     }
 
     public BigInteger getValue() {
@@ -111,7 +119,13 @@ public class GBigInt extends GIntegerNumber {
         return new GBigInt(value.mod(getGBigInt(_operand).getValue()));
     }
 
-    public static GNumber parseFromString(String string) {
-        return new GBigInt(new BigInteger(string));
+    @Override
+    public GBigInt parseFromString(String string) {
+        return new GBigInt(new BigInteger(string, radix), radix);
+    }
+
+    @Override
+    public String toString() {
+        return value.toString(radix);
     }
 }

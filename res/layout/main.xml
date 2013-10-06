@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-        >
-    <TextView
+
+<RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/expressionInput" android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/historyBtn"/>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="H"
+            android:id="@+id/historyBtn"
+            android:layout_alignParentRight="true" android:layout_alignParentTop="true"/>
+    <GridLayout
+            android:id="@+id/mainGrid"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Hello World, MainActivity"
-            />
-</LinearLayout>
-
+            android:layout_below="@+id/expressionInput" android:rowCount="4" android:columnCount="8"
+            android:orientation="horizontal" android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/historyBtn" android:layout_alignParentBottom="true">
+    </GridLayout>
+</RelativeLayout>

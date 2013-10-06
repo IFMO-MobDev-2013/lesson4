@@ -7,6 +7,6 @@ package ru.georgeee.android.gcalc.calc.parser.token;
  * Time: 6:29
  * To change this template use File | Settings | File Templates.
  */
-public interface AhoTokenType {
+public interface AhoTokenType extends TokenType {
     public String getMatchString();
 }

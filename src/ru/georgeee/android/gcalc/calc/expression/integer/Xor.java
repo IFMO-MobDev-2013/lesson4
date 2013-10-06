@@ -1,8 +1,8 @@
 package ru.georgeee.android.gcalc.calc.expression.integer;
 
-import ru.georgeee.android.gcalc.calc.GIntegerNumber;
 import ru.georgeee.android.gcalc.calc.expression.Expression;
 import ru.georgeee.android.gcalc.calc.expression.IntegerBinaryOperator;
+import ru.georgeee.android.gcalc.calc.number.GIntegerNumber;
 
 /**
  * Created with IntelliJ IDEA.

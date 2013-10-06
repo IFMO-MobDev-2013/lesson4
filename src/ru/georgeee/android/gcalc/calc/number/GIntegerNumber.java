@@ -1,4 +1,4 @@
-package ru.georgeee.android.gcalc.calc;
+package ru.georgeee.android.gcalc.calc.number;
 
 /**
  * Created with IntelliJ IDEA.

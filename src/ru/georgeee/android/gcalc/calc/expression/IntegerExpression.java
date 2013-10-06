@@ -1,6 +1,6 @@
 package ru.georgeee.android.gcalc.calc.expression;
 
-import ru.georgeee.android.gcalc.calc.GIntegerNumber;
+import ru.georgeee.android.gcalc.calc.number.GIntegerNumber;
 
 /**
  * Created with IntelliJ IDEA.

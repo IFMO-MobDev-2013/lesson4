@@ -1,8 +1,8 @@
 package ru.georgeee.android.gcalc.calc.expression.real.atrig;
 
-import ru.georgeee.android.gcalc.calc.GRealNumber;
 import ru.georgeee.android.gcalc.calc.expression.Expression;
 import ru.georgeee.android.gcalc.calc.expression.RealUnaryOperator;
+import ru.georgeee.android.gcalc.calc.number.GRealNumber;
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,13 +11,13 @@ import ru.georgeee.android.gcalc.calc.expression.RealUnaryOperator;
  * Time: 1:10
  * To change this template use File | Settings | File Templates.
  */
-public class ArcCos extends RealUnaryOperator {
-    public ArcCos(Expression operand) {
+public class ACos extends RealUnaryOperator {
+    public ACos(Expression operand) {
         super(operand);
     }
 
     @Override
     public GRealNumber getValue() {
-        return ((GRealNumber) operand.getValue()).arccos();
+        return ((GRealNumber) operand.getValue()).acos();
     }
 }

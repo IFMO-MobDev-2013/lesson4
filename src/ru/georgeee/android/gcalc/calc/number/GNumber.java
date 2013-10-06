@@ -1,4 +1,4 @@
-package ru.georgeee.android.gcalc.calc;
+package ru.georgeee.android.gcalc.calc.number;
 
 /**
  * Created with IntelliJ IDEA.
@@ -8,7 +8,7 @@ package ru.georgeee.android.gcalc.calc;
  * To change this template use File | Settings | File Templates.
  */
 public abstract class GNumber {
-    public static GNumber parseFromString(String string){
+    public GNumber parseFromString(String string) {
         return null;
     }
 

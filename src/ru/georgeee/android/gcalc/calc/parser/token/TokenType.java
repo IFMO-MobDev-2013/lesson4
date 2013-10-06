@@ -9,12 +9,12 @@ import ru.georgeee.android.gcalc.calc.expression.Expression;
  * Time: 5:56
  * To change this template use File | Settings | File Templates.
  */
-public abstract class TokenType {
-    public abstract Expression getExpression(Expression leftOperand, Expression rightOperand);
+public interface TokenType {
+    public Expression getExpression(Expression leftOperand, Expression rightOperand);
 
-    public abstract boolean isLeftOperandUsed();
+    public boolean isLeftOperandUsed();
 
-    public abstract boolean isRightOperandUsed();
+    public boolean isRightOperandUsed();
 
-    public abstract int getPriority();
+    public int getPriority();
 }

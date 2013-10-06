@@ -17,7 +17,7 @@ public class ACos extends RealUnaryOperator {
     }
 
     @Override
-    public GRealNumber getValue() {
-        return ((GRealNumber) operand.getValue()).acos();
+    public GRealNumber evaluate() {
+        return ((GRealNumber) operand.evaluate()).acos();
     }
 }

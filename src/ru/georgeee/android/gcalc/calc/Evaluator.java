@@ -20,24 +20,24 @@ public class Evaluator {
         return new ExpressionCompiler(source, numberModel).compile();
     }
 
-    public static double getDoubleValue(String source) {
-        return ((GDouble) getExpression(source, GDouble.ZERO).getValue()).getValue();
+    public static GDouble evaluateDouble(String source) {
+        return (GDouble) getExpression(source, GDouble.ZERO).evaluate();
     }
 
-    public static long getLongValue(String source, int radix) {
-        return ((GLong) getExpression(source, new GLong(0, radix)).getValue()).getValue();
+    public static GLong evaluateLong(String source, int radix) {
+        return (GLong) getExpression(source, new GLong(0, radix)).evaluate();
     }
 
-    public static BigInteger getBigIntegerValue(String source, int radix) {
-        return ((GBigInt) getExpression(source, new GBigInt(BigInteger.ZERO, radix)).getValue()).getValue();
+    public static GBigInt evaluateBigInt(String source, int radix) {
+        return (GBigInt) getExpression(source, new GBigInt(BigInteger.ZERO, radix)).evaluate();
     }
 
-    public static long getLongValue(String source) {
-        return getLongValue(source, 10);
+    public static GLong evaluateLong(String source) {
+        return evaluateLong(source, 10);
     }
 
-    public static BigInteger getBigIntegerValue(String source) {
-        return getBigIntegerValue(source, 10);
+    public static GBigInt evaluateBigInt(String source) {
+        return evaluateBigInt(source, 10);
     }
 
 }

@@ -69,6 +69,11 @@ public class GDouble extends GRealNumber {
     }
 
     @Override
+    public GRealNumber sqrt() {
+        return new GDouble(Math.sqrt(value));
+    }
+
+    @Override
     public GRealNumber asin() {
         return new GDouble(Math.asin(value));
     }

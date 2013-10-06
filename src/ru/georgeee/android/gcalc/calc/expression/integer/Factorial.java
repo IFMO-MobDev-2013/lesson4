@@ -17,7 +17,7 @@ public class Factorial extends IntegerUnaryOperator {
     }
 
     @Override
-    public GIntegerNumber getValue() {
-        return ((GIntegerNumber) operand.getValue()).factorial();
+    public GIntegerNumber evaluate() {
+        return ((GIntegerNumber) operand.evaluate()).factorial();
     }
 }

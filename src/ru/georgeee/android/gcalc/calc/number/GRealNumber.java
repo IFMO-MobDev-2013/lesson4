@@ -48,4 +48,6 @@ public abstract class GRealNumber extends GNumber {
     public abstract GRealNumber atan();
 
     public abstract GRealNumber exp();
+
+    public abstract GRealNumber sqrt();
 }

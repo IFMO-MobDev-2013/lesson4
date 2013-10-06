@@ -17,7 +17,7 @@ public class Sinh extends RealUnaryOperator {
     }
 
     @Override
-    public GRealNumber getValue() {
-        return ((GRealNumber) operand.getValue()).sinh();
+    public GRealNumber evaluate() {
+        return ((GRealNumber) operand.evaluate()).sinh();
     }
 }

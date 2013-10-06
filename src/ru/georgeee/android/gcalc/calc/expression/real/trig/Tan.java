@@ -17,7 +17,7 @@ public class Tan extends RealUnaryOperator {
     }
 
     @Override
-    public GRealNumber getValue() {
-        return ((GRealNumber) operand.getValue()).tan();
+    public GRealNumber evaluate() {
+        return ((GRealNumber) operand.evaluate()).tan();
     }
 }

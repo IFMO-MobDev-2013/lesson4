@@ -17,7 +17,7 @@ public class Tanh extends RealUnaryOperator {
     }
 
     @Override
-    public GRealNumber getValue() {
-        return ((GRealNumber) operand.getValue()).tanh();
+    public GRealNumber evaluate() {
+        return ((GRealNumber) operand.evaluate()).tanh();
     }
 }

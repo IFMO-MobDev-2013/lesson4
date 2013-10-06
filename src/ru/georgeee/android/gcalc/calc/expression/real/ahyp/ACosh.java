@@ -17,7 +17,7 @@ public class ACosh extends RealUnaryOperator {
     }
 
     @Override
-    public GRealNumber getValue() {
-        return ((GRealNumber) operand.getValue()).acosh();
+    public GRealNumber evaluate() {
+        return ((GRealNumber) operand.evaluate()).acosh();
     }
 }

@@ -17,7 +17,7 @@ public class ATan extends RealUnaryOperator {
     }
 
     @Override
-    public GRealNumber getValue() {
-        return ((GRealNumber) operand.getValue()).atan();
+    public GRealNumber evaluate() {
+        return ((GRealNumber) operand.evaluate()).atan();
     }
 }

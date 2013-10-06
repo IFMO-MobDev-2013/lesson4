@@ -17,7 +17,7 @@ public class Multiply extends BinaryOperator {
     }
 
     @Override
-    public GNumber getValue() {
-        return leftOperand.getValue().multiply(rightOperand.getValue());
+    public GNumber evaluate() {
+        return leftOperand.evaluate().multiply(rightOperand.evaluate());
     }
 }

@@ -11,5 +11,5 @@ import ru.georgeee.android.gcalc.calc.number.GIntegerNumber;
  */
 public abstract class IntegerExpression extends Expression {
     @Override
-    public abstract GIntegerNumber getValue();
+    public abstract GIntegerNumber evaluate();
 }

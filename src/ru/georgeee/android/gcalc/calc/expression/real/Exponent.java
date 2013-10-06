@@ -17,7 +17,7 @@ public class Exponent extends RealUnaryOperator {
     }
 
     @Override
-    public GRealNumber getValue() {
-        return ((GRealNumber) operand.getValue()).exp();
+    public GRealNumber evaluate() {
+        return ((GRealNumber) operand.evaluate()).exp();
     }
 }

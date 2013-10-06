@@ -11,5 +11,5 @@ import ru.georgeee.android.gcalc.calc.number.GNumber;
  */
 
 public abstract class Expression {
-    public abstract GNumber getValue();
+    public abstract GNumber evaluate();
 }

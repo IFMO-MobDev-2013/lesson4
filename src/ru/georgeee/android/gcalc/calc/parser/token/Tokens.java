@@ -344,6 +344,18 @@ public class Tokens {
                         return new Exponent(rightOperand);
                     }
                 },
+                //sqrt
+                new FunctionTokenType() {
+                    @Override
+                    public String getMatchString() {
+                        return "√";
+                    }
+
+                    @Override
+                    protected Expression getExpressionImpl(Expression rightOperand) {
+                        return new Sqrt(rightOperand);
+                    }
+                },
                 //lg
                 new FunctionTokenType() {
                     @Override

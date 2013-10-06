@@ -3,7 +3,11 @@ package ru.georgeee.android.gcalc;
 import android.test.ActivityInstrumentationTestCase2;
 import android.util.Log;
 import ru.georgeee.android.gcalc.calc.Evaluator;
+import ru.georgeee.android.gcalc.calc.number.GBigInt;
+import ru.georgeee.android.gcalc.calc.number.GDouble;
+import ru.georgeee.android.gcalc.calc.number.GLong;
 
+import javax.microedition.khronos.opengles.GL;
 import java.math.BigInteger;
 
 /**
@@ -23,19 +27,19 @@ public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActiv
     }
 
     public void ted(String source, double checkValue){
-        double result = Evaluator.getDoubleValue(source);
+        GDouble result = Evaluator.evaluateDouble(source);
         Log.d(MainActivityTest.class.getName(), "Expression: {"+source+"} value="+result);
-        assertTrue((Double.isNaN(result) && Double.isNaN(checkValue)) || Math.abs(result-checkValue) < 1e-9);
+        assertTrue((Double.isNaN(result.getValue()) && Double.isNaN(checkValue)) || Math.abs(result.getValue()-checkValue) < 1e-9);
     }
     public void tei(String source, long checkValue){
-        long result = Evaluator.getLongValue(source);
+        GLong result = Evaluator.evaluateLong(source);
         Log.d(MainActivityTest.class.getName(), "Expression: {"+source+"} value="+result);
-        assertEquals(result, checkValue);
+        assertEquals(result.getValue(), checkValue);
     }
     public void tebi(String source, BigInteger checkValue){
-        BigInteger result = Evaluator.getBigIntegerValue(source);
+        GBigInt result = Evaluator.evaluateBigInt(source);
         Log.d(MainActivityTest.class.getName(), "Expression: {"+source+"} value="+result);
-        assertTrue(result.equals(checkValue));
+        assertTrue(result.getValue().equals(checkValue));
     }
 
     public void testBasicSyntax() throws Exception {

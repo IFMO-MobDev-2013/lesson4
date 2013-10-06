@@ -17,7 +17,7 @@ public class ACot extends RealUnaryOperator {
     }
 
     @Override
-    public GRealNumber getValue() {
-        return ((GRealNumber) operand.getValue()).acot();
+    public GRealNumber evaluate() {
+        return ((GRealNumber) operand.evaluate()).acot();
     }
 }

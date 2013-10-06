@@ -17,7 +17,7 @@ public class Log2 extends RealUnaryOperator {
     }
 
     @Override
-    public GRealNumber getValue() {
-        return ((GRealNumber) operand.getValue()).log2();
+    public GRealNumber evaluate() {
+        return ((GRealNumber) operand.evaluate()).log2();
     }
 }

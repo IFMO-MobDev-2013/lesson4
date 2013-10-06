@@ -17,7 +17,7 @@ public class Xor extends IntegerBinaryOperator {
     }
 
     @Override
-    public GIntegerNumber getValue() {
-        return ((GIntegerNumber) leftOperand.getValue()).xor(((GIntegerNumber) rightOperand.getValue()));
+    public GIntegerNumber evaluate() {
+        return ((GIntegerNumber) leftOperand.evaluate()).xor(((GIntegerNumber) rightOperand.evaluate()));
     }
 }

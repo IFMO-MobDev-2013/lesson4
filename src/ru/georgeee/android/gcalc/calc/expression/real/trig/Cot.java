@@ -17,7 +17,7 @@ public class Cot extends RealUnaryOperator {
     }
 
     @Override
-    public GRealNumber getValue() {
-        return ((GRealNumber) operand.getValue()).cot();
+    public GRealNumber evaluate() {
+        return ((GRealNumber) operand.evaluate()).cot();
     }
 }

@@ -17,7 +17,7 @@ public class Subtract extends BinaryOperator {
     }
 
     @Override
-    public GNumber getValue() {
-        return leftOperand.getValue().subtract(rightOperand.getValue());
+    public GNumber evaluate() {
+        return leftOperand.evaluate().subtract(rightOperand.evaluate());
     }
 }

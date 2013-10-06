@@ -17,7 +17,7 @@ public class ASinh extends RealUnaryOperator {
     }
 
     @Override
-    public GRealNumber getValue() {
-        return ((GRealNumber) operand.getValue()).asinh();
+    public GRealNumber evaluate() {
+        return ((GRealNumber) operand.evaluate()).asinh();
     }
 }

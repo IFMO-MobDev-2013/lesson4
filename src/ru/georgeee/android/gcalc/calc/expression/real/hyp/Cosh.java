@@ -17,7 +17,7 @@ public class Cosh extends RealUnaryOperator {
     }
 
     @Override
-    public GRealNumber getValue() {
-        return ((GRealNumber) operand.getValue()).cosh();
+    public GRealNumber evaluate() {
+        return ((GRealNumber) operand.evaluate()).cosh();
     }
 }

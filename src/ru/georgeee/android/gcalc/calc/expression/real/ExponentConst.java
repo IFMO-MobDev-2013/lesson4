@@ -13,7 +13,7 @@ import ru.georgeee.android.gcalc.calc.number.GRealNumber;
  */
 public class ExponentConst extends Expression {
     @Override
-    public GRealNumber getValue() {
+    public GRealNumber evaluate() {
         return Constants.E;
     }
 }

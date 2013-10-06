@@ -17,7 +17,7 @@ public class Not extends IntegerUnaryOperator {
     }
 
     @Override
-    public GIntegerNumber getValue() {
-        return ((GIntegerNumber) operand.getValue()).not();
+    public GIntegerNumber evaluate() {
+        return ((GIntegerNumber) operand.evaluate()).not();
     }
 }

@@ -17,7 +17,7 @@ public class Add extends BinaryOperator {
     }
 
     @Override
-    public GNumber getValue() {
-        return leftOperand.getValue().add(rightOperand.getValue());
+    public GNumber evaluate() {
+        return leftOperand.evaluate().add(rightOperand.evaluate());
     }
 }

@@ -17,7 +17,7 @@ public class Constant extends Expression {
         this.value = value;
     }
 
-    public GNumber getValue() {
+    public GNumber evaluate() {
         return value;
     }
 }

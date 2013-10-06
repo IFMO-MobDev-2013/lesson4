@@ -17,7 +17,7 @@ public class Power extends BinaryOperator {
     }
 
     @Override
-    public GNumber getValue() {
-        return leftOperand.getValue().power(rightOperand.getValue());
+    public GNumber evaluate() {
+        return leftOperand.evaluate().power(rightOperand.evaluate());
     }
 }

@@ -17,7 +17,7 @@ public class And extends IntegerBinaryOperator {
     }
 
     @Override
-    public GIntegerNumber getValue() {
-        return ((GIntegerNumber) (leftOperand.getValue())).and((GIntegerNumber) (rightOperand.getValue()));
+    public GIntegerNumber evaluate() {
+        return ((GIntegerNumber) (leftOperand.evaluate())).and((GIntegerNumber) (rightOperand.evaluate()));
     }
 }

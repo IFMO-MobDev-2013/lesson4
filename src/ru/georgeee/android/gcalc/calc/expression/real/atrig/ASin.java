@@ -17,7 +17,7 @@ public class ASin extends RealUnaryOperator {
     }
 
     @Override
-    public GRealNumber getValue() {
-        return ((GRealNumber) operand.getValue()).asin();
+    public GRealNumber evaluate() {
+        return ((GRealNumber) operand.evaluate()).asin();
     }
 }

@@ -1,25 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout
+<LinearLayout
+        android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android">
+        android:layout_height="fill_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        >
     <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/expressionInput" android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
-            android:layout_toLeftOf="@+id/historyBtn"/>
-    <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="H"
-            android:id="@+id/historyBtn"
-            android:layout_alignParentRight="true" android:layout_alignParentTop="true"/>
-    <GridLayout
-            android:id="@+id/mainGrid"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/expressionInput" android:rowCount="4" android:columnCount="8"
-            android:orientation="horizontal" android:layout_alignParentLeft="true"
-            android:layout_alignRight="@+id/historyBtn" android:layout_alignParentBottom="true">
-    </GridLayout>
-</RelativeLayout>
+            android:id="@+id/expressionInput" android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true" android:layout_alignParentRight="true"/>
+    <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+        <TableLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_below="@+id/buttons">
+            <TableRow android:id="@+id/tableRow1" style="@style/GTableRow">
+                <Button style="@style/GModeButton" android:id="@+id/btn0" android:text="int"/>
+                <Button style="@style/GButton" android:id="@+id/btn4"/>
+                <Button style="@style/GButton" android:id="@+id/btn7"/>
+                <Button style="@style/GButton" android:id="@+id/num7" android:text="@string/num7"/>
+                <Button style="@style/GButton" android:id="@+id/num8" android:text="@string/num8" />
+                <Button style="@style/GButton" android:id="@+id/num9" android:text="@string/num9"/>
+                <Button style="@style/GButton" android:id="@+id/division" android:text="@string/division"/>
+                <Button style="@style/GButton" android:id="@+id/delete" android:text="@string/delete"/>
+            </TableRow>
+            <TableRow android:id="@+id/tableRow2" style="@style/GTableRow">
+                <Button style="@style/GButton" android:id="@+id/btn1"/>
+                <Button style="@style/GButton" android:id="@+id/btn5"/>
+                <Button style="@style/GButton" android:id="@+id/btn8"/>
+                <Button style="@style/GButton" android:id="@+id/num4" android:text="@string/num4"/>
+                <Button style="@style/GButton" android:id="@+id/num5" android:text="@string/num5"/>
+                <Button style="@style/GButton" android:id="@+id/num6" android:text="@string/num6"/>
+                <Button style="@style/GButton" android:id="@+id/multiply" android:text="@string/multiply"/>
+                <Button style="@style/GButton" android:id="@+id/clear" android:text="@string/clear"/>
+            </TableRow>
+            <TableRow android:id="@+id/tableRow3" style="@style/GTableRow">
+                <Button style="@style/GButton" android:id="@+id/btn2"/>
+                <Button style="@style/GButton" android:id="@+id/btn6"/>
+                <Button style="@style/GButton" android:id="@+id/btn9"/>
+                <Button style="@style/GButton" android:id="@+id/num1" android:text="@string/num1"/>
+                <Button style="@style/GButton" android:id="@+id/num2" android:text="@string/num2"/>
+                <Button style="@style/GButton" android:id="@+id/num3" android:text="@string/num3"/>
+                <Button style="@style/GButton" android:id="@+id/subtract" android:text="@string/subtract"/>
+                <Button style="@style/GButton" android:id="@+id/historyBtn" android:text="@string/history"/>
+            </TableRow>
+            <TableRow android:id="@+id/tableRow4" style="@style/GTableRow">
+                <Button style="@style/GButton" android:id="@+id/btn3"/>
+                <Button style="@style/GButton" android:id="@+id/leftBracket" android:text="@string/leftBracket"/>
+                <Button style="@style/GButton" android:id="@+id/rightBracket" android:text="@string/rightBracket"/>
+                <Button style="@style/GButton" android:id="@+id/power" android:text="@string/power"/>
+                <Button style="@style/GButton" android:id="@+id/point" android:text="@string/point"/>
+                <Button style="@style/GButton" android:id="@+id/num0" android:text="@string/num0"/>
+                <Button style="@style/GButton" android:id="@+id/add" android:text="@string/add"/>
+                <Button style="@style/GButton" android:id="@+id/equal" android:text="@string/equal"/>
+            </TableRow>
+
+
+        </TableLayout>
+    </FrameLayout>
+</LinearLayout>

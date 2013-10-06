@@ -17,7 +17,7 @@ public class Negate extends UnaryOperator {
     }
 
     @Override
-    public GNumber getValue() {
-        return operand.getValue().negate();
+    public GNumber evaluate() {
+        return operand.evaluate().negate();
     }
 }

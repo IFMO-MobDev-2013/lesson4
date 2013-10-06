@@ -17,7 +17,7 @@ public class Coth extends RealUnaryOperator {
     }
 
     @Override
-    public GRealNumber getValue() {
-        return ((GRealNumber) operand.getValue()).coth();
+    public GRealNumber evaluate() {
+        return ((GRealNumber) operand.evaluate()).coth();
     }
 }

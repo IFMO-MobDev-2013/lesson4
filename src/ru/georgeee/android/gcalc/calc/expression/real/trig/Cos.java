@@ -17,7 +17,7 @@ public class Cos extends RealUnaryOperator {
     }
 
     @Override
-    public GRealNumber getValue() {
-        return ((GRealNumber) operand.getValue()).cos();
+    public GRealNumber evaluate() {
+        return ((GRealNumber) operand.evaluate()).cos();
     }
 }

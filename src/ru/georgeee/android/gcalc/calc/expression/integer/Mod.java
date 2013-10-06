@@ -17,7 +17,7 @@ public class Mod extends IntegerBinaryOperator {
     }
 
     @Override
-    public GIntegerNumber getValue() {
-        return ((GIntegerNumber) leftOperand.getValue()).mod(((GIntegerNumber) rightOperand.getValue()));
+    public GIntegerNumber evaluate() {
+        return ((GIntegerNumber) leftOperand.evaluate()).mod(((GIntegerNumber) rightOperand.evaluate()));
     }
 }

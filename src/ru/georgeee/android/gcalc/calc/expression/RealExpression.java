@@ -11,5 +11,5 @@ import ru.georgeee.android.gcalc.calc.number.GRealNumber;
  */
 public abstract class RealExpression extends Expression {
     @Override
-    public abstract GRealNumber getValue();
+    public abstract GRealNumber evaluate();
 }

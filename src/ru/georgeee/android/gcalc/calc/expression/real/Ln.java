@@ -17,7 +17,7 @@ public class Ln extends RealUnaryOperator {
     }
 
     @Override
-    public GRealNumber getValue() {
-        return ((GRealNumber) operand.getValue()).ln();
+    public GRealNumber evaluate() {
+        return ((GRealNumber) operand.evaluate()).ln();
     }
 }

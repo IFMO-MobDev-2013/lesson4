@@ -17,7 +17,7 @@ public class LShift extends IntegerBinaryOperator {
     }
 
     @Override
-    public GIntegerNumber getValue() {
-        return ((GIntegerNumber) leftOperand.getValue()).lshift(((GIntegerNumber) rightOperand.getValue()));
+    public GIntegerNumber evaluate() {
+        return ((GIntegerNumber) leftOperand.evaluate()).lshift(((GIntegerNumber) rightOperand.evaluate()));
     }
 }

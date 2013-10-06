@@ -17,7 +17,7 @@ public class Divide extends BinaryOperator {
     }
 
     @Override
-    public GNumber getValue() {
-        return leftOperand.getValue().divide(rightOperand.getValue());
+    public GNumber evaluate() {
+        return leftOperand.evaluate().divide(rightOperand.evaluate());
     }
 }

@@ -17,7 +17,7 @@ public class Or extends IntegerBinaryOperator {
     }
 
     @Override
-    public GIntegerNumber getValue() {
-        return ((GIntegerNumber) leftOperand.getValue()).or((GIntegerNumber) (rightOperand.getValue()));
+    public GIntegerNumber evaluate() {
+        return ((GIntegerNumber) leftOperand.evaluate()).or((GIntegerNumber) (rightOperand.evaluate()));
     }
 }

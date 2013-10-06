@@ -17,7 +17,7 @@ public class RShift extends IntegerBinaryOperator {
     }
 
     @Override
-    public GIntegerNumber getValue() {
-        return ((GIntegerNumber) leftOperand.getValue()).rshift((GIntegerNumber) rightOperand.getValue());
+    public GIntegerNumber evaluate() {
+        return ((GIntegerNumber) leftOperand.evaluate()).rshift((GIntegerNumber) rightOperand.evaluate());
     }
 }

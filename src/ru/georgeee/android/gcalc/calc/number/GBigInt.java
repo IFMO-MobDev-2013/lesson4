@@ -109,7 +109,7 @@ public class GBigInt extends GIntegerNumber {
         int val = value.intValue();
         BigInteger result = BigInteger.ONE;
         for (int i = 2; i <= val; ++i) {
-            result.multiply(BigInteger.valueOf(i));
+            result = result.multiply(BigInteger.valueOf(i));
         }
         return new GBigInt(result);
     }

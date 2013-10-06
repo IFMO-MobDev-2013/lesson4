@@ -1,5 +1,7 @@
 package ru.georgeee.android.gcalc.calc.number;
 
+import java.text.DecimalFormat;
+
 /**
  * Created with IntelliJ IDEA.
  * User: georgeee
@@ -164,6 +166,7 @@ public class GDouble extends GRealNumber {
 
     @Override
     public String toString() {
-        return Double.toString(value);
+        DecimalFormat decimalFormat = new DecimalFormat("#.#########");//9 points
+        return decimalFormat.format(value);
     }
 }

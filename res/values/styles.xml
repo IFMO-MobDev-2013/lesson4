@@ -1,0 +1,5 @@
+<resources>
+    <style name="DigitButton" parent="android:Widget.Holo.Button">
+        <item name="android:layout_gravity">fill</item>
+    </style>
+</resources>

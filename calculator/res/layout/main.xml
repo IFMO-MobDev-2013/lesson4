@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="bottom">
+    <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:focusable="true">
+        <EditText android:layout_width="fill_parent"
+                  android:layout_height="fill_parent"
+                  android:id="@+id/input"
+                  android:layout_gravity="top"
+                  android:selectAllOnFocus="true"
+                  android:singleLine="true"
+                  android:focusable="true"/>
+    </FrameLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center_vertical"
+            android:weightSum="100">
+        <view android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              class="ru.ifmo.ctddev.koval.calculator.SquareButton"
+              android:id="@+id/count"
+              android:text="="
+              android:onClick="countListener"
+              android:layout_weight="20"/>
+        <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:layout_weight="70">
+            <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="0"
+                    android:id="@+id/result"
+                    android:gravity="center_vertical|right"
+                    android:singleLine="false"
+                    android:textIsSelectable="true"
+                    android:clickable="false"
+                    />
+        </FrameLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal"
+                  android:layout_width="fill_parent"
+                  android:layout_height="wrap_content"
+                  android:weightSum="5"
+                  android:id="@+id/linearLayout1"
+                  android:layout_gravity="center">
+        <view class="ru.ifmo.ctddev.koval.calculator.SquareButton"
+              android:layout_width="wrap_content"
+              android:layout_height="fill_parent"
+              android:id="@+id/seven"
+              android:layout_weight="1"
+              android:onClick="sevenListener"
+              android:text="7"/>
+        <view class="ru.ifmo.ctddev.koval.calculator.SquareButton"
+              android:layout_width="wrap_content"
+              android:layout_height="fill_parent"
+              android:id="@+id/eight"
+              android:layout_weight="1"
+              android:onClick="eightListener"
+              android:text="8"/>
+        <view class="ru.ifmo.ctddev.koval.calculator.SquareButton"
+              android:layout_width="wrap_content"
+              android:layout_height="fill_parent"
+              android:id="@+id/nine"
+              android:layout_weight="1"
+              android:onClick="nineListener"
+              android:text="9"/>
+        <view class="ru.ifmo.ctddev.koval.calculator.SquareButton"
+              android:layout_width="wrap_content"
+              android:layout_height="fill_parent"
+              android:id="@+id/times"
+              android:layout_weight="1"
+              android:onClick="timesListener"
+              android:text="*"/>
+        <view class="ru.ifmo.ctddev.koval.calculator.SquareButton"
+              android:layout_width="wrap_content"
+              android:layout_height="fill_parent"
+              android:id="@+id/backspace"
+              android:layout_weight="1"
+              android:onClick="backspaceListener"
+              android:text="←"/>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" android:weightSum="5">
+        <view android:layout_width="wrap_content"
+              android:layout_height="fill_parent"
+              class="ru.ifmo.ctddev.koval.calculator.SquareButton"
+              android:id="@+id/four"
+              android:layout_weight="1"
+              android:onClick="fourListener"
+              android:text="4"/>
+        <view android:layout_width="wrap_content"
+              android:layout_height="fill_parent"
+              class="ru.ifmo.ctddev.koval.calculator.SquareButton"
+              android:id="@+id/five"
+              android:layout_weight="1"
+              android:onClick="fiveListener"
+              android:text="5"/>
+        <view android:layout_width="wrap_content"
+              android:layout_height="fill_parent"
+              class="ru.ifmo.ctddev.koval.calculator.SquareButton"
+              android:id="@+id/six"
+              android:layout_weight="1"
+              android:onClick="sixListener"
+              android:text="6"/>
+        <view android:layout_width="wrap_content"
+              android:layout_height="fill_parent"
+              class="ru.ifmo.ctddev.koval.calculator.SquareButton"
+              android:id="@+id/division"
+              android:layout_weight="1"
+              android:onClick="divisionListener"
+              android:text="/"/>
+        <view class="ru.ifmo.ctddev.koval.calculator.SquareButton"
+              android:layout_width="wrap_content"
+              android:layout_height="fill_parent"
+              android:id="@+id/closeBracket"
+              android:layout_weight="1"
+              android:onClick="closeBracketListener"
+              android:text=")"/>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:weightSum="5"
+            android:padding="0dp">
+        <view android:layout_width="wrap_content"
+              android:layout_height="fill_parent"
+              class="ru.ifmo.ctddev.koval.calculator.SquareButton"
+              android:id="@+id/one"
+              android:layout_weight="1"
+              android:onClick="oneListener"
+              android:text="1"/>
+        <view android:layout_width="wrap_content"
+              android:layout_height="fill_parent"
+              class="ru.ifmo.ctddev.koval.calculator.SquareButton"
+              android:id="@+id/two"
+              android:layout_weight="1"
+              android:onClick="twoListener"
+              android:text="2"/>
+        <view android:layout_width="wrap_content"
+              android:layout_height="fill_parent"
+              class="ru.ifmo.ctddev.koval.calculator.SquareButton"
+              android:id="@+id/three"
+              android:layout_weight="1"
+              android:onClick="threeListener"
+              android:text="3"/>
+        <view android:layout_width="wrap_content"
+              android:layout_height="fill_parent"
+              class="ru.ifmo.ctddev.koval.calculator.SquareButton"
+              android:id="@+id/substract"
+              android:layout_weight="1"
+              android:onClick="substractListener"
+              android:text="-"/>
+        <view class="ru.ifmo.ctddev.koval.calculator.SquareButton"
+              android:layout_width="wrap_content"
+              android:layout_height="fill_parent"
+              android:id="@+id/openBracket"
+              android:layout_weight="1"
+              android:onClick="openBracketListener"
+              android:text="("/>
+    </LinearLayout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="horizontal"
+                  android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="5"
+                  android:id="@+id/linearLayout" android:layout_gravity="center" android:padding="0dp">
+        <view class="ru.ifmo.ctddev.koval.calculator.SquareButton"
+              android:layout_width="wrap_content"
+              android:layout_height="fill_parent"
+              android:id="@+id/zero"
+              android:layout_weight="1"
+              android:onClick="zeroListener"
+              android:text="0"/>
+        <view class="ru.ifmo.ctddev.koval.calculator.SquareButton"
+              android:layout_width="wrap_content"
+              android:layout_height="fill_parent"
+              android:id="@+id/point"
+              android:layout_weight="1"
+              android:onClick="pointListener"
+              android:text="."/>
+        <view class="ru.ifmo.ctddev.koval.calculator.SquareButton"
+              android:layout_width="wrap_content"
+              android:layout_height="fill_parent"
+              android:id="@+id/space"
+              android:layout_weight="1"
+              android:onClick="spaceListener"
+              android:text="__"/>
+        <view class="ru.ifmo.ctddev.koval.calculator.SquareButton"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/plus"
+                android:layout_weight="1"
+                android:onClick="plusListener"
+                android:text="+"/>
+        <view class="ru.ifmo.ctddev.koval.calculator.SquareButton"
+              android:layout_width="wrap_content"
+              android:layout_height="fill_parent"
+              android:id="@+id/с"
+              android:layout_weight="1"
+              android:onClick="cListener"
+              android:text="С"/>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.polarnick.day04</groupId>
+    <artifactId>Day04</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>Day04</name>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>PolarisLib</module>
+        <module>Calculator</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <platform.version>4.1.1.4</platform.version>
+        <platform.target>16</platform.target>
+        <android.plugin.version>3.6.0</android.plugin.version>
+    </properties>
+
+</project>

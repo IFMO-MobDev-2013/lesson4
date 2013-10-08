@@ -132,6 +132,10 @@ public class CalculatorActivity extends Activity {
     }
 
     public void countListener(View view) {
+        if (input.getText().toString().isEmpty()) {
+            result.setText("0");
+            return;
+        }
         try {
             String res = MVEL.eval(input.getText().toString()).toString();
             result.setText(res);

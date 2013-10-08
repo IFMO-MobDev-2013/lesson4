@@ -19,6 +19,10 @@ import ru.zulyaev.ifmo.lesson4.parser.dbl.DoubleUnaryOperator;
 import ru.zulyaev.ifmo.lesson4.parser.exception.EvaluationException;
 import ru.zulyaev.ifmo.lesson4.parser.exception.ExpressionMalformed;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Locale;
+
 /**
  * @author Никита
  */
@@ -27,6 +31,12 @@ public class MainActivity extends Activity {
     private static final String SELECTION_START_KEY = "start";
     private static final String SELECTION_END_KEY = "end";
     private static final String MODE_KEY = "mode";
+
+    private static final NumberFormat NUMBER_FORMAT = DecimalFormat.getInstance(Locale.US);
+    static {
+        NUMBER_FORMAT.setGroupingUsed(false);
+        NUMBER_FORMAT.setMinimumFractionDigits(0);
+    }
 
     final VariableValues<Double> constants = new BasicVariableValues<>();
     ExpressionParser<Double> parser;
@@ -151,7 +161,7 @@ public class MainActivity extends Activity {
                         } else if (result.isNaN()) {
                             showResult(getString(R.string.nan));
                         } else {
-                            showResult(result.toString());
+                            showResult(NUMBER_FORMAT.format(result));
                         }
                     } catch (ExpressionMalformed | EvaluationException expressionMalformed) {
                         showResult(getString(R.string.error));

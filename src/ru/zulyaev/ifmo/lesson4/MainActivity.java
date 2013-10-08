@@ -20,9 +20,9 @@ import ru.zulyaev.ifmo.lesson4.parser.exception.ExpressionMalformed;
  * @author Никита
  */
 public class MainActivity extends Activity {
-    private final VariableValues<Double> constants = new BasicVariableValues<>();
-    private ExpressionParser<Double> parser;
-    private EditText input;
+    final VariableValues<Double> constants = new BasicVariableValues<>();
+    ExpressionParser<Double> parser;
+    EditText input;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

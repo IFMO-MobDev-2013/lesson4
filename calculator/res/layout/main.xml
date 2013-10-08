@@ -191,7 +191,7 @@
                 android:text="+"/>
         <Button android:layout_width="0dp"
               android:layout_height="fill_parent"
-              android:id="@+id/с"
+              android:id="@+id/c"
               android:layout_weight="1"
               android:onClick="cListener"
               android:text="С"/>

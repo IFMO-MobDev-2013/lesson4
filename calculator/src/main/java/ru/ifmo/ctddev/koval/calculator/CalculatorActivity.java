@@ -28,157 +28,117 @@ public class CalculatorActivity extends Activity {
     }
 
     public void oneListener(View view) {
-        synchronized (input) {
-            input.setText(input.getText() + "1");
-            input.setSelection(input.getText().length());
-        }
+        input.setText(input.getText() + "1");
+        input.setSelection(input.getText().length());
     }
 
     public void twoListener(View view) {
-        synchronized (input) {
-            input.setText(input.getText() + "2");
-            input.setSelection(input.getText().length());
-        }
+        input.setText(input.getText() + "2");
+        input.setSelection(input.getText().length());
     }
 
     public void threeListener(View view) {
-        synchronized (input) {
-            input.setText(input.getText() + "3");
-            input.setSelection(input.getText().length());
-        }
+        input.setText(input.getText() + "3");
+        input.setSelection(input.getText().length());
     }
 
     public void fourListener(View view) {
-        synchronized (input) {
-            input.setText(input.getText() + "4");
-            input.setSelection(input.getText().length());
-        }
+        input.setText(input.getText() + "4");
+        input.setSelection(input.getText().length());
     }
 
     public void fiveListener(View view) {
-        synchronized (input) {
-            input.setText(input.getText() + "5");
-            input.setSelection(input.getText().length());
-        }
+        input.setText(input.getText() + "5");
+        input.setSelection(input.getText().length());
     }
 
     public void sixListener(View view) {
-        synchronized (input) {
-            input.setText(input.getText() + "6");
-            input.setSelection(input.getText().length());
-        }
+        input.setText(input.getText() + "6");
+        input.setSelection(input.getText().length());
     }
 
     public void sevenListener(View view) {
-        synchronized (input) {
-            input.setText(input.getText() + "7");
-            input.setSelection(input.getText().length());
-        }
+        input.setText(input.getText() + "7");
+        input.setSelection(input.getText().length());
     }
 
     public void eightListener(View view) {
-        synchronized (input) {
-            input.setText(input.getText() + "8");
-            input.setSelection(input.getText().length());
-        }
+        input.setText(input.getText() + "8");
+        input.setSelection(input.getText().length());
     }
 
     public void nineListener(View view) {
-        synchronized (input) {
-            input.setText(input.getText() + "9");
-            input.setSelection(input.getText().length());
-        }
+        input.setText(input.getText() + "9");
+        input.setSelection(input.getText().length());
     }
 
     public void zeroListener(View view) {
-        synchronized (input) {
-            input.setText(input.getText() + "0");
-            input.setSelection(input.getText().length());
-        }
+        input.setText(input.getText() + "0");
+        input.setSelection(input.getText().length());
     }
 
     public void plusListener(View view) {
-        synchronized (input) {
-            input.setText(input.getText() + "+");
-            input.setSelection(input.getText().length());
-        }
+        input.setText(input.getText() + "+");
+        input.setSelection(input.getText().length());
     }
 
     public void substractListener(View view) {
-        synchronized (input) {
-            input.setText(input.getText() + "-");
-            input.setSelection(input.getText().length());
-        }
+        input.setText(input.getText() + "-");
+        input.setSelection(input.getText().length());
     }
 
     public void divisionListener(View view) {
-        synchronized (input) {
-            input.setText(input.getText() + "/");
-            input.setSelection(input.getText().length());
-        }
+        input.setText(input.getText() + "/");
+        input.setSelection(input.getText().length());
     }
 
     public void timesListener(View view) {
-        synchronized (input) {
-            input.setText(input.getText() + "*");
-            input.setSelection(input.getText().length());
-        }
+        input.setText(input.getText() + "*");
+        input.setSelection(input.getText().length());
     }
 
     public void pointListener(View view) {
-        synchronized (input) {
-            input.setText(input.getText() + ".");
-            input.setSelection(input.getText().length());
-        }
+        input.setText(input.getText() + ".");
+        input.setSelection(input.getText().length());
     }
 
 
     public void cListener(View view) {
-        synchronized (input) {
-            input.setText("");
-            input.setSelection(input.getText().length());
-        }
+        input.setText("");
+        input.setSelection(input.getText().length());
     }
 
     public void openBracketListener(View view) {
-        synchronized (input) {
-            input.setText(input.getText() + "(");
-            input.setSelection(input.getText().length());
-        }
+        input.setText(input.getText() + "(");
+        input.setSelection(input.getText().length());
     }
 
     public void closeBracketListener(View view) {
-        synchronized (input) {
-            input.setText(input.getText() + ")");
-            input.setSelection(input.getText().length());
-        }
+        input.setText(input.getText() + ")");
+        input.setSelection(input.getText().length());
     }
 
     public void backspaceListener(View view) {
-        synchronized (input) {
-            String currentText = input.getText().toString();
-            if (!currentText.equals("")) {
-                input.setText(currentText.substring(0, currentText.length() - 1));
-            }
-            input.setSelection(input.getText().length());
+        String currentText = input.getText().toString();
+        if (!currentText.equals("")) {
+            input.setText(currentText.substring(0, currentText.length() - 1));
         }
+        input.setSelection(input.getText().length());
     }
 
     public void spaceListener(View view) {
-        synchronized (input) {
-            input.setText(input.getText() + " ");
-            input.setSelection(input.getText().length());
-        }
+        input.setText(input.getText() + " ");
+        input.setSelection(input.getText().length());
     }
 
     public void countListener(View view) {
-        synchronized (result) {
-            try {
-                String res = MVEL.eval(input.getText().toString()).toString();
-                result.setText(res);
-            } catch (RuntimeException e) {
-                result.setText("Invalid expression");
-            }
+        try {
+            String res = MVEL.eval(input.getText().toString()).toString();
+            result.setText(res);
+        } catch (RuntimeException e) {
+            result.setText("Invalid expression");
         }
     }
+
+
 }

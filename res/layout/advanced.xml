@@ -5,34 +5,46 @@
               android:orientation="vertical">
     <LinearLayout style="@style/Row">
         <Button style="@style/Button.Dark"
-                android:text="@string/sin"/>
+                android:onClick="onButton"
+                android:text="@string/sin" />
         <Button style="@style/Button.Dark"
-                android:text="@string/cos"/>
+                android:onClick="onButton"
+                android:text="@string/cos" />
         <Button style="@style/Button.Dark"
-                android:text="@string/tan"/>
+                android:onClick="onButton"
+                android:text="@string/tan" />
     </LinearLayout>
     <LinearLayout style="@style/Row">
         <Button style="@style/Button.Dark"
-                android:text="@string/tn"/>
+                android:onClick="onButton"
+                android:text="@string/tn" />
         <Button style="@style/Button.Dark"
-                android:text="@string/log"/>
+                android:onClick="onButton"
+                android:text="@string/log" />
         <Button style="@style/Button.Dark"
-                android:text="@string/factorial"/>
+                android:onClick="onButton"
+                android:text="@string/abs" />
     </LinearLayout>
     <LinearLayout style="@style/Row">
         <Button style="@style/Button.Dark"
-                android:text="@string/pi"/>
+                android:onClick="onButton"
+                android:text="@string/pi" />
         <Button style="@style/Button.Dark"
-                android:text="@string/euler"/>
+                android:onClick="onButton"
+                android:text="@string/euler" />
         <Button style="@style/Button.Dark"
-                android:text="@string/power"/>
+                android:onClick="onButton"
+                android:text="@string/power_sign" />
     </LinearLayout>
     <LinearLayout style="@style/Row">
         <Button style="@style/Button.Dark"
-                android:text="@string/parenthesis_open"/>
+                android:onClick="onButton"
+                android:text="@string/parenthesis_open" />
         <Button style="@style/Button.Dark"
-                android:text="@string/parenthesis_close"/>
+                android:onClick="onButton"
+                android:text="@string/parenthesis_close" />
         <Button style="@style/Button.Dark"
-                android:text="@string/sqrt"/>
+                android:onClick="onButton"
+                android:text="@string/sqrt_sign" />
     </LinearLayout>
 </LinearLayout>

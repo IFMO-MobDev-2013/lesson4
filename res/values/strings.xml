@@ -21,12 +21,13 @@
     <string name="tan">tan</string>
     <string name="tn">ln</string>
     <string name="log">log</string>
-    <string name="factorial">!</string>
+    <string name="abs">abs</string>
     <string name="pi">π</string>
     <string name="euler">e</string>
-    <string name="power">^</string>
+    <string name="power_sign">^</string>
     <string name="parenthesis_open">(</string>
     <string name="parenthesis_close">)</string>
-    <string name="sqrt">√</string>
-    <string name="delete_sign">C</string>
+    <string name="sqrt_sign">√</string>
+    <string name="clear_sign">C</string>
+    <string name="error">Error</string>
 </resources>

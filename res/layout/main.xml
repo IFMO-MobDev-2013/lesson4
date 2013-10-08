@@ -34,12 +34,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:id="@+id/unaryOpButton" android:text=")"/>
+                android:id="@+id/rightScopeButton" android:text=")"/>
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:id="@+id/unaryOpButton" android:layout_gravity="center_horizontal|top" android:text="+/-"/>
+                android:text="+/-"
+                android:id="@+id/unaryOpButton" android:layout_gravity="center_horizontal|top"/>
     </LinearLayout>
     <LinearLayout
             android:orientation="horizontal"
@@ -51,19 +52,19 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="7"
-                android:id="@+id/7NumButton" android:layout_gravity="center_horizontal|top"/>
+                android:id="@+id/num7Button" android:layout_gravity="center_horizontal|top"/>
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="8"
-                android:id="@+id/8NumButton" android:layout_gravity="center_horizontal|top"/>
+                android:id="@+id/num8Button" android:layout_gravity="center_horizontal|top"/>
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="9"
-                android:id="@+id/9NumButton" android:layout_gravity="center_horizontal|top"/>
+                android:id="@+id/num9Button" android:layout_gravity="center_horizontal|top"/>
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -87,19 +88,19 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="4"
-                android:id="@+id/4NumButton" android:layout_gravity="center_horizontal|top"/>
+                android:id="@+id/num4Button" android:layout_gravity="center_horizontal|top"/>
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="5"
-                android:id="@+id/5NumButton" android:layout_gravity="center_horizontal|top"/>
+                android:id="@+id/num5Button" android:layout_gravity="center_horizontal|top"/>
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="6"
-                android:id="@+id/6NumButton" android:layout_gravity="center_horizontal|top"/>
+                android:id="@+id/num6Button" android:layout_gravity="center_horizontal|top"/>
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -123,19 +124,19 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="1"
-                android:id="@+id/1NumButton" android:layout_gravity="center_horizontal|top"/>
+                android:id="@+id/num1Button" android:layout_gravity="center_horizontal|top"/>
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="2"
-                android:id="@+id/2NumButton" android:layout_gravity="center_horizontal|top"/>
+                android:id="@+id/num2Button" android:layout_gravity="center_horizontal|top"/>
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="3"
-                android:id="@+id/3NumButton" android:layout_gravity="center_horizontal|top"/>
+                android:id="@+id/num3Button" android:layout_gravity="center_horizontal|top"/>
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -159,7 +160,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="6"
                 android:text="0"
-                android:id="@+id/0NumButton" android:layout_gravity="center_horizontal|top"/>
+                android:id="@+id/num0Button" android:layout_gravity="center_horizontal|top"/>
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

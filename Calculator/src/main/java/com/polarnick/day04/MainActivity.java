@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import com.google.common.base.Preconditions;
-import com.google.common.math.DoubleMath;
 import com.polarnick.polaris.math.expressionParser.ExpressionParser;
 
 import java.text.DecimalFormat;
@@ -164,11 +163,7 @@ public class MainActivity extends Activity {
     private static final DecimalFormat doubleFromatter = new DecimalFormat("#.########");
 
     private String formatResult(double res) {
-        if (DoubleMath.isMathematicalInteger(res)) {
-            return Long.toString((long) res);
-        } else {
-            return doubleFromatter.format(res);
-        }
+        return doubleFromatter.format(res);
     }
 
     private static final List<Character> possibleSymbolsBeforeClosingBracket =

@@ -1,3 +1,5 @@
+package com.example.lesson4;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,21 +18,21 @@ public class MainActivity extends Activity {
     String input = "";
     boolean button_lock = false;
     TextView text;
-    int i;
+    int balance = 0;
 
     private void operationButtonClicked(char operation){
         if (!button_lock){
-            input += operation;
+            input += " " + operation + " ";
             button_lock = true;
-            text.append(" " + operation + " ");
+            text.setText(input);
         }
 
     }
 
-    private void numericButtonClicked(char num){
+    private void numericButtonClicked(int num){
         input += num;
         button_lock = false;
-        text.append("" + num);
+        text.setText(input);
     }
 
     public void onCreate(Bundle savedInstanceState) {
@@ -52,8 +54,9 @@ public class MainActivity extends Activity {
         Button plusButton = (Button)findViewById(R.id.plusButton);
         Button subtracktButton = (Button)findViewById(R.id.subtractButton);
         Button timesButton = (Button) findViewById(R.id.timesButton);
-        Button divisionButton = (Button) findViewById(R.id.timesButton);
-        Button dotButton = (Button) findViewById(R.id.timesButton);
+        Button divisionButton = (Button) findViewById(R.id.divisionButton);
+        Button moduleDivisionButton = (Button) findViewById(R.id.moduleDivisionButton);
+        Button dotButton = (Button) findViewById(R.id.dotButton);
         Button leftScopeButton = (Button) findViewById(R.id.leftScopeButton);
         Button rightScopeButton = (Button) findViewById(R.id.rightScopeButton);
         Button resetButton = (Button) findViewById(R.id.resetButton);
@@ -89,14 +92,12 @@ public class MainActivity extends Activity {
             }
         });
 
-        for(i = 0; i < 10; i++){
-            numerics[i].setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    numericButtonClicked((char)(i + '0'));
-                }
-            });
-        }
+        moduleDivisionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                operationButtonClicked('%');
+            }
+        });
 
     }
 }

@@ -165,7 +165,7 @@ public class MainActivity extends Activity {
 
     private String formatResult(double res) {
         if (DoubleMath.isMathematicalInteger(res)) {
-            return Integer.toString((int) res);
+            return Long.toString((long) res);
         } else {
             return doubleFromatter.format(res);
         }

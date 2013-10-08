@@ -36,6 +36,7 @@ public class MainActivity extends Activity {
     static {
         NUMBER_FORMAT.setGroupingUsed(false);
         NUMBER_FORMAT.setMinimumFractionDigits(0);
+        NUMBER_FORMAT.setMaximumFractionDigits(8);
     }
 
     final VariableValues<Double> constants = new BasicVariableValues<>();

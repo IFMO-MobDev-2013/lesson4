@@ -83,6 +83,7 @@ public class ExpressionParser {
     }
 
     private static Evaluable parseValue(int from, int to, String expression, int[] pairBracket) {
+        assertArgument(expression.length() > from, ILLEGAL_EXPRESSION);
         if (expression.charAt(from) == '(') {
             assertArgument(pairBracket[from] == to - 1 && expression.charAt(to - 1) == ')', ILLEGAL_EXPRESSION);
             return parseSum(from + 1, to - 1, expression, pairBracket);

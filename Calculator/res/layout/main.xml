@@ -7,7 +7,9 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:id="@+id/inputExpression"/>
+            android:id="@+id/inputExpression"
+            android:editable="false"
+            android:focusable="false"/>
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -17,11 +19,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="="
-                android:id="@+id/equalSign" android:layout_gravity="center_vertical"/>
+                android:id="@+id/equalSign"/>
         <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/result" android:layout_gravity="center"/>
+                android:id="@+id/result"
+                android:editable="false"
+                android:focusable="false"/>
     </LinearLayout>
     <TableLayout
             android:layout_width="match_parent"
@@ -119,7 +123,7 @@
             <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="()"
+                    android:text="("
                     android:id="@+id/bracket" android:layout_column="3"/>
             <Button
                     android:layout_width="match_parent"

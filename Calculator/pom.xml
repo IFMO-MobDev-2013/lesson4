@@ -41,6 +41,12 @@
         </dependency>
 
         <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>15.0</version>
+        </dependency>
+
+        <dependency>
             <artifactId>PolarisLib</artifactId>
             <groupId>com.polarnick.polaris</groupId>
             <version>1.0-SNAPSHOT</version>

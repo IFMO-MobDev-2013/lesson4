@@ -42,7 +42,9 @@ public class Calculator {
         }
 
         if (k == -1){
-            if (s.charAt(l) == '(' && s.charAt(r) == ')'){
+            if (s.isEmpty()){
+                return 0.0;
+            } else if (s.charAt(l) == '(' && s.charAt(r) == ')'){
                 return evaluate (s, l + 1, r - 1);
             }
             else if (s.charAt(l) >= '0' && s.charAt(l) <= '9'){

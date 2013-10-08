@@ -8,7 +8,7 @@
 
     <TextView
             android:layout_width="fill_parent"
-            android:layout_height="40dp"
+            android:layout_height="70dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
@@ -16,13 +16,18 @@
             android:gravity="right"
             android:hint="@string/expressionTextHint"
             android:id="@+id/expText"
-            android:singleLine="true"
+            android:singleLine="false"
             android:layout_alignParentEnd="true"
             android:layout_weight="0"
             android:autoText="false"
             android:textSize="25dp"
-            android:fontFamily="Times New Roman"
-            android:textIsSelectable="true"/>
+            android:textIsSelectable="true"
+            android:editable="false"
+            android:ellipsize="end"
+            android:focusable="false"
+            android:layout_gravity="right"
+            android:textAlignment="textEnd"
+            android:maxLines="2"/>
 
     <LinearLayout
             android:orientation="horizontal"

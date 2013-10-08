@@ -217,7 +217,7 @@ public class MyActivity extends Activity {
 
     void setStatue(int a){
         if (a == 0){
-            expText.setTextColor(0xFF808080);
+            expText.setTextColor(0xFFA0A0A0);
         } else if (a == 1){
             expText.setTextColor(0xFF0000FF);
         } else if (a == -1){

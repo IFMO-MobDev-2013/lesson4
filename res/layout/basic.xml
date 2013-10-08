@@ -5,42 +5,42 @@
               android:orientation="vertical">
     <LinearLayout style="@style/Row">
         <Button style="@style/Button"
-                android:text="7"/>
+                android:text="@string/digit7"/>
         <Button style="@style/Button"
-                android:text="8"/>
+                android:text="@string/digit8"/>
         <Button style="@style/Button"
-                android:text="9"/>
+                android:text="@string/digit9"/>
         <Button style="@style/Button.Dark"
-                android:text="÷"/>
+                android:text="@string/divide_sign"/>
     </LinearLayout>
     <LinearLayout style="@style/Row">
         <Button style="@style/Button"
-                android:text="4"/>
+                android:text="@string/digit4"/>
         <Button style="@style/Button"
-                android:text="5"/>
+                android:text="@string/digit5"/>
         <Button style="@style/Button"
-                android:text="6"/>
+                android:text="@string/digit6"/>
         <Button style="@style/Button.Dark"
-                android:text="×"/>
+                android:text="@string/multiple_sign"/>
     </LinearLayout>
     <LinearLayout style="@style/Row">
         <Button style="@style/Button"
-                android:text="1"/>
+                android:text="@string/digit1"/>
         <Button style="@style/Button"
-                android:text="2"/>
+                android:text="@string/digit2"/>
         <Button style="@style/Button"
-                android:text="3"/>
+                android:text="@string/digit3"/>
         <Button style="@style/Button.Dark"
-                android:text="-"/>
+                android:text="@string/minus_sign"/>
     </LinearLayout>
     <LinearLayout style="@style/Row">
         <Button style="@style/Button"
-                android:text="."/>
+                android:text="@string/dot_sign"/>
         <Button style="@style/Button"
-                android:text="0"/>
+                android:text="@string/digit0"/>
         <Button style="@style/Button.Dark"
-                android:text="="/>
+                android:text="@string/equals_sign"/>
         <Button style="@style/Button.Dark"
-                android:text="+"/>
+                android:text="@string/plus_sign"/>
     </LinearLayout>
 </LinearLayout>

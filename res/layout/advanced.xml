@@ -5,34 +5,34 @@
               android:orientation="vertical">
     <LinearLayout style="@style/Row">
         <Button style="@style/Button.Dark"
-                android:text="sin"/>
+                android:text="@string/sin"/>
         <Button style="@style/Button.Dark"
-                android:text="cos"/>
+                android:text="@string/cos"/>
         <Button style="@style/Button.Dark"
-                android:text="tan"/>
+                android:text="@string/tan"/>
     </LinearLayout>
     <LinearLayout style="@style/Row">
         <Button style="@style/Button.Dark"
-                android:text="ln"/>
+                android:text="@string/tn"/>
         <Button style="@style/Button.Dark"
-                android:text="log"/>
+                android:text="@string/log"/>
         <Button style="@style/Button.Dark"
-                android:text="!"/>
+                android:text="@string/factorial"/>
     </LinearLayout>
     <LinearLayout style="@style/Row">
         <Button style="@style/Button.Dark"
-                android:text="π"/>
+                android:text="@string/pi"/>
         <Button style="@style/Button.Dark"
-                android:text="e"/>
+                android:text="@string/euler"/>
         <Button style="@style/Button.Dark"
-                android:text="^"/>
+                android:text="@string/power"/>
     </LinearLayout>
     <LinearLayout style="@style/Row">
         <Button style="@style/Button.Dark"
-                android:text="("/>
+                android:text="@string/parenthesis_open"/>
         <Button style="@style/Button.Dark"
-                android:text=")"/>
+                android:text="@string/parenthesis_close"/>
         <Button style="@style/Button.Dark"
-                android:text="√"/>
+                android:text="@string/sqrt"/>
     </LinearLayout>
 </LinearLayout>

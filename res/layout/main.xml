@@ -15,7 +15,7 @@
                android:background="@drawable/dark_background"
                android:layout_weight="2"/>
         <Button style="@style/Button.Dark"
-                android:text="C" />
+                android:text="@string/delete_sign" />
         <ImageButton style="@style/Button.Dark"
                      android:src="@android:drawable/ic_input_delete"/>
     </LinearLayout>

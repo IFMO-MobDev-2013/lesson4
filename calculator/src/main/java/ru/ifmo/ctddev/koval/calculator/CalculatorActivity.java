@@ -23,6 +23,8 @@ public class CalculatorActivity extends Activity {
         input = (EditText) findViewById(R.id.input);
         result = (TextView) findViewById(R.id.result);
 
+        input.setKeyListener(null);
+
         //For MVEL framework
         System.setProperty("java.version", "1.7");
     }
@@ -105,6 +107,7 @@ public class CalculatorActivity extends Activity {
 
     public void cListener(View view) {
         input.setText("");
+        result.setText("0");
         input.setSelection(input.getText().length());
     }
 

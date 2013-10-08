@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">lesson4</string>
+    <string name="expressionTextHint">Enter expression</string>
+    <string name="Button0Text">0</string>
+    <string name="Button1Text">1</string>
+    <string name="Button2Text">2</string>
+    <string name="Button3Text">3</string>
+    <string name="Button4Text">4</string>
+    <string name="Button5Text">5</string>
+    <string name="Button6Text">6</string>
+    <string name="Button7Text">7</string>
+    <string name="Button8Text">8</string>
+    <string name="Button9Text">9</string>
+    <string name="ButtonPlusText">+</string>
+    <string name="ButtonMinusText">-</string>
+    <string name="ButtonMulText">*</string>
+    <string name="ButtonDivText">/</string>
+    <string name="ButtonEqText">=</string>
+    <string name="ButtonDotText">.</string>
+    <string name="ButtonDelText">--</string>
+    <string name="ButtonEraseText">C</string>
+    <string name="ButtonBrText">( )</string>
+    <integer name="singleButtonSize">50</integer>
+    <integer name="buttonsMargin">10</integer>
+
+</resources>

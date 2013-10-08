@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+    <LinearLayout style="@style/Row">
+        <Button style="@style/Button.Dark"
+                android:onClick="onButton"
+                android:text="@string/sin"
+                android:tag="(" />
+        <Button style="@style/Button.Dark"
+                android:onClick="onButton"
+                android:text="@string/cos"
+                android:tag="(" />
+        <Button style="@style/Button.Dark"
+                android:onClick="onButton"
+                android:text="@string/tan"
+                android:tag="(" />
+    </LinearLayout>
+    <LinearLayout style="@style/Row">
+        <Button style="@style/Button.Dark"
+                android:onClick="onButton"
+                android:text="@string/ln"
+                android:tag="(" />
+        <Button style="@style/Button.Dark"
+                android:onClick="onButton"
+                android:text="@string/log"
+                android:tag="("/>
+        <Button style="@style/Button.Dark"
+                android:onClick="onButton"
+                android:text="@string/abs"
+                android:tag="(" />
+    </LinearLayout>
+    <LinearLayout style="@style/Row">
+        <Button style="@style/Button.Dark"
+                android:onClick="onButton"
+                android:text="@string/pi" />
+        <Button style="@style/Button.Dark"
+                android:onClick="onButton"
+                android:text="@string/euler" />
+        <Button style="@style/Button.Dark"
+                android:onClick="onButton"
+                android:text="@string/power_sign" />
+    </LinearLayout>
+    <LinearLayout style="@style/Row">
+        <Button style="@style/Button.Dark"
+                android:onClick="onButton"
+                android:text="@string/parenthesis_open" />
+        <Button style="@style/Button.Dark"
+                android:onClick="onButton"
+                android:text="@string/parenthesis_close" />
+        <Button style="@style/Button.Dark"
+                android:onClick="onButton"
+                android:text="@string/sqrt_sign" />
+    </LinearLayout>
+</LinearLayout>

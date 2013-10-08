@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:background="#000"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <LinearLayout style="@style/Row"
+                  android:layout_weight="2">
+        <ViewSwitcher android:layout_width="0dp"
+                      android:layout_height="match_parent"
+                      android:layout_weight="4"
+                      android:id="@+id/display">
+            <EditText style="@style/Display"/>
+            <EditText style="@style/Display"/>
+        </ViewSwitcher>
+        <Button style="@style/Button.Dark"
+                android:text="@string/clear_sign"
+                android:onClick="onButton"
+                android:id="@+id/clear"/>
+        <ImageButton style="@style/Button.Dark"
+                     android:onClick="onButton"
+                     android:src="@android:drawable/ic_input_delete"
+                     android:id="@+id/delete"/>
+    </LinearLayout>
+    <android.support.v4.view.ViewPager android:id="@+id/pager"
+                                       android:layout_height="0dp"
+                                       android:layout_width="match_parent"
+                                       android:layout_weight="5" />
+</LinearLayout>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+    <LinearLayout style="@style/Row">
+        <Button style="@style/Button"
+                android:onClick="onButton"
+                android:text="@string/digit7" />
+        <Button style="@style/Button"
+                android:onClick="onButton"
+                android:text="@string/digit8" />
+        <Button style="@style/Button"
+                android:onClick="onButton"
+                android:text="@string/digit9" />
+        <Button style="@style/Button.Dark"
+                android:onClick="onButton"
+                android:text="@string/divide_sign" />
+    </LinearLayout>
+    <LinearLayout style="@style/Row">
+        <Button style="@style/Button"
+                android:onClick="onButton"
+                android:text="@string/digit4" />
+        <Button style="@style/Button"
+                android:onClick="onButton"
+                android:text="@string/digit5" />
+        <Button style="@style/Button"
+                android:onClick="onButton"
+                android:text="@string/digit6" />
+        <Button style="@style/Button.Dark"
+                android:onClick="onButton"
+                android:text="@string/multiple_sign" />
+    </LinearLayout>
+    <LinearLayout style="@style/Row">
+        <Button style="@style/Button"
+                android:onClick="onButton"
+                android:text="@string/digit1" />
+        <Button style="@style/Button"
+                android:onClick="onButton"
+                android:text="@string/digit2" />
+        <Button style="@style/Button"
+                android:onClick="onButton"
+                android:text="@string/digit3" />
+        <Button style="@style/Button.Dark"
+                android:onClick="onButton"
+                android:text="@string/minus_sign" />
+    </LinearLayout>
+    <LinearLayout style="@style/Row">
+        <Button style="@style/Button"
+                android:onClick="onButton"
+                android:text="@string/dot_sign" />
+        <Button style="@style/Button"
+                android:onClick="onButton"
+                android:text="@string/digit0" />
+        <Button style="@style/Button.Dark"
+                android:onClick="onButton"
+                android:text="@string/equals_sign"
+                android:id="@+id/equals" />
+        <Button style="@style/Button.Dark"
+                android:onClick="onButton"
+                android:text="@string/plus_sign" />
+    </LinearLayout>
+</LinearLayout>

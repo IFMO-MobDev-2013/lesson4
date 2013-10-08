@@ -27,9 +27,9 @@ public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActiv
             new CorrectExpression("-1+36", 35),
             new CorrectExpression("(2×√9)-1", 5),
             new CorrectExpression("2^3^2", 512),
-            new CorrectExpression("2π^2", 2 * Math.PI * Math.PI),
+            new CorrectExpression("2×π^2", 2 * Math.PI * Math.PI),
             new CorrectExpression("ln(e)", 1),
-            new CorrectExpression("abs(sin(-π/2))", 1)
+            new CorrectExpression("abs(sin(-π÷2))", 1)
     );
     private static final List<IncorrectExpression> INCORRECT_EXPRESSIONS = Arrays.asList(
             new IncorrectExpression("1+", ExpressionMalformed.class),

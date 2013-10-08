@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">lesson4</string>
+    <string name="app_name">Zalculator</string>
+
     <string name="digit7">7</string>
     <string name="digit8">8</string>
     <string name="digit9">9</string>
@@ -19,7 +20,7 @@
     <string name="sin">sin</string>
     <string name="cos">cos</string>
     <string name="tan">tan</string>
-    <string name="tn">ln</string>
+    <string name="ln">ln</string>
     <string name="log">log</string>
     <string name="abs">abs</string>
     <string name="pi">π</string>
@@ -29,5 +30,8 @@
     <string name="parenthesis_close">)</string>
     <string name="sqrt_sign">√</string>
     <string name="clear_sign">C</string>
+
     <string name="error">Error</string>
+    <string name="infinity">∞</string>
+    <string name="nan">NaN</string>
 </resources>

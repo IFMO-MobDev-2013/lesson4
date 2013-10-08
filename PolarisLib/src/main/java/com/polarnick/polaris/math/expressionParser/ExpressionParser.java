@@ -34,7 +34,7 @@ public class ExpressionParser {
         return parseSum(0, n, expression, pairBracket);
     }
 
-    private static final List<Character> LEGAL_CHARACTERS = Arrays.asList('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.');
+    private static final List<Character> LEGAL_CHARACTERS_IN_SUM = Arrays.asList('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '*', '/');
 
     private static Evaluable parseSum(int from, int to, String expression, int[] pairBracket) {
         for (int i = to - 1; i >= from; i--) {
@@ -45,22 +45,24 @@ public class ExpressionParser {
                 if (i == from) {
                     return new UnaryMinus(parseMultiplication(i + 1, to, expression, pairBracket));
                 } else {
-                    return new Minus(parseMultiplication(from, i - 1, expression, pairBracket),
+                    return new Minus(parseSum(from, i, expression, pairBracket),
                             parseMultiplication(i + 1, to, expression, pairBracket));
                 }
             } else if (expression.charAt(i) == '+') {
                 if (i == from) {
                     return new UnaryPlus(parseMultiplication(i + 1, to, expression, pairBracket));
                 } else {
-                    return new Plus(parseMultiplication(from, i - 1, expression, pairBracket),
+                    return new Plus(parseSum(from, i, expression, pairBracket),
                             parseMultiplication(i + 1, to, expression, pairBracket));
                 }
             } else {
-                assertArgument(LEGAL_CHARACTERS.contains(expression.charAt(i)), ILLEGAL_EXPRESSION);
+                assertArgument(LEGAL_CHARACTERS_IN_SUM.contains(expression.charAt(i)), ILLEGAL_EXPRESSION);
             }
         }
-        return parseValue(from, to, expression);
+        return parseMultiplication(from, to, expression, pairBracket);
     }
+
+    private static final List<Character> LEGAL_CHARACTERS_IN_MULTIPLICATION = Arrays.asList('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.');
 
     private static Evaluable parseMultiplication(int from, int to, String expression, int[] pairBracket) {
         for (int i = to - 1; i >= from; i--) {
@@ -68,19 +70,23 @@ public class ExpressionParser {
                 i = pairBracket[i];
                 assertArgument(expression.charAt(i) == '(', INCORRECT_BRACKETS);
             } else if (expression.charAt(i) == '/') {
-                return new Divide(parseMultiplication(from, i - 1, expression, pairBracket),
+                return new Divide(parseMultiplication(from, i, expression, pairBracket),
                         parseMultiplication(i + 1, to, expression, pairBracket));
             } else if (expression.charAt(i) == '*') {
-                return new Multiply(parseMultiplication(from, i - 1, expression, pairBracket),
+                return new Multiply(parseMultiplication(from, i, expression, pairBracket),
                         parseMultiplication(i + 1, to, expression, pairBracket));
             } else {
-                assertArgument(LEGAL_CHARACTERS.contains(expression.charAt(i)), ILLEGAL_EXPRESSION);
+                assertArgument(LEGAL_CHARACTERS_IN_MULTIPLICATION.contains(expression.charAt(i)), ILLEGAL_EXPRESSION);
             }
         }
-        return parseValue(from, to, expression);
+        return parseValue(from, to, expression, pairBracket);
     }
 
-    private static Evaluable parseValue(int from, int to, String expression) {
+    private static Evaluable parseValue(int from, int to, String expression, int[] pairBracket) {
+        if (expression.charAt(from) == '(') {
+            assertArgument(pairBracket[from] == to - 1 && expression.charAt(to - 1) == ')', ILLEGAL_EXPRESSION);
+            return parseSum(from + 1, to - 1, expression, pairBracket);
+        }
         final String stringValue = expression.substring(from, to);
         try {
             double value = Double.parseDouble(stringValue);

@@ -12,6 +12,7 @@ import ru.georgeee.android.gcalc.calc.Evaluator;
 import ru.georgeee.android.gcalc.calc.number.GNumber;
 
 import java.util.ArrayDeque;
+import java.util.Collections;
 import java.util.Deque;
 
 public class MainActivity extends Activity implements View.OnClickListener {
@@ -23,10 +24,27 @@ public class MainActivity extends Activity implements View.OnClickListener {
     final static int ATRIG_FUNCTION_SET = 3;
     final static int HYP_FUNCTION_SET = 4;
     final static int AHYP_FUNCTION_SET = 5;
-    boolean mode = REAL_MODE;
-    int functionSet = EXP_FUNCTION_SET;
+    boolean inputHasErrorState;
+    boolean mode;
+    int functionSet;
     EditText expressionInput;
-    Deque<String> evaluatedExpressions = new ArrayDeque<String>();
+    Deque<String> evaluatedExpressions;
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        String[] exprs = new String[evaluatedExpressions.size()];
+        outState.putStringArray("evaluatedExpressions", evaluatedExpressions.toArray(exprs));
+        outState.putBoolean("mode", mode);
+        outState.putInt("functionSet", functionSet);
+        outState.putBoolean("inputHasErrorState", inputHasErrorState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        restore(savedInstanceState);
+    }
 
     /**
      * Called when the activity is first created.
@@ -35,8 +53,20 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        restore(savedInstanceState);
+    }
+
+    protected void restore(Bundle savedInstanceState) {
+        if (savedInstanceState == null) savedInstanceState = new Bundle();
+        mode = savedInstanceState.containsKey("mode") ? savedInstanceState.getBoolean("mode") : REAL_MODE;
+        functionSet = savedInstanceState.containsKey("functionSet") ? savedInstanceState.getInt("functionSet") : EXP_FUNCTION_SET;
+        inputHasErrorState = savedInstanceState.containsKey("inputHasErrorState") ? savedInstanceState.getBoolean("inputHasErrorState") : false;
+        evaluatedExpressions = new ArrayDeque<String>();
+        if (savedInstanceState.containsKey("evaluatedExpressions")) {
+            String[] exprs = savedInstanceState.getStringArray("evaluatedExpressions");
+            Collections.addAll(evaluatedExpressions, exprs);
+        }
         setOnclickListeners();
-        setDependentLabels();
         expressionInput = (EditText) findViewById(R.id.expressionInput);
         View.OnTouchListener otl = new View.OnTouchListener() {
             @Override
@@ -57,7 +87,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
             }
         };
         expressionInput.setOnTouchListener(otl);
-        setInputErrorStatus(false);
+        setInputErrorStatus(inputHasErrorState);
+        setDependentLabels();
     }
 
     public void setDependentLabels() {
@@ -82,7 +113,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 active_fset_btn_index = 2;
             else if (functionSet == HYP_FUNCTION_SET || functionSet == AHYP_FUNCTION_SET)
                 active_fset_btn_index = 3;
-        if(active_fset_btn_index != -1 && (btn = getBtn(active_fset_btn_index)) != null)
+        if (active_fset_btn_index != -1 && (btn = getBtn(active_fset_btn_index)) != null)
             btn.setTextColor(getResources().getColor(R.color.system_btn_color_active));
     }
 
@@ -149,6 +180,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         } else {
             expressionInput.setBackgroundColor(getResources().getColor(R.color.expression_input_ok));
         }
+        inputHasErrorState = hasError;
     }
 
     protected void setOnclickListeners() {

@@ -4,7 +4,7 @@
     <string name="clear">C</string>
     <string name="leftBracket">(</string>
     <string name="rightBracket">)</string>
-    <string name="delete">&lt;-</string>
+    <string name="delete">←</string>
     <string name="num7">7</string>
     <string name="num8">8</string>
     <string name="num9">9</string>
@@ -22,7 +22,7 @@
     <string name="equal">=</string>
     <string name="add">+</string>
     <string name="power">^</string>
-    <string name="history">H</string>
+    <string name="history">↑</string>
 
     <string name="btn0_int">real</string>
     <string name="btn1_int">&amp;</string>

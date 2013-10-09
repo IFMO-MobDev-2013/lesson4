@@ -99,34 +99,40 @@ public class GDouble extends GRealNumber {
     public GRealNumber sinh() {
         return new GDouble(Math.sinh(value));
     }
+
     @Override
     public GRealNumber cosh() {
         return new GDouble(Math.cosh(value));
     }
+
     @Override
     public GRealNumber tanh() {
         return new GDouble(Math.tanh(value));
     }
+
     @Override
     public GRealNumber coth() {
-        return new GDouble(1/Math.tanh(value));
+        return new GDouble(1 / Math.tanh(value));
     }
 
     @Override
     public GRealNumber asinh() {
         return new GDouble(Math.log(value + Math.sqrt(value * value + 1)));
     }
+
     @Override
     public GRealNumber acosh() {
         return new GDouble(Math.log(value + Math.sqrt(value * value - 1)));
     }
+
     @Override
     public GRealNumber atanh() {
-        return new GDouble(0.5*Math.log((1+value)/(1-value)));
+        return new GDouble(0.5 * Math.log((1 + value) / (1 - value)));
     }
+
     @Override
     public GRealNumber acoth() {
-        return new GDouble(0.5*Math.log((1 + value) / (value - 1)));
+        return new GDouble(0.5 * Math.log((1 + value) / (value - 1)));
     }
 
     @Override

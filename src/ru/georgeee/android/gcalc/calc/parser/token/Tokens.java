@@ -5,10 +5,22 @@ import ru.georgeee.android.gcalc.calc.expression.Expression;
 import ru.georgeee.android.gcalc.calc.expression.basic.*;
 import ru.georgeee.android.gcalc.calc.expression.integer.*;
 import ru.georgeee.android.gcalc.calc.expression.real.*;
-import ru.georgeee.android.gcalc.calc.expression.real.atrig.*;
-import ru.georgeee.android.gcalc.calc.expression.real.trig.*;
-import ru.georgeee.android.gcalc.calc.expression.real.ahyp.*;
-import ru.georgeee.android.gcalc.calc.expression.real.hyp.*;
+import ru.georgeee.android.gcalc.calc.expression.real.ahyp.ACosh;
+import ru.georgeee.android.gcalc.calc.expression.real.ahyp.ACoth;
+import ru.georgeee.android.gcalc.calc.expression.real.ahyp.ASinh;
+import ru.georgeee.android.gcalc.calc.expression.real.ahyp.ATanh;
+import ru.georgeee.android.gcalc.calc.expression.real.atrig.ACos;
+import ru.georgeee.android.gcalc.calc.expression.real.atrig.ACot;
+import ru.georgeee.android.gcalc.calc.expression.real.atrig.ASin;
+import ru.georgeee.android.gcalc.calc.expression.real.atrig.ATan;
+import ru.georgeee.android.gcalc.calc.expression.real.hyp.Cosh;
+import ru.georgeee.android.gcalc.calc.expression.real.hyp.Coth;
+import ru.georgeee.android.gcalc.calc.expression.real.hyp.Sinh;
+import ru.georgeee.android.gcalc.calc.expression.real.hyp.Tanh;
+import ru.georgeee.android.gcalc.calc.expression.real.trig.Cos;
+import ru.georgeee.android.gcalc.calc.expression.real.trig.Cot;
+import ru.georgeee.android.gcalc.calc.expression.real.trig.Sin;
+import ru.georgeee.android.gcalc.calc.expression.real.trig.Tan;
 import ru.georgeee.android.gcalc.calc.number.GNumber;
 
 /**

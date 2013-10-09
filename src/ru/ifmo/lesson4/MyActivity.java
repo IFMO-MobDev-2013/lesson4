@@ -36,6 +36,8 @@ public class MyActivity extends Activity {
             expText.setText("Tests failed‼");
             expText.setTextColor(0xFFBF00FF);
             expText.setActivated(false);
+            String s = "";
+            expText.setText(s.charAt(-1));
         }
 
 

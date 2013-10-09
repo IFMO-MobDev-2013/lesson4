@@ -1,6 +1,7 @@
 package ru.georgeee.android.gcalc.calc.parser;
 
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.HashMap;
 
 /**
@@ -25,8 +26,7 @@ public class AhoCorasicTrie<T> {
         TrieNode node = root;
         for (int i = 0; i < chars.length; ++i)
             node = node.getOrCreateNode(chars[i]);
-        node.word = word;
-        node.data = terminalVertexData;
+        node.pair = new Pair(word, terminalVertexData);
     }
 
     public class Pair {
@@ -40,8 +40,7 @@ public class AhoCorasicTrie<T> {
     }
 
     public class TrieNode {
-        protected T data;
-        protected String word = null;
+        protected Pair pair = null;
         protected TrieNode closestTerminalLinkage = null;
         protected HashMap<Character, TrieNode> goCache = null;
         protected HashMap<Character, TrieNode> childs = null;
@@ -100,43 +99,40 @@ public class AhoCorasicTrie<T> {
             return closestTerminalLinkage;
         }
 
-        protected Pair getNextPair(TrieNode node) {
-            if (node.word != null) return new Pair(node.word, node.data);
-            TrieNode _node = node.getClosestTerminalLinkage();
-            if (_node.word == null) return null;
-            return new Pair(_node.word, _node.data);
+
+        /**
+         * Enumeration of matching lists of pairs, in length decreasing order
+         *
+         * @return
+         */
+        public Enumeration<Pair> getMatchingPairs() {
+            final TrieNode firstNode = pair == null ? getClosestTerminalLinkage() : this;
+            return new Enumeration<Pair>() {
+                TrieNode node = firstNode;
+
+                @Override
+                public boolean hasMoreElements() {
+                    return node != root;
+                }
+
+                @Override
+                public Pair nextElement() {
+                    TrieNode _node = node;
+                    node = node.getClosestTerminalLinkage();
+                    return _node.pair;
+                }
+            };
         }
 
-//        /**
-//         * Enumeration of matching words, in length decreasing order
-//         *
-//         * @return
-//         */
-//        public Enumeration<Pair> getMatchingWords() {
-//            final TrieNode firstNode = word == null ? getClosestTerminalLinkage() : this;
-//            return new Enumeration<Pair>() {
-//                TrieNode node = firstNode;
-//
-//                @Override
-//                public boolean hasMoreElements() {
-//                    return node != root;
-//                }
-//
-//                @Override
-//                public Pair nextElement() {
-//                    TrieNode _node = node;
-//                    node = node.getClosestTerminalLinkage();
-//                    return new Pair(_node.word, _node.data);
-//                }
-//            };
-//        }
-
         public Pair getLongestMatchingPair() {
-            return getNextPair(this);
+            if (pair != null) return pair;
+            TrieNode _node = getClosestTerminalLinkage();
+            if (_node.pair == null) return null;
+            return _node.pair;
         }
 
         public boolean isTerminal() {
-            return word != null;
+            return pair != null;
         }
     }
 

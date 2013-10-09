@@ -1,4 +1,6 @@
-package ru.georgeee.android.gcalc.calc.expression;
+package ru.georgeee.android.gcalc.calc.expression.integer;
+
+import ru.georgeee.android.gcalc.calc.expression.Expression;
 
 /**
  * Created with IntelliJ IDEA.

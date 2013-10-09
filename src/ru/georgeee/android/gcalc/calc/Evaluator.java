@@ -5,6 +5,7 @@ import ru.georgeee.android.gcalc.calc.number.GBigInt;
 import ru.georgeee.android.gcalc.calc.number.GDouble;
 import ru.georgeee.android.gcalc.calc.number.GLong;
 import ru.georgeee.android.gcalc.calc.number.GNumber;
+import ru.georgeee.android.gcalc.calc.parser.token.TokenHolder;
 
 import java.math.BigInteger;
 
@@ -17,7 +18,7 @@ import java.math.BigInteger;
  */
 public class Evaluator {
     private static Expression getExpression(String source, GNumber numberModel) {
-        return new ExpressionCompiler(source, numberModel).compile();
+        return new ExpressionCompiler(source, new TokenHolder(numberModel)).compile();
     }
 
     public static GDouble evaluateDouble(String source) {

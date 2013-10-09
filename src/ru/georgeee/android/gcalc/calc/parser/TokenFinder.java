@@ -1,12 +1,9 @@
 package ru.georgeee.android.gcalc.calc.parser;
 
 import ru.georgeee.android.gcalc.calc.exception.UnknownTokenException;
-import ru.georgeee.android.gcalc.calc.number.GNumber;
 import ru.georgeee.android.gcalc.calc.parser.token.*;
 
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -20,34 +17,35 @@ public class TokenFinder {
     final protected char[] expressionChars;
     final protected String expression;
     protected LinkedList<Token> tokens = new LinkedList<Token>();
-    public final TokenType[] ahoTokenTypes;
-    protected AhoCorasicTrie<TokenType>.Pair[] pos;
-    protected ManualTokenTypeFactory[] manualTokentTypesFabrics;
-    protected AhoCorasicTrie<TokenType> trie = new AhoCorasicTrie();
+    protected ArrayList<AhoCorasicTrie<List<AhoTokenType>>.Pair> pos;
+    protected AhoCorasicTrie<List<AhoTokenType>> trie = new AhoCorasicTrie<List<AhoTokenType>>();
+    protected TokenHolder tokenHolder;
 
-    public TokenFinder(String expression, GNumber number) {
+    public TokenFinder(String expression, TokenHolder tokenHolder) {
         this.expression = expression;
         expressionChars = expression.toCharArray();
-        pos = new AhoCorasicTrie.Pair[expressionChars.length];
-        ahoTokenTypes = Tokens.getAhoTokenTypes();
-        manualTokentTypesFabrics = Tokens.getManualTokenTypeFabrics(number);
+        pos = new ArrayList<AhoCorasicTrie<List<AhoTokenType>>.Pair>(expressionChars.length);
+        this.tokenHolder = tokenHolder;
     }
 
     protected void init() {
-        for (TokenType tokenType : ahoTokenTypes) {
-            if (tokenType instanceof AhoTokenType) {
-                String word = ((AhoTokenType) tokenType).getMatchString();
-                trie.addWord(word, tokenType);
-            }
+        HashMap<String, ArrayList<AhoTokenType>> tokenTypeMap = new HashMap<String, ArrayList<AhoTokenType>>();
+        for (AhoTokenType tokenType : tokenHolder.getAhoTokenTypes()) {
+                String word = tokenType.getMatchString();
+                if(!tokenTypeMap.containsKey(word)) tokenTypeMap.put(word, new ArrayList<AhoTokenType>());
+                tokenTypeMap.get(word).add(tokenType);
+        }
+        for(String word:tokenTypeMap.keySet()){
+            trie.addWord(word, tokenTypeMap.get(word));
         }
     }
 
     protected void processAho() {
-        AhoCorasicTrie.TrieNode node = trie.root;
+        AhoCorasicTrie<List<AhoTokenType>>.TrieNode node = trie.root;
         for (int i = 0; i < expressionChars.length; ++i) {
             node = node.go(expressionChars[i]);
-            AhoCorasicTrie<TokenType>.Pair pair = node.getLongestMatchingPair();
-            pos[i] = pair;
+            AhoCorasicTrie<List<AhoTokenType>>.Pair pair = node.getLongestMatchingPair();
+            pos.add(pair);
         }
     }
 
@@ -55,7 +53,7 @@ public class TokenFinder {
         part = part.trim();
         if (part.isEmpty()) return null;
         TokenType tokenType;
-        for (ManualTokenTypeFactory factory : manualTokentTypesFabrics) {
+        for (ManualTokenTypeFactory factory : tokenHolder.getManualTokenTypeFabrics()) {
             if ((tokenType = factory.getTokenType(part)) != null) return tokenType;
         }
         throw new UnknownTokenException("Unknown token: " + part);
@@ -64,12 +62,14 @@ public class TokenFinder {
     protected void computeTokens() {
         for (int j = expressionChars.length - 1; j >= 0; --j) {
             int i;
-            if (pos[j] != null) {
-                i = j + 1 - pos[j].word.length();
-                tokens.add(new Token(pos[j].data));
+            if (pos.get(j) != null) {
+                i = j + 1 - pos.get(j).word.length();
+                ArrayList<TokenType> list = new ArrayList<TokenType>();
+                for(AhoTokenType tokenType: pos.get(j).data) list.add(tokenType);
+                tokens.add(new Token(list));
             } else {
                 i = j;
-                while (i > 0 && pos[i - 1] == null) --i;
+                while (i > 0 && pos.get(i-1) == null) --i;
                 String manualPart = expression.substring(i, j + 1);
                 TokenType manual = getManual(manualPart);
                 if (manual != null) tokens.add(new Token(manual));

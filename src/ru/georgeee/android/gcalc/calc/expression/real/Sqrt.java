@@ -1,7 +1,6 @@
 package ru.georgeee.android.gcalc.calc.expression.real;
 
 import ru.georgeee.android.gcalc.calc.expression.Expression;
-import ru.georgeee.android.gcalc.calc.expression.RealUnaryOperator;
 import ru.georgeee.android.gcalc.calc.number.GRealNumber;
 
 /**

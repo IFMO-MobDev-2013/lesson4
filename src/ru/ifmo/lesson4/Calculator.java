@@ -101,7 +101,7 @@ class CalcTest extends TestCase {
         }
 
         double k = Math.abs(Double.parseDouble(""+calc) - result);
-        assertTrue("Test #" + testCount + " failed", k < 1e-5);
+        assertTrue("Test #" + testCount + " failed", k < 1e-7);
     }
 
     public void runTest(){
@@ -121,7 +121,7 @@ class CalcTest extends TestCase {
         checkTest("(-2+(-3x(-1)))", 1);
         checkTest("10/3", 10/3.0);
         checkTest("(-2+(-3x(-1)-2)x5)/3", 1);
-        checkTest("(5555555 + 4444444) + 1", 1e7);
+        checkTest("(5555555 + 4444444) / 2 x 2 + 1", 1e7);
 
    }
 

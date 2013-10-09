@@ -194,7 +194,7 @@ public class MyActivity extends Activity {
 
     void enterSymbolAtEnd(String s){
         String text = expText.getText().toString();
-        if (statue == CALCULATED && (s.charAt(0) <= '9' && s.charAt(0) >= '0' || s == "(")){
+        if (statue == CALCULATED && (s.charAt(0) <= '9' && s.charAt(0) >= '0' || s == "(" || s == ".")){
             text = "";
         }
         if (s == "+" || s == "-" || s == "x" || s == "/"){
@@ -258,7 +258,7 @@ public class MyActivity extends Activity {
 
     void setStatue(int a){
         if (a == 0){
-            expText.setTextColor(0xFFA0C0C0);
+            expText.setTextColor(0xFFA0B0B0);
         } else if (a == 1){
             expText.setTextColor(0xFF0000FF);
         } else if (a == -1){

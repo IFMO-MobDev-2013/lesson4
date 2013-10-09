@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import com.example.lesson4.R;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -14,6 +16,7 @@ import com.example.lesson4.R;
  * Time: 0:22
  * To change this template use File | Settings | File Templates.
  */
+
 public class MainActivity extends Activity {
     String input = "";
     boolean operation_lock = false;
@@ -21,12 +24,13 @@ public class MainActivity extends Activity {
     TextView text;
     int i, scope_balance = 0;
     Parser parser;
+    List<Character> operations = Arrays.asList('+', '*', '-', '/', '%');
 
     private void operationButtonClicked(char operation) {
         if (!operation_lock) {
             input += operation;
             operation_lock = true;
-            text.append("" + operation);
+            text.setText(input);
             num_lock = false;
         }
 
@@ -34,9 +38,13 @@ public class MainActivity extends Activity {
 
     private void numericButtonClicked(int num) {
         if (!num_lock) {
-            input += num;
+            if (input.length() == 0 || input.charAt(input.length() - 1) != ')') {
+                input += num;
+            } else {
+                input = input.substring(0, input.length() - 1) + num + ")";
+            }
             operation_lock = false;
-            text.append("" + num);
+            text.setText(input);
         }
     }
 
@@ -126,10 +134,13 @@ public class MainActivity extends Activity {
         leftScopeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (operation_lock) {
+                if (input.length() == 0 ||
+                        operations.contains(input.charAt(input.length() - 1)) || input.charAt(input.length() - 1) == '(') {
                     scope_balance++;
                     input += "(";
-                    text.append("(");
+                    text.setText(input);
+                    operation_lock = true;
+                    num_lock = false;
                 }
             }
         });
@@ -138,12 +149,12 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 if (scope_balance > 0 &&
-                        (Character.isDigit(input.charAt(input.length() - 1)) || input.charAt(input.length()) == ')')) {
+                        (Character.isDigit(input.charAt(input.length() - 1)) || input.charAt(input.length() - 1) == ')')) {
                     scope_balance--;
                     input += ")";
                     num_lock = true;
                     operation_lock = false;
-                    text.append(")");
+                    text.setText(input);
                 }
             }
         });
@@ -152,7 +163,23 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 if (!input.isEmpty()) {
+                    char c = input.charAt(input.length() - 1);
                     input = input.substring(0, input.length() - 1);
+                    if (c == ')')
+                        scope_balance++;
+                    else if (c == '(')
+                        scope_balance--;
+                    else if (operations.contains(c)){
+                        operation_lock = false;
+                        if (input.length() == 0 || Character.isDigit(input.length() - 1))
+                           num_lock = false;
+                        else if (input.charAt(input.length() - 1) == ')'){
+                            int j = input.length() - 1;
+                            while(j >= 0 && Character.isDigit(input.charAt(j))) j--;
+                            if (j >= 1 && input.charAt(j) == '-' && input.charAt(j - 1) == '(')
+                                num_lock = false;
+                        }
+                    }
                     text.setText(input);
                 }
             }
@@ -162,6 +189,9 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 input = "";
+                scope_balance = 0;
+                num_lock = false;
+                operation_lock = true;
                 text.setText(input);
             }
         });
@@ -207,6 +237,17 @@ public class MainActivity extends Activity {
                     input = "";
                 }
                 text.setText(input);
+            }
+        });
+
+        dotButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (input.length() > 0 && Character.isDigit(input.charAt(input.length() - 1))) {
+                    input += ".";
+                    operation_lock = true;
+                    text.setText(input);
+                }
             }
         });
 

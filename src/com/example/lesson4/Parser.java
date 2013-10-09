@@ -1,7 +1,5 @@
 package com.example.lesson4;
 
-import java.io.IOException;
-
 /**
  * Created with IntelliJ IDEA.
  * User: Ruslan
@@ -63,7 +61,7 @@ public class Parser {
                 return current;
             }
             char sign = current.rest.charAt(0);
-            if ((sign != '*' && sign != '/')) {
+            if (sign != '*' && sign != '/' && sign != '%') {
                 return current;
             }
 
@@ -73,10 +71,13 @@ public class Parser {
             if (sign == '*') {
                 acc *= right.acc;
             } else {
-                if (right.acc == 0) {
-                    throw new ArithmeticException("Division By ZERO");
+                if (right.acc == 0)
+                    throw  new ArithmeticException("Division by zero");
+                if (sign == '/'){
+                    acc /= right.acc;
+                } else {
+                    acc %= right.acc;
                 }
-                acc /= right.acc;
             }
 
             current = new Token(acc, right.rest);

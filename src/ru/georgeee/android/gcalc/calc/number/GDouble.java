@@ -172,7 +172,7 @@ public class GDouble extends GRealNumber {
 
     @Override
     public String toString() {
-        DecimalFormat decimalFormat = new DecimalFormat("#.#########");//9 points
+        DecimalFormat decimalFormat = new DecimalFormat("#.##################");//15 points
         return decimalFormat.format(value);
     }
 }

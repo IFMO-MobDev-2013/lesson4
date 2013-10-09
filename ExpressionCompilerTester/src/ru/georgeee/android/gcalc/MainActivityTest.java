@@ -66,17 +66,27 @@ public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActiv
 
     public void testDoubleOperations() throws Exception {
         ted("epiπ", Math.E * Math.PI * Math.PI);
-        ted("exp(log2(ln(lg(5456400))))", Math.exp(Math.log(Math.log(Math.log10(5456400))) / Math.log(2)));
+        ted("√exp(log2(ln(lg(5456400))))", Math.sqrt(Math.exp(Math.log(Math.log(Math.log10(5456400))) / Math.log(2))));
+
+        ted("sin(0.3)", Math.sin(0.3));
+        ted("cos(0.3)", Math.cos(0.3));
+        ted("tan(0.3)", Math.tan(0.3));
+        ted("cot(0.3)", 1 / Math.tan(0.3));
 
         ted("asin(0.3)", Math.asin(0.3));
         ted("acos(0.3)", Math.acos(0.3));
         ted("atan(0.3)", Math.atan(0.3));
         ted("acot(0.3)", Math.PI / 2 - Math.atan(0.3));
 
-        ted("sin(0.3)", Math.sin(0.3));
-        ted("cos(0.3)", Math.cos(0.3));
-        ted("tan(0.3)", Math.tan(0.3));
-        ted("cot(0.3)", 1 / Math.tan(0.3));
+        ted("sinh(0.3)", Math.sinh(0.3));
+        ted("cosh(0.3)", Math.cosh(0.3));
+        ted("tanh(0.3)", Math.tanh(0.3));
+        ted("coth(0.3)", 1 / Math.tanh(0.3));
+
+        ted("asinh("+(Math.sinh(0.3))+")", 0.3);
+        ted("acosh("+(Math.cosh(0.3))+")", 0.3);
+        ted("atanh("+(Math.tanh(0.3))+")", 0.3);
+        ted("acoth("+(1/Math.tanh(0.3))+")", 0.3);
 
         ted("-1+2*8/5^2-3", -1d + 2d * 8d / 25d - 3d);
     }

@@ -125,9 +125,10 @@ public class TokenHolder {
             @Override
             public Expression getExpression(Expression leftOperand, Expression rightOperand) {
                 Expression expr = null;
-                if (IS_RIGHT_ASSOCIATIVE[getPriority()] ? rightOperand != null : leftOperand != null)
+                Expression operand = IS_RIGHT_ASSOCIATIVE[getPriority()] ? rightOperand:leftOperand;
+                if (operand != null)
                     try {
-                        expr = exprClass.getConstructor(Expression.class).newInstance();
+                        expr = exprClass.getConstructor(Expression.class).newInstance(operand);
                     } catch (InstantiationException e) {
                         throw new RuntimeException(e);
                     } catch (IllegalAccessException e) {
@@ -234,7 +235,7 @@ public class TokenHolder {
     protected AhoTokenType[] getAhoTokenTypesImpl() {
         return new AhoTokenType[]{
             /*Basic operators*/
-                createAhoBothArgumentTokenType("+", PassUnchanged.class, NEGATE_LEVEL),
+                new PassUnchangedTokenType(),
                 new NegateTokenType(),
                 createAhoBothArgumentTokenType("+", Add.class, ADD_LEVEL),
                 createAhoBothArgumentTokenType("-", Subtract.class, ADD_LEVEL),
@@ -246,8 +247,8 @@ public class TokenHolder {
                 createAhoBothArgumentTokenType("&", And.class, AND_LEVEL),
                 createAhoBothArgumentTokenType("<<", LShift.class, SHIFT_LEVEL),
                 createAhoBothArgumentTokenType(">>", RShift.class, SHIFT_LEVEL),
-                createAhoOneArgumentTokenType("XOR", Xor.class, XOR_LEVEL),
-                createAhoOneArgumentTokenType("|", Or.class, OR_LEVEL),
+                createAhoBothArgumentTokenType("XOR", Xor.class, XOR_LEVEL),
+                createAhoBothArgumentTokenType("|", Or.class, OR_LEVEL),
                 createAhoOneArgumentTokenType("!", Factorial.class, FACTORIAL_LEVEL),
                 createAhoOneArgumentTokenType("~", Not.class, NEGATE_LEVEL),
             /*Functions*/
@@ -282,6 +283,18 @@ public class TokenHolder {
         };
     }
 
+    protected static class PassUnchangedTokenType extends NegateTokenType{
+        @Override
+        public String getMatchString() {
+            return "+";
+        }
+
+        @Override
+        protected Expression getExpressionImpl(Expression operand) {
+            return new PassUnchanged(operand);
+        }
+    }
+
     protected static class NegateTokenType implements AhoTokenType{
             @Override
             public String getMatchString() {
@@ -293,13 +306,17 @@ public class TokenHolder {
                 Expression expr = null;
                 if (leftOperand == null //To set off possible conflicts with subtract
                         && rightOperand != null)
-                    expr = new Negate(rightOperand);
+                    expr = getExpressionImpl(rightOperand);
                 return expr;
+            }
+
+            protected Expression getExpressionImpl(Expression operand){
+                return new Negate(operand);
             }
 
             @Override
             public int getArgumentType() {
-                return BOTH_ARG_TYPE;
+                return ONE_ARG_TYPE;
             }
 
             @Override

@@ -211,8 +211,12 @@ public class MyActivity extends Activity {
 
                 }
             }
-
+        } else if (s == "."){
+            if (text.isEmpty() || text.charAt(text.length() - 1) > '9' || text.charAt(text.length() - 1) < '0'){
+                s = '0' + s;
+            }
         }
+
         expText.setText(text + s);
         setStatue(ENTERING);
     }

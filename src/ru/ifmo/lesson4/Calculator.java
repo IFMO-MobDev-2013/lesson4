@@ -18,7 +18,7 @@ public class Calculator {
         if (Math.abs(result - Math.round(result)) < 1e-8){
             return (int) result;
         } else {
-            return result;
+            return (double) Math.round(result * 1e6) / 1e6;
         }
     }
 
@@ -101,7 +101,7 @@ class CalcTest extends TestCase {
         }
 
         double k = Math.abs(Double.parseDouble(""+calc) - result);
-        assertTrue("Test #" + testCount + " failed", k < 1e-7);
+        assertTrue("Test #" + testCount + " failed", k < 1e-5);
     }
 
     public void runTest(){

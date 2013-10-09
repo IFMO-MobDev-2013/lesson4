@@ -9,6 +9,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
+import junit.framework.TestCase;
+import junit.framework.TestResult;
 
 import java.text.DecimalFormat;
 import java.util.Arrays;
@@ -25,6 +27,13 @@ public class MCalcActivity extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.main);
+        TestCase test = new CalcTest();
+        TestResult result = test.run();
+        if (!result.wasSuccessful()){
+            ((EditText) findViewById(R.id.inputExpression)).setText("Tests failed!");
+            ((EditText) findViewById(R.id.inputExpression)).setTextColor(0xFFBF00FF);
+            ((EditText) findViewById(R.id.inputExpression)).setActivated(false);
+        }
         initButtons();
     }
 

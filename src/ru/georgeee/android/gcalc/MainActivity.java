@@ -2,7 +2,6 @@ package ru.georgeee.android.gcalc;
 
 import android.app.Activity;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Layout;
 import android.view.MotionEvent;
@@ -14,9 +13,8 @@ import ru.georgeee.android.gcalc.calc.number.GNumber;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.Stack;
 
-public class MainActivity extends Activity implements View.OnClickListener{
+public class MainActivity extends Activity implements View.OnClickListener {
     final static boolean INT_MODE = false;
     final static boolean REAL_MODE = true;
     final static int INT_FUNCTION_SET = 0;
@@ -28,6 +26,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
     boolean mode = REAL_MODE;
     int functionSet = EXP_FUNCTION_SET;
     EditText expressionInput;
+    Deque<String> evaluatedExpressions = new ArrayDeque<String>();
 
     /**
      * Called when the activity is first created.
@@ -47,8 +46,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
                         Layout layout = ((EditText) v).getLayout();
                         float x = event.getX() + expressionInput.getScrollX();
                         int offset = layout.getOffsetForHorizontal(0, x);
-                        if(offset>0)
-                            if(x>layout.getLineMax(0))
+                        if (offset > 0)
+                            if (x > layout.getLineMax(0))
                                 expressionInput.setSelection(offset);     // touch was at end of text
                             else
                                 expressionInput.setSelection(offset - 1);
@@ -58,16 +57,33 @@ public class MainActivity extends Activity implements View.OnClickListener{
             }
         };
         expressionInput.setOnTouchListener(otl);
+        setInputErrorStatus(false);
     }
 
-
-
     public void setDependentLabels() {
+        Button btn;
         for (int i = 0; i <= 9; ++i) {
-            Button btn = getBtn(i);
-            if (btn != null)
+            btn = getBtn(i);
+            if (btn != null) {
+                if (i > 0 && i < 4)
+                    if (mode == INT_MODE) {
+                        btn.setTextColor(getResources().getColor(R.color.btn_color));
+                    } else if (mode == REAL_MODE) {
+                        btn.setTextColor(getResources().getColor(R.color.system_btn_color));
+                    }
                 btn.setText(getLabel("btn" + i));
+            }
         }
+        int active_fset_btn_index = -1;
+        if (mode == REAL_MODE)
+            if (functionSet == EXP_FUNCTION_SET)
+                active_fset_btn_index = 1;
+            else if (functionSet == TRIG_FUNCTION_SET || functionSet == ATRIG_FUNCTION_SET)
+                active_fset_btn_index = 2;
+            else if (functionSet == HYP_FUNCTION_SET || functionSet == AHYP_FUNCTION_SET)
+                active_fset_btn_index = 3;
+        if(active_fset_btn_index != -1 && (btn = getBtn(active_fset_btn_index)) != null)
+            btn.setTextColor(getResources().getColor(R.color.system_btn_color_active));
     }
 
     public String getLabel(String id) {
@@ -118,26 +134,24 @@ public class MainActivity extends Activity implements View.OnClickListener{
         return result;
     }
 
-    protected void addToExpression(String text){
+    protected void addToExpression(String text) {
         int sel = expressionInput.getSelectionStart();
-        if(sel == -1){
+        if (sel == -1) {
             expressionInput.append(text);
-        }else{
+        } else {
             expressionInput.getText().insert(sel, text);
         }
     }
 
-    Deque<String> evaluatedExpressions = new ArrayDeque<String>();
-
-    protected void setInputErrorStatus(boolean hasError){
-        if(hasError){
+    protected void setInputErrorStatus(boolean hasError) {
+        if (hasError) {
             expressionInput.setBackgroundColor(getResources().getColor(R.color.expression_input_error));
-        }else{
+        } else {
             expressionInput.setBackgroundColor(getResources().getColor(R.color.expression_input_ok));
         }
     }
 
-    protected void setOnclickListeners(){
+    protected void setOnclickListeners() {
         findViewById(R.id.btn0).setOnClickListener(this);
         findViewById(R.id.btn1).setOnClickListener(this);
         findViewById(R.id.btn2).setOnClickListener(this);
@@ -172,27 +186,28 @@ public class MainActivity extends Activity implements View.OnClickListener{
         findViewById(R.id.power).setOnClickListener(this);
     }
 
-    protected GNumber evaluate(String expression){
+    protected GNumber evaluate(String expression) {
         GNumber result = null;
-        try{
-            if(mode == INT_MODE)
+        try {
+            if (mode == INT_MODE)
                 result = Evaluator.evaluateBigInt(expression);
-            else if(mode == REAL_MODE)
+            else if (mode == REAL_MODE)
                 result = Evaluator.evaluateDouble(expression);
-        }catch (Exception ex){
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
-        if(result != null) evaluatedExpressions.addLast(expression);
+        if (result != null) evaluatedExpressions.addLast(expression);
         return result;
     }
 
-    protected String getExpressionFromStack(){
-        if(evaluatedExpressions.isEmpty()) return null;
+    protected String getExpressionFromStack() {
+        if (evaluatedExpressions.isEmpty()) return null;
         return evaluatedExpressions.removeLast();
     }
 
     @Override
     public void onClick(View view) {
-        switch(view.getId()){
+        switch (view.getId()) {
             case R.id.add:
                 addToExpression("+");
                 break;
@@ -250,12 +265,12 @@ public class MainActivity extends Activity implements View.OnClickListener{
             case R.id.delete:
                 int selStart = expressionInput.getSelectionStart();
                 int selEnd = expressionInput.getSelectionEnd();
-                if(selStart != selEnd){
+                if (selStart != selEnd) {
                     expressionInput.getText().delete(selStart, selEnd);
-                }else if(selStart > 0){
-                    expressionInput.getText().delete(selStart-1, selStart);
+                } else if (selStart > 0) {
+                    expressionInput.getText().delete(selStart - 1, selStart);
                 }
-                if(expressionInput.getText().length() == 0) setInputErrorStatus(false);
+                if (expressionInput.getText().length() == 0) setInputErrorStatus(false);
                 break;
             case R.id.clear:
                 expressionInput.getText().clear();
@@ -265,26 +280,26 @@ public class MainActivity extends Activity implements View.OnClickListener{
                 String expression = expressionInput.getText().toString();
                 GNumber result = evaluate(expression);
                 setInputErrorStatus(result == null);
-                if(result != null){
+                if (result != null) {
                     expressionInput.getText().clear();
                     addToExpression(result.toString());
                 }
                 break;
             case R.id.historyBtn:
                 String expressionFromStack = getExpressionFromStack();
-                if(expressionFromStack != null){
+                if (expressionFromStack != null) {
                     setInputErrorStatus(false);
                     expressionInput.getText().clear();
                     addToExpression(expressionFromStack);
                 }
                 break;
             case R.id.btn0:
-                if(mode==REAL_MODE){
+                if (mode == REAL_MODE) {
                     mode = INT_MODE;
                     functionSet = INT_FUNCTION_SET;
                     findViewById(R.id.point).setEnabled(false);
                     findViewById(R.id.btn3).setEnabled(false);
-                }else if(mode==INT_MODE){
+                } else if (mode == INT_MODE) {
                     mode = REAL_MODE;
                     functionSet = EXP_FUNCTION_SET;
                     findViewById(R.id.point).setEnabled(true);
@@ -292,31 +307,31 @@ public class MainActivity extends Activity implements View.OnClickListener{
                 }
                 break;
             case R.id.btn1:
-                if(mode==REAL_MODE){
+                if (mode == REAL_MODE) {
                     functionSet = EXP_FUNCTION_SET;
-                }else if(mode==INT_MODE){
+                } else if (mode == INT_MODE) {
                     addToExpression("&");
                 }
                 break;
             case R.id.btn2:
-                if(mode==REAL_MODE){
-                    if(functionSet == TRIG_FUNCTION_SET)
+                if (mode == REAL_MODE) {
+                    if (functionSet == TRIG_FUNCTION_SET)
                         functionSet = ATRIG_FUNCTION_SET;
                     else functionSet = TRIG_FUNCTION_SET;
-                }else if(mode==INT_MODE){
+                } else if (mode == INT_MODE) {
                     addToExpression("%");
                 }
                 break;
             case R.id.btn3:
-                if(mode==REAL_MODE){
-                    if(functionSet == HYP_FUNCTION_SET)
+                if (mode == REAL_MODE) {
+                    if (functionSet == HYP_FUNCTION_SET)
                         functionSet = AHYP_FUNCTION_SET;
                     else functionSet = HYP_FUNCTION_SET;
-                }else if(mode==INT_MODE){
+                } else if (mode == INT_MODE) {
                 }
                 break;
             case R.id.btn4:
-                switch (functionSet){
+                switch (functionSet) {
                     case EXP_FUNCTION_SET:
                         addToExpression("exp(");
                         break;
@@ -338,7 +353,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
                 }
                 break;
             case R.id.btn5:
-                switch (functionSet){
+                switch (functionSet) {
                     case EXP_FUNCTION_SET:
                         addToExpression("lg(");
                         break;
@@ -360,7 +375,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
                 }
                 break;
             case R.id.btn6:
-                switch (functionSet){
+                switch (functionSet) {
                     case EXP_FUNCTION_SET:
                         addToExpression("e");
                         break;
@@ -382,7 +397,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
                 }
                 break;
             case R.id.btn7:
-                switch (functionSet){
+                switch (functionSet) {
                     case EXP_FUNCTION_SET:
                         addToExpression("ln(");
                         break;
@@ -404,7 +419,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
                 }
                 break;
             case R.id.btn8:
-                switch (functionSet){
+                switch (functionSet) {
                     case EXP_FUNCTION_SET:
                         addToExpression("log2(");
                         break;
@@ -426,8 +441,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
                 }
                 break;
             case R.id.btn9:
-                if(mode==REAL_MODE) addToExpression("√");
-                else if(mode==INT_MODE) addToExpression("<<");
+                if (mode == REAL_MODE) addToExpression("√");
+                else if (mode == INT_MODE) addToExpression("<<");
                 break;
         }
         setDependentLabels();

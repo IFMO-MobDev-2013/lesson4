@@ -5,9 +5,7 @@
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_weight">1</item>
-    </style>
-    <style name="GModeButton" parent="GButton">
-        <item name="android:textColor">#957EED</item>
+        <item name="android:textColor">@color/btn_color</item>
     </style>
     <style name="GPlaceHolderLayout">
         <item name="android:orientation">vertical</item>

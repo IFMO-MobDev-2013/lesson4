@@ -33,17 +33,17 @@ import java.lang.reflect.InvocationTargetException;
  */
 public class TokenHolder {
     private static final int BRACKET_LEVEL = 0;
-    private static final int CONST_LEVEL = BRACKET_LEVEL+1;
-    private static final int FUNCTION_LEVEL = CONST_LEVEL+1;
-    private static final int FACTORIAL_LEVEL = FUNCTION_LEVEL+1;
-    private static final int POWER_LEVEL = FACTORIAL_LEVEL+1;
-    private static final int MULTIPLY_LEVEL = POWER_LEVEL+1;
-    private static final int NEGATE_LEVEL = MULTIPLY_LEVEL+1;
-    private static final int ADD_LEVEL = NEGATE_LEVEL+1;
-    private static final int SHIFT_LEVEL = ADD_LEVEL+1;
-    private static final int AND_LEVEL = SHIFT_LEVEL+1;
-    private static final int XOR_LEVEL = AND_LEVEL+1;
-    private static final int OR_LEVEL = XOR_LEVEL+1;
+    private static final int CONST_LEVEL = BRACKET_LEVEL + 1;
+    private static final int FUNCTION_LEVEL = CONST_LEVEL + 1;
+    private static final int FACTORIAL_LEVEL = FUNCTION_LEVEL + 1;
+    private static final int POWER_LEVEL = FACTORIAL_LEVEL + 1;
+    private static final int MULTIPLY_LEVEL = POWER_LEVEL + 1;
+    private static final int NEGATE_LEVEL = MULTIPLY_LEVEL + 1;
+    private static final int ADD_LEVEL = NEGATE_LEVEL + 1;
+    private static final int SHIFT_LEVEL = ADD_LEVEL + 1;
+    private static final int AND_LEVEL = SHIFT_LEVEL + 1;
+    private static final int XOR_LEVEL = AND_LEVEL + 1;
+    private static final int OR_LEVEL = XOR_LEVEL + 1;
     private static final int MAX_LEVEL = OR_LEVEL;
     private static final boolean IS_RIGHT_ASSOCIATIVE[] = new boolean[MAX_LEVEL + 1];
 
@@ -56,14 +56,14 @@ public class TokenHolder {
         return MAX_LEVEL;
     }
 
-    public int getMultiplyLevel(){
+    public int getMultiplyLevel() {
         return MULTIPLY_LEVEL;
     }
 
-     public boolean isLevelRightAssociative(int level){
-         if(level>MAX_LEVEL||level<0) return false;
-         return IS_RIGHT_ASSOCIATIVE[level];
-     }
+    public boolean isLevelRightAssociative(int level) {
+        if (level > MAX_LEVEL || level < 0) return false;
+        return IS_RIGHT_ASSOCIATIVE[level];
+    }
 
     public final AhoTokenType multiplyTokenType = createAhoBothArgumentTokenType("*", Multiply.class, MULTIPLY_LEVEL);
     protected GNumber number;
@@ -125,7 +125,7 @@ public class TokenHolder {
             @Override
             public Expression getExpression(Expression leftOperand, Expression rightOperand) {
                 Expression expr = null;
-                Expression operand = IS_RIGHT_ASSOCIATIVE[getPriority()] ? rightOperand:leftOperand;
+                Expression operand = IS_RIGHT_ASSOCIATIVE[getPriority()] ? rightOperand : leftOperand;
                 if (operand != null)
                     try {
                         expr = exprClass.getConstructor(Expression.class).newInstance(operand);
@@ -283,7 +283,7 @@ public class TokenHolder {
         };
     }
 
-    protected static class PassUnchangedTokenType extends NegateTokenType{
+    protected static class PassUnchangedTokenType extends NegateTokenType {
         @Override
         public String getMatchString() {
             return "+";
@@ -295,34 +295,34 @@ public class TokenHolder {
         }
     }
 
-    protected static class NegateTokenType implements AhoTokenType{
-            @Override
-            public String getMatchString() {
-                return "-";
-            }
+    protected static class NegateTokenType implements AhoTokenType {
+        @Override
+        public String getMatchString() {
+            return "-";
+        }
 
-            @Override
-            public Expression getExpression(Expression leftOperand, Expression rightOperand) {
-                Expression expr = null;
-                if (leftOperand == null //To set off possible conflicts with subtract
-                        && rightOperand != null)
-                    expr = getExpressionImpl(rightOperand);
-                return expr;
-            }
+        @Override
+        public Expression getExpression(Expression leftOperand, Expression rightOperand) {
+            Expression expr = null;
+            if (leftOperand == null //To set off possible conflicts with subtract
+                    && rightOperand != null)
+                expr = getExpressionImpl(rightOperand);
+            return expr;
+        }
 
-            protected Expression getExpressionImpl(Expression operand){
-                return new Negate(operand);
-            }
+        protected Expression getExpressionImpl(Expression operand) {
+            return new Negate(operand);
+        }
 
-            @Override
-            public int getArgumentType() {
-                return ONE_ARG_TYPE;
-            }
+        @Override
+        public int getArgumentType() {
+            return ONE_ARG_TYPE;
+        }
 
-            @Override
-            public int getPriority() {
-                return NEGATE_LEVEL;
-            }
+        @Override
+        public int getPriority() {
+            return NEGATE_LEVEL;
+        }
     }
 
     public static class OpenningBracketTokenType extends BracketTokenType {

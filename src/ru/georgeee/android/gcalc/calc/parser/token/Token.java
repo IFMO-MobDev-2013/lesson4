@@ -18,38 +18,38 @@ public class Token {
     protected Expression expression = null;
     protected TokenType matchedTokenType = null;
 
-    public Token(TokenType ... tokenTypes) {
+    public Token(TokenType... tokenTypes) {
         this.tokenTypes = new ArrayList<TokenType>(tokenTypes.length);
         Collections.addAll(this.tokenTypes, tokenTypes);
     }
 
-    public Token(List<TokenType> tokenTypes){
+    public Token(List<TokenType> tokenTypes) {
         this.tokenTypes = tokenTypes;
     }
 
-    public boolean isExpressionComputed(){
+    public boolean isExpressionComputed() {
         return expression != null;
     }
 
-    public TokenType getFirstTokenType(){
-        return tokenTypes.isEmpty()?null:tokenTypes.get(0);
+    public TokenType getFirstTokenType() {
+        return tokenTypes.isEmpty() ? null : tokenTypes.get(0);
     }
 
     public Expression computeExpression(Expression leftOperand, Expression rightOperand, int priority) {
-        for(TokenType tokenType : tokenTypes){
-            if(expression != null) break;
-            if(tokenType.getPriority() != priority) continue;
+        for (TokenType tokenType : tokenTypes) {
+            if (expression != null) break;
+            if (tokenType.getPriority() != priority) continue;
             expression = tokenType.getExpression(leftOperand, rightOperand);
             matchedTokenType = tokenType;
         }
         return expression;
     }
 
-    public Expression getExpression(){
+    public Expression getExpression() {
         return expression;
     }
 
     public TokenType getMatchedTokenType() {
-        return isExpressionComputed()?matchedTokenType:null;
+        return isExpressionComputed() ? matchedTokenType : null;
     }
 }

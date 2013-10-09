@@ -31,11 +31,11 @@ public class TokenFinder {
     protected void init() {
         HashMap<String, ArrayList<AhoTokenType>> tokenTypeMap = new HashMap<String, ArrayList<AhoTokenType>>();
         for (AhoTokenType tokenType : tokenHolder.getAhoTokenTypes()) {
-                String word = tokenType.getMatchString();
-                if(!tokenTypeMap.containsKey(word)) tokenTypeMap.put(word, new ArrayList<AhoTokenType>());
-                tokenTypeMap.get(word).add(tokenType);
+            String word = tokenType.getMatchString();
+            if (!tokenTypeMap.containsKey(word)) tokenTypeMap.put(word, new ArrayList<AhoTokenType>());
+            tokenTypeMap.get(word).add(tokenType);
         }
-        for(String word:tokenTypeMap.keySet()){
+        for (String word : tokenTypeMap.keySet()) {
             trie.addWord(word, tokenTypeMap.get(word));
         }
     }
@@ -65,11 +65,11 @@ public class TokenFinder {
             if (pos.get(j) != null) {
                 i = j + 1 - pos.get(j).word.length();
                 ArrayList<TokenType> list = new ArrayList<TokenType>();
-                for(AhoTokenType tokenType: pos.get(j).data) list.add(tokenType);
+                for (AhoTokenType tokenType : pos.get(j).data) list.add(tokenType);
                 tokens.add(new Token(list));
             } else {
                 i = j;
-                while (i > 0 && pos.get(i-1) == null) --i;
+                while (i > 0 && pos.get(i - 1) == null) --i;
                 String manualPart = expression.substring(i, j + 1);
                 TokenType manual = getManual(manualPart);
                 if (manual != null) tokens.add(new Token(manual));

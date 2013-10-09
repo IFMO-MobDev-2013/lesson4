@@ -83,10 +83,10 @@ public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActiv
         ted("tanh(0.3)", Math.tanh(0.3));
         ted("coth(0.3)", 1 / Math.tanh(0.3));
 
-        ted("asinh("+(Math.sinh(0.3))+")", 0.3);
-        ted("acosh("+(Math.cosh(0.3))+")", 0.3);
-        ted("atanh("+(Math.tanh(0.3))+")", 0.3);
-        ted("acoth("+(1/Math.tanh(0.3))+")", 0.3);
+        ted("asinh(" + (Math.sinh(0.3)) + ")", 0.3);
+        ted("acosh(" + (Math.cosh(0.3)) + ")", 0.3);
+        ted("atanh(" + (Math.tanh(0.3)) + ")", 0.3);
+        ted("acoth(" + (1 / Math.tanh(0.3)) + ")", 0.3);
 
         ted("-1+2*8/5^2-3", -1d + 2d * 8d / 25d - 3d);
     }

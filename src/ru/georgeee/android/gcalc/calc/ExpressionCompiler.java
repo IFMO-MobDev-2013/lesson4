@@ -69,24 +69,24 @@ public class ExpressionCompiler {
                         tokens.add(i + 1, new Token(tokenHolder.multiplyTokenType));
                     }
                 }
-                for (int _i = 0; _i < tokens.size(); ++_i) {
-                    int i = isRightAssoc?tokens.size()-_i-1:_i;
-                    Token token = tokens.get(i);
-                    if(token.isExpressionComputed()) continue;
-                    Expression leftOperand = i == 0 ? null : tokens.get(i - 1).getExpression();
-                    Expression rightOperand = i == tokens.size() - 1 ? null : tokens.get(i + 1).getExpression();
-                    token.computeExpression(leftOperand, rightOperand, priority);
-                    if (token.isExpressionComputed()) {
-                        TokenType matchedTokenType = token.getMatchedTokenType();
-                        if (matchedTokenType.getArgumentType() == TokenType.BOTH_ARG_TYPE) {
-                            tokens.remove(i + 1);
-                            tokens.remove(--i);
-                        } else if (matchedTokenType.getArgumentType() == TokenType.ONE_ARG_TYPE) {
-                            tokens.remove(isRightAssoc?i+1:--i);
-                        }
+            for (int _i = 0; _i < tokens.size(); ++_i) {
+                int i = isRightAssoc ? tokens.size() - _i - 1 : _i;
+                Token token = tokens.get(i);
+                if (token.isExpressionComputed()) continue;
+                Expression leftOperand = i == 0 ? null : tokens.get(i - 1).getExpression();
+                Expression rightOperand = i == tokens.size() - 1 ? null : tokens.get(i + 1).getExpression();
+                token.computeExpression(leftOperand, rightOperand, priority);
+                if (token.isExpressionComputed()) {
+                    TokenType matchedTokenType = token.getMatchedTokenType();
+                    if (matchedTokenType.getArgumentType() == TokenType.BOTH_ARG_TYPE) {
+                        tokens.remove(i + 1);
+                        tokens.remove(--i);
+                    } else if (matchedTokenType.getArgumentType() == TokenType.ONE_ARG_TYPE) {
+                        tokens.remove(isRightAssoc ? i + 1 : --i);
                     }
-                    _i = isRightAssoc?tokens.size()-i-1:i;
                 }
+                _i = isRightAssoc ? tokens.size() - i - 1 : i;
+            }
         }
         if (tokens.isEmpty()) throw new EmptyBracketException();
         if (tokens.size() > 1) throw new UnlinkedTokensException();

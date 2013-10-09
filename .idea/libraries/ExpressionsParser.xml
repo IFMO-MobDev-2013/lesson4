@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="ExpressionsParser">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/ExpressionsParser.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

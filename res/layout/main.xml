@@ -75,7 +75,7 @@
                 android:id="@+id/buttonDiv"
                 android:layout_weight="1"
                 android:textSize="24dp"
-                android:textColor="#FF0000"/>
+                android:textColor="#FF3010"/>
 
         <Button
                 android:layout_width="0dp"

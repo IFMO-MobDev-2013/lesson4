@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import junit.framework.TestCase;
+import junit.framework.TestResult;
 
 public class MyActivity extends Activity {
     /**
@@ -19,10 +21,24 @@ public class MyActivity extends Activity {
     int statue = 0;
     TextView expText;
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+
+        expText = (TextView) findViewById(R.id.expText);
+
+        TestCase test = new CalcTest();
+        TestResult result = test.run();
+
+        if (!result.wasSuccessful()){
+            expText.setText("Tests failed‼");
+            expText.setTextColor(0xFFBF00FF);
+            expText.setActivated(false);
+        }
+
+
 
         Button button0 = (Button) findViewById(R.id.button0);
         Button button1 = (Button) findViewById(R.id.button1);
@@ -45,7 +61,6 @@ public class MyActivity extends Activity {
         Button buttonErase = (Button) findViewById(R.id.buttonErase);
         Button buttonBr = (Button) findViewById(R.id.buttonBr);
 
-        expText = (TextView) findViewById(R.id.expText);
 
         buttonDel.setText("<-");
 
@@ -120,25 +135,25 @@ public class MyActivity extends Activity {
         buttonPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                enterSymbolAtEnd(" + ");
+                enterSymbolAtEnd("+");
             }
         });
         buttonMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                enterSymbolAtEnd(" - ");
+                enterSymbolAtEnd("-");
             }
         });
         buttonMul.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                enterSymbolAtEnd(" x ");
+                enterSymbolAtEnd("x");
             }
         });
         buttonDiv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                enterSymbolAtEnd(" / ");
+                enterSymbolAtEnd("/");
             }
         });
         buttonEqu.setOnClickListener(new View.OnClickListener() {
@@ -178,19 +193,41 @@ public class MyActivity extends Activity {
     }
 
     void enterSymbolAtEnd(String s){
-        if (statue == CALCULATED && s.length() == 1 && s.charAt(0) <= '9' && s.charAt(0) >= '0'){
-            expText.setText("");
+        String text = expText.getText().toString();
+        if (statue == CALCULATED && (s.charAt(0) <= '9' && s.charAt(0) >= '0' || s == "(")){
+            text = "";
         }
-        expText.setText(expText.getText().toString() + s);
+        if (s == "+" || s == "-" || s == "x" || s == "/"){
+            if (text.isEmpty()){
+
+            } else {
+                char c = text.charAt(text.length() - 1);
+
+                if (c >= '0' && c <= '9' || c == ')'){
+                    s = " " + s + " ";
+                } else {
+
+                }
+            }
+
+        }
+        expText.setText(text + s);
         setStatue(ENTERING);
     }
     void deleteSymbolAtEnd(){
         String text = expText.getText().toString();
         if (text.isEmpty()) return;
+        char c0 = text.charAt(text.length() - 1);
         String s = expText.getText().toString().substring(0, text.length() - 1);
-        if (!s.isEmpty()){
+        if (!s.isEmpty() && c0 == ' '){
             char c = s.charAt(s.length() - 1);
-            if ((c == '+' || c == '-' || c == '*' || c == '/') && s.length() > 1) s = s.substring(0, s.length() - 2);
+            if ((c == '+' || c == '-' || c == 'x' || c == '/') && s.length() > 1){
+                if (s.charAt(s.length() - 2) == ' '){
+                    s = s.substring(0, s.length() - 2);
+                } else {
+                    s = s.substring(0, s.length() - 1);
+                }
+            }
         }
         expText.setText(s);
         setStatue(ENTERING);
@@ -202,11 +239,15 @@ public class MyActivity extends Activity {
     void enterBracketAtEnd(){
         String s = expText.getText().toString();
 
-        char last = s.charAt(s.length() - 1);
-        if (last == '+' || last == '-' || last == '*' || last == '/' || last == '(' || last == ' '){
+        if (s.isEmpty()){
             s += '(';
         } else {
-            s += ')';
+            char last = s.charAt(s.length() - 1);
+            if (last == '+' || last == '-' || last == 'x' || last == '/' || last == '(' || last == ' '){
+                s += '(';
+            } else {
+                s += ')';
+            }
         }
         expText.setText(s);
         setStatue(ENTERING);
@@ -217,7 +258,7 @@ public class MyActivity extends Activity {
 
     void setStatue(int a){
         if (a == 0){
-            expText.setTextColor(0xFFA0A0A0);
+            expText.setTextColor(0xFFA0C0C0);
         } else if (a == 1){
             expText.setTextColor(0xFF0000FF);
         } else if (a == -1){

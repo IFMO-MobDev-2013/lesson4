@@ -136,7 +136,7 @@ public class MainActivity extends Activity {
         Button bracketsButton = (Button) findViewById(R.id.bracket);
         Character nextPossibleBracket = nextPossibleBracket(expression);
         if (nextPossibleBracket == null) {
-            bracketsButton.setText("()");
+            bracketsButton.setText("(");
             bracketsButton.setEnabled(false);
         } else {
             bracketsButton.setText(nextPossibleBracket.toString());

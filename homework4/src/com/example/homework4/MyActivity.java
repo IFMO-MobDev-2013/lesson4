@@ -130,10 +130,7 @@ public class MyActivity extends Activity {
                 if (isOperation(s.charAt(s.length() - 1))) {
                     s = s.substring(0, s.length() - 1);
                 }
-//                if(s.charAt(s.length()-1) == '/')
-//                {
-//                    return;
-//                }
+
                 s = s.concat("/");
                 tv.setText(s);
             }
@@ -150,10 +147,7 @@ public class MyActivity extends Activity {
                 if (isOperation(s.charAt(s.length() - 1))) {
                     s = s.substring(0, s.length() - 1);
                 }
-//                if(s.charAt(s.length()-1) == '*')
-//                {
-//                    return;
-//                }
+
                 s = s.concat("*");
                 tv.setText(s);
             }
@@ -205,10 +199,7 @@ public class MyActivity extends Activity {
                 if (s.length() > 0 && isOperation(s.charAt(s.length() - 1))) {
                     s = s.substring(0, s.length() - 1);
                 }
-//                if(s.charAt(s.length()-1) == '%')
-//                {
-//                    return;
-//                }
+
                 s = s.concat("%");
                 tv.setText(s);
             }
@@ -227,8 +218,8 @@ public class MyActivity extends Activity {
                     }
                     tv.append(s);
                 }
-                s = tv.getText().toString(); ///////////////////////////////
-                // s = "-7+2";
+                s = tv.getText().toString();
+
                 DecimalFormat name = new DecimalFormat("#.#####");
                 try {
                     double res = RecParser.parse(s).evaluate();
@@ -253,7 +244,7 @@ public class MyActivity extends Activity {
                     Toast.makeText(MyActivity.this, pexc.getMessage(), 1000).show();
                 } catch (Exception exc) {
                     tv.setText("");
-                    Toast.makeText(MyActivity.this, "FATAL ERROR" + exc.getMessage(), 3000).show();
+                    Toast.makeText(MyActivity.this, "wrong expression", 3000).show();
                 } finally {
                     depth = 0;
                 }

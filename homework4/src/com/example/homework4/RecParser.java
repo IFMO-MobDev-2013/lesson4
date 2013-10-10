@@ -2,11 +2,11 @@ package com.example.homework4;
 
 public class RecParser {
     public static Expression parse(String s) throws ParsException {
-        //s = reduceBrackets(s);
+
         if (s.length() == 0)
             throw new ParsException("invalid expression");
 
-        //for (int i = 0; i < s.length(); i++) {
+
         for (int i = s.length() - 1; i > 0; --i) {             // reverse order
 
             if (i < 0) {
@@ -37,9 +37,9 @@ public class RecParser {
                 );
             }
         }
-        //s = reduceBrackets(s);
 
-        //for (int i = 0; i < s.length(); ++i) {
+
+
         for (int i = s.length() - 1; i > 0; --i) {
             if (s.charAt(i) == ')')
                 i = skipBrackets(s.substring(0, i));
@@ -131,5 +131,4 @@ public class RecParser {
         } while (i >= 0 && depth < 0);
         return i;
     }
-
 }

@@ -25,12 +25,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c2b4dd86-af29-4314-9da8-cdc387c13828" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/AndroidHomework4/ParserTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/ExpressionsParser.jar" afterPath="$PROJECT_DIR$/libs/ExpressionsParser.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidHomework4.iml" afterPath="$PROJECT_DIR$/AndroidHomework4.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/AndroidHomework4/MyActivity.java" afterPath="$PROJECT_DIR$/src/com/example/AndroidHomework4/MyActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/main.xml" afterPath="$PROJECT_DIR$/res/layout/main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="AndroidHomework4.iws" />
@@ -38,24 +37,26 @@
     <file path="$APPLICATION_HOME_DIR$/plugins/android/lib/android.jar!/org/jetbrains/android/android.xsd" changelist="c2b4dd86-af29-4314-9da8-cdc387c13828" time="1381349372076" ignored="false" />
     <file path="/main.xml" changelist="c2b4dd86-af29-4314-9da8-cdc387c13828" time="1381352464315" ignored="false" />
     <file path="/styles.xml" changelist="c2b4dd86-af29-4314-9da8-cdc387c13828" time="1381351809176" ignored="false" />
-    <file path="/MyActivity.java" changelist="c2b4dd86-af29-4314-9da8-cdc387c13828" time="1381356295708" ignored="false" />
-    <file path="/Dummy.txt" changelist="c2b4dd86-af29-4314-9da8-cdc387c13828" time="1381354027467" ignored="false" />
+    <file path="/MyActivity.java" changelist="c2b4dd86-af29-4314-9da8-cdc387c13828" time="1381428372952" ignored="false" />
+    <file path="/Dummy.txt" changelist="c2b4dd86-af29-4314-9da8-cdc387c13828" time="1381427567404" ignored="false" />
     <file path="$PROJECT_DIR$/../ExpressionsParser/src/META-INF/MANIFEST.MF" changelist="c2b4dd86-af29-4314-9da8-cdc387c13828" time="1381354667244" ignored="false" />
-    <file path="$PROJECT_DIR$/../ExpressionsParser/.idea/workspace.xml" changelist="c2b4dd86-af29-4314-9da8-cdc387c13828" time="1381357173403" ignored="false" />
-    <file path="/Parser.java" changelist="c2b4dd86-af29-4314-9da8-cdc387c13828" time="1381357041259" ignored="false" />
-    <file path="$PROJECT_DIR$/../ExpressionsParser/src/ru/ifmo/ctd/isaev/Parser.java" changelist="c2b4dd86-af29-4314-9da8-cdc387c13828" time="1381357046520" ignored="false" />
+    <file path="$PROJECT_DIR$/../ExpressionsParser/.idea/workspace.xml" changelist="c2b4dd86-af29-4314-9da8-cdc387c13828" time="1381391050119" ignored="false" />
+    <file path="/Parser.java" changelist="c2b4dd86-af29-4314-9da8-cdc387c13828" time="1381390191794" ignored="false" />
+    <file path="$PROJECT_DIR$/../ExpressionsParser/src/ru/ifmo/ctd/isaev/Parser.java" changelist="c2b4dd86-af29-4314-9da8-cdc387c13828" time="1381390192142" ignored="false" />
     <file path="$PROJECT_DIR$/../ExpressionsParser/src/ru/ifmo/ctd/isaev/DoubleBinCalculations.java" changelist="c2b4dd86-af29-4314-9da8-cdc387c13828" time="1381354888926" ignored="false" />
     <file path="$PROJECT_DIR$/../ExpressionsParser/src/ru/ifmo/ctd/isaev/DoubleUnCalculations.java" changelist="c2b4dd86-af29-4314-9da8-cdc387c13828" time="1381354894300" ignored="false" />
     <file path="$PROJECT_DIR$/../ExpressionsParser/src/ru/ifmo/ctd/isaev/BinOperation.java" changelist="c2b4dd86-af29-4314-9da8-cdc387c13828" time="1381354900981" ignored="false" />
     <file path="$PROJECT_DIR$/../ExpressionsParser/src/ru/ifmo/ctd/isaev/Const.java" changelist="c2b4dd86-af29-4314-9da8-cdc387c13828" time="1381354906485" ignored="false" />
     <file path="$PROJECT_DIR$/../ExpressionsParser/src/ru/ifmo/ctd/isaev/UnOperation.java" changelist="c2b4dd86-af29-4314-9da8-cdc387c13828" time="1381354954872" ignored="false" />
     <file path="$PROJECT_DIR$/../ExpressionsParser/src/ru/ifmo/ctd/isaev/Variable.java" changelist="c2b4dd86-af29-4314-9da8-cdc387c13828" time="1381354958906" ignored="false" />
-    <file path="$PROJECT_DIR$/../ExpressionsParser/src/ru/ifmo/ctd/isaev/Main.java" changelist="c2b4dd86-af29-4314-9da8-cdc387c13828" time="1381354963023" ignored="false" />
+    <file path="$PROJECT_DIR$/../ExpressionsParser/src/ru/ifmo/ctd/isaev/Main.java" changelist="c2b4dd86-af29-4314-9da8-cdc387c13828" time="1381390040532" ignored="false" />
     <file path="$PROJECT_DIR$/../ExpressionsParser/src/ru/ifmo/ctd/isaev/CalculatingException.java" changelist="c2b4dd86-af29-4314-9da8-cdc387c13828" time="1381355305936" ignored="false" />
     <file path="/CalculatingException.java" changelist="c2b4dd86-af29-4314-9da8-cdc387c13828" time="1381355305936" ignored="false" />
     <file path="$PROJECT_DIR$/../ExpressionsParser/src/ru/ifmo/ctd/isaev/ParsingException.java" changelist="c2b4dd86-af29-4314-9da8-cdc387c13828" time="1381355312252" ignored="false" />
     <file path="/ParsingException.java" changelist="c2b4dd86-af29-4314-9da8-cdc387c13828" time="1381355310795" ignored="false" />
-    <file path="/fragment.java" changelist="c2b4dd86-af29-4314-9da8-cdc387c13828" time="1381357050386" ignored="false" />
+    <file path="/fragment.java" changelist="c2b4dd86-af29-4314-9da8-cdc387c13828" time="1381389755211" ignored="false" />
+    <file path="/ParserTest.java" changelist="c2b4dd86-af29-4314-9da8-cdc387c13828" time="1381430110781" ignored="false" />
+    <file path="/Main.java" changelist="c2b4dd86-af29-4314-9da8-cdc387c13828" time="1381389882360" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,6 +71,23 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
+      <breakpoint url="file://$PROJECT_DIR$/src/com/example/AndroidHomework4/MyActivity.java" line="76" class="com.example.AndroidHomework4.MyActivity$4" package="com.example.AndroidHomework4">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </line_breakpoints>
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -107,23 +125,6 @@
       </breakpoint>
     </breakpoint_any>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
-    <line_breakpoints>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/example/AndroidHomework4/MyActivity.java" line="73" class="com.example.AndroidHomework4.MyActivity$4" package="com.example.AndroidHomework4">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </line_breakpoints>
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -136,7 +137,7 @@
       <file leaf-file-name="main.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
           <provider editor-type-id="text-editor">
-            <state line="28" column="33" selection-start="1149" selection-end="1152" vertical-scroll-proportion="-12.92">
+            <state line="28" column="33" selection-start="1149" selection-end="1152" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -148,26 +149,18 @@
       <file leaf-file-name="styles.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/values/styles.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="42" selection-start="283" selection-end="287" vertical-scroll-proportion="-4.08">
+            <state line="6" column="42" selection-start="283" selection-end="287" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MyActivity.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="MyActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/example/AndroidHomework4/MyActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="4" selection-start="570" selection-end="570" vertical-scroll-proportion="0.46575344">
+            <state line="84" column="11" selection-start="3398" selection-end="3398" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#668#898#0" expanded="true" />
-                <element signature="e#891#892#0" expanded="true" />
-                <element signature="e#2271#2508#0" expanded="true" />
-                <element signature="e#2497#2498#0" expanded="true" />
-                <element signature="e#2566#2719#0" expanded="true" />
-                <element signature="e#2708#2709#0" expanded="true" />
-                <element signature="e#2773#3267#0" expanded="true" />
-                <element signature="e#3256#3257#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -176,7 +169,7 @@
       <file leaf-file-name="Parser.class" pinned="false" current="false" current-in-tab="false">
         <entry file="jar://$PROJECT_DIR$/libs/ExpressionsParser.jar!/ru/ifmo/ctd/isaev/Parser.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="0" selection-start="1076" selection-end="1076" vertical-scroll-proportion="-14.84">
+            <state line="28" column="0" selection-start="1076" selection-end="1076" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -186,6 +179,26 @@
         <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state line="5" column="39" selection-start="267" selection-end="267" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ParserTest.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/example/AndroidHomework4/ParserTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="25" column="22" selection-start="638" selection-end="638" vertical-scroll-proportion="0.41463414">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestCase.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://E:/AndroidSDK/sdk/platforms/android-18/android.jar!/junit/framework/TestCase.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="22" selection-start="167" selection-end="167" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -213,6 +226,7 @@
         <option value="$PROJECT_DIR$/res/layout/main.xml" />
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/com/example/AndroidHomework4/MyActivity.java" />
+        <option value="$PROJECT_DIR$/src/com/example/AndroidHomework4/ParserTest.java" />
       </list>
     </option>
   </component>
@@ -248,6 +262,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -355,11 +370,10 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="project.structure.proportion" value="0.15" />
@@ -367,15 +381,17 @@
     <property name="options.lastSelected" value="com.genymobile.genymotion.ide.idea.GdmSettings" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/libs/ExpressionsParser.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/libs/junit-4.11.jar!/" />
     <property name="AndroidLayoutSelectedEditor" value="android-designer" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="192.168.56.102:5555" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="0123456789ABCDEF" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="MyAvd0" />
+    <property name="FullScreen" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
+    <property name="dynamic.classpath" value="false" />
     <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
   </component>
@@ -385,7 +401,29 @@
       <recent name="C:\Users\Xottab\IdeaProjects\AndroidHomework4\res" />
     </key>
   </component>
-  <component name="RunManager" selected="Android Application.AndroidHomework4">
+  <component name="RunManager" selected="JUnit.ParserTest">
+    <configuration default="false" name="ParserTest" type="JUnit" factoryName="JUnit" temporary="true">
+      <module name="AndroidHomework4" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.example.AndroidHomework4" />
+      <option name="MAIN_CLASS_NAME" value="com.example.AndroidHomework4.ParserTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
@@ -526,9 +564,15 @@
       <ConfigurationWrapper RunnerId="AndroidDebugRunner" />
       <method />
     </configuration>
-    <list size="1">
+    <list size="2">
       <item index="0" class="java.lang.String" itemvalue="Android Application.AndroidHomework4" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.ParserTest" />
     </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="JUnit.ParserTest" />
+      </list>
+    </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
       <Port>5050</Port>
@@ -547,31 +591,31 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" x="92" y="92" width="1182" height="544" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="92" y="92" width="1182" height="544" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.085178874" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.08488964" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.91482115" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.67291313" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3270869" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -639,19 +683,25 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
-      <provider editor-type-id="text-editor">
-        <state line="28" column="33" selection-start="1149" selection-end="1152" vertical-scroll-proportion="-12.92">
+    <entry file="file://$PROJECT_DIR$/res/values/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="42" selection-start="283" selection-end="287" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/AndroidHomework4/MyActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="4" selection-start="570" selection-end="570" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/styles.xml">
+    <entry file="jar://$PROJECT_DIR$/libs/ExpressionsParser.jar!/ru/ifmo/ctd/isaev/Parser.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="42" selection-start="283" selection-end="287" vertical-scroll-proportion="-4.08">
+        <state line="28" column="0" selection-start="1076" selection-end="1076" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -663,26 +713,98 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/libs/ExpressionsParser.jar!/ru/ifmo/ctd/isaev/Parser.class">
+    <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
+      <provider editor-type-id="text-editor">
+        <state line="28" column="33" selection-start="1149" selection-end="1152" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/values/styles.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="0" selection-start="1076" selection-end="1076" vertical-scroll-proportion="-14.84">
+        <state line="6" column="42" selection-start="283" selection-end="287" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/AndroidHomework4/MyActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="4" selection-start="570" selection-end="570" vertical-scroll-proportion="0.46575344">
+        <state line="19" column="4" selection-start="570" selection-end="570" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#668#898#0" expanded="true" />
-            <element signature="e#891#892#0" expanded="true" />
-            <element signature="e#2271#2508#0" expanded="true" />
-            <element signature="e#2497#2498#0" expanded="true" />
-            <element signature="e#2566#2719#0" expanded="true" />
-            <element signature="e#2708#2709#0" expanded="true" />
-            <element signature="e#2773#3267#0" expanded="true" />
-            <element signature="e#3256#3257#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/ExpressionsParser.jar!/ru/ifmo/ctd/isaev/Parser.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="0" selection-start="1076" selection-end="1076" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="39" selection-start="267" selection-end="267" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
+      <provider editor-type-id="text-editor">
+        <state line="28" column="33" selection-start="1149" selection-end="1152" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/values/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="42" selection-start="283" selection-end="287" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/ExpressionsParser.jar!/ru/ifmo/ctd/isaev/Parser.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="0" selection-start="1076" selection-end="1076" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="39" selection-start="267" selection-end="267" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/AndroidSDK/sdk/platforms/android-18/android.jar!/junit/framework/TestCase.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="22" selection-start="167" selection-end="167" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/AndroidHomework4/MyActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="84" column="11" selection-start="3398" selection-end="3398" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/AndroidHomework4/ParserTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="22" selection-start="638" selection-end="638" vertical-scroll-proportion="0.41463414">
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -745,7 +867,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
@@ -753,7 +874,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>ExpressionsParser</last-edited>
+          <last-edited>junit-4.11</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

@@ -22,13 +22,14 @@ public class MyActivity extends Activity {
     Parser parser = new Parser();
 
 
-    Button.OnClickListener addSymbol= new Button.OnClickListener() {
+    Button.OnClickListener addSymbol = new Button.OnClickListener() {
         @Override
         public void onClick(View view) {
             CharSequence symbol = ((Button) view).getText();
             field.setText(field.getText().toString() + symbol);
         }
     };
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,13 +58,15 @@ public class MyActivity extends Activity {
             @Override
             public void onClick(View view) {
                 CharSequence exp = field.getText();
-                field.setText(exp.subSequence(0,exp.length()-1));
+                if (exp.length() != 0) {
+                    field.setText(exp.subSequence(0, exp.length() - 1));
+                }
             }
         });
         findViewById(R.id.clearall).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               field.setText("");
+                field.setText("");
             }
         });
         findViewById(R.id.eval).setOnClickListener(new View.OnClickListener() {
@@ -73,9 +76,10 @@ public class MyActivity extends Activity {
                     Evaluable e = parser.parse(String.valueOf(field.getText()));
                     Double result = e.evaluate(null);
                     field.setText(Double.toString(result));
-                } catch (Exception e) {
-                      field.setText("incorrect input");
-                    Log.e("olol","olol",e);
+                } catch (ParsingException e) {
+                    field.setText(e.getMessage());
+                } catch (CalculatingException e) {
+                    field.setText(e.getMessage());
                 }
             }
         });

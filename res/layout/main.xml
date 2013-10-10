@@ -27,7 +27,8 @@
             android:focusable="false"
             android:layout_gravity="right"
             android:textAlignment="textEnd"
-            android:maxLines="2"/>
+            android:maxLines="3"
+            />
 
     <LinearLayout
             android:orientation="horizontal"

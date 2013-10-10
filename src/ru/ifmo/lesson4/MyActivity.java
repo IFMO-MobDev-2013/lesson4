@@ -33,7 +33,8 @@ public class MyActivity extends Activity {
         TestResult result = test.run();
 
         if (!result.wasSuccessful()){
-            expText.setText("Tests failed‼");
+            expText.setText(
+                    result.failures().nextElement().exceptionMessage());
             expText.setTextColor(0xFFBF00FF);
             expText.setActivated(false);
             String s = "";
@@ -196,7 +197,7 @@ public class MyActivity extends Activity {
 
     void enterSymbolAtEnd(String s){
         String text = expText.getText().toString();
-        if (statue == CALCULATED && (s.charAt(0) <= '9' && s.charAt(0) >= '0' || s == "(" || s == ".")){
+        if (statue == CALCULATED && (s.charAt(0) <= '9' && s.charAt(0) >= '0' || s == "(" || s == ")" || s == ".")){
             text = "";
         }
         if (s == "+" || s == "-" || s == "x" || s == "/"){
@@ -244,6 +245,9 @@ public class MyActivity extends Activity {
     }
     void enterBracketAtEnd(){
         String s = expText.getText().toString();
+        if (statue == CALCULATED){
+            s = "";
+        }
 
         if (s.isEmpty()){
             s += '(';

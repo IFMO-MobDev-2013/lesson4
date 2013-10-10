@@ -14,7 +14,7 @@
     <string name="Button9Text">9</string>
     <string name="ButtonPlusText">+</string>
     <string name="ButtonMinusText">-</string>
-    <string name="ButtonMulText">*</string>
+    <string name="ButtonMulText">x</string>
     <string name="ButtonDivText">/</string>
     <string name="ButtonEqText">=</string>
     <string name="ButtonDotText">.</string>

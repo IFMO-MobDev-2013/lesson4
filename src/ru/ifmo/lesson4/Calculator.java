@@ -15,10 +15,10 @@ public class Calculator {
     public static Number evaluate(String s) throws Exception{
         String s0 = s.replaceAll(" ", "");
         double result = evaluate(s0, 0, s0.length() - 1);
-        if (Math.abs(result - Math.round(result)) < 1e-8){
+        if (Math.abs(result - (int)Math.round(result)) < 1e-9){
             return (int) result;
         } else {
-            return (double) Math.round(result * 1e6) / 1e6;
+            return result;
         }
     }
 
@@ -32,7 +32,7 @@ public class Calculator {
             else if (s.charAt(i) == ')') b--;
 
             if (b == 0){
-                if ((s.charAt(i) == '+' || s.charAt(i) == '-') && last_priority >= PRIORITY_SUM){
+                if ((s.charAt(i) == '+' || s.charAt(i) == '-') && (i == l || (s.charAt(i-1) != 'E' && s.charAt(i-1) != 'e')) && last_priority >= PRIORITY_SUM){
                     k = i;
                     last_priority = PRIORITY_SUM;
                 }
@@ -101,7 +101,7 @@ class CalcTest extends TestCase {
         }
 
         double k = Math.abs(Double.parseDouble(""+calc) - result);
-        assertTrue("Test #" + testCount + " failed", k < 1e-5);
+        assertTrue("Test #" + testCount + " failed‼", k < 1e-7);
     }
 
     public void runTest(){

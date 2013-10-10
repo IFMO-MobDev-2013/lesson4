@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" >
+    <TextView android:id="@+id/inputField"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:textSize="20dp"/>
+
+    <GridView android:id="@+id/buttonsGrid"
+              android:layout_height="match_parent"
+              android:layout_width ="match_parent"
+              android:numColumns="4"
+              android:layout_above="@+id/clear"
+              android:layout_below="@id/inputField"
+              android:stretchMode="columnWidth"
+              android:clickable="false"
+              android:verticalSpacing="3.5sp" />
+    <View android:id="@+id/strut"
+          android:layout_width="0dp"
+          android:layout_height="0dp"
+          android:layout_centerHorizontal="true"/>
+    <Button android:id="@+id/dotButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:text="." />
+    <Button android:id="@id/clear"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_toRightOf="@id/dotButton"
+            android:layout_toLeftOf="@+id/clearAll"
+            android:layout_alignRight="@id/strut"
+            android:layout_alignParentBottom="true"
+
+            android:text="&lt;=" />
+    <Button android:id="@id/clearAll"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_toLeftOf="@+id/equals"
+            android:layout_alignLeft="@id/strut"
+            android:layout_below="@id/buttonsGrid"
+            android:layout_alignParentBottom="true"
+            android:text="C" />
+    <Button android:id="@id/equals"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:text = "=="/>
+
+</RelativeLayout>

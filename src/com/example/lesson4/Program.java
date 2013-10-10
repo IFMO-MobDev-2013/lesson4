@@ -17,6 +17,7 @@ public class Program extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         setText("");
+        assertTrue();
     }
 
     public void setText(String string)
@@ -49,8 +50,10 @@ public class Program extends Activity {
             double result = exp.evaluate(table);
             Console.print(result+"");
             setText(result+"");
+            ((TextView)findViewById(R.id.text_info)).setText("");
         } catch (Exception e) {
-            Console.print(e.getMessage());
+            Console.print(e.toString());
+            ((TextView)findViewById(R.id.text_info)).setText("Error");
         }
     }
 

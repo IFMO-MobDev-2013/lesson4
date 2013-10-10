@@ -11,6 +11,10 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/text_info" android:layout_gravity="right|center_vertical"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:id="@+id/text_field" android:layout_gravity="center" android:layout_marginTop="30dp"
                 android:layout_marginBottom="30dp" android:singleLine="true" android:textSize="25dp"
                 android:text="Sample text"/>
@@ -42,7 +46,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
-                    android:text="&lt;"
+                    android:text="←"
                     android:id="@+id/button_undo" android:layout_gravity="center" android:onClick="onClick"/>
             <Button
                     android:layout_width="0dp"

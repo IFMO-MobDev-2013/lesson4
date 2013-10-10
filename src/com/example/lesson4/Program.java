@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import junit.framework.Test;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,7 +18,6 @@ public class Program extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         setText("");
-        assertTrue();
     }
 
     public void setText(String string)

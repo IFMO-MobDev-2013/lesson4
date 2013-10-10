@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 
 public class TestModule {
 
-    private static final double DELTA = 0.0000000001;
+    private static final double DELTA = 1e-5;
 
     @Test
     public void testTimes() {

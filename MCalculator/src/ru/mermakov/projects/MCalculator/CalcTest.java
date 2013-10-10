@@ -1,6 +1,5 @@
 package ru.mermakov.projects.MCalculator;
 
-import android.app.AlertDialog;
 import junit.framework.TestCase;
 
 /**
@@ -16,25 +15,38 @@ public class CalcTest extends TestCase {
         super.setUp();
     }
 
-    private void checkTest(String parseString, double result) {
-        String res="";
-        try{
-            res= Double.toString(new Parser().evaluate(parseString));
-        }
-        catch (Exception ex){
+    private void checkOperations(String parseString, double result) {
+        String res = "";
+        try {
+            res = Double.toString(new Parser().evaluate(parseString));
+        } catch (Exception ex) {
             assertTrue(false);
         }
-        assertEquals(Double.parseDouble(res),result,0);
+        assertEquals(Double.parseDouble(res), result, 0);
+    }
+
+    private void checkExceptions(String parseString) {
+        boolean throwEx = false;
+        try {
+            String res = Double.toString(new Parser().evaluate(parseString));
+        } catch (ParserException pe) {
+            throwEx = true;
+        }
+        assertTrue(throwEx);
     }
 
     public void runTest() {
-        checkTest("0",0);
-        checkTest("1+10",11);
-        checkTest("-50",-50);
-        checkTest("1-50",-49);
-        checkTest("2*2",4);
-        checkTest("48/8",6);
-        checkTest("+5",+5);
-        checkTest("168-(255+149*(-15/5))+209*-331",-68819);
+        checkOperations("0", 0);
+        checkOperations("1+10", 11);
+        checkOperations("-50", -50);
+        checkOperations("1-50", -49);
+        checkOperations("2*2", 4);
+        checkOperations("48/8", 6);
+        checkOperations("+5", +5);
+        checkOperations("168-(255+149*(-15/5))+209*-331", -68819);
+        checkExceptions(")(");
+        checkExceptions("9/0");
+        checkExceptions("");
+        checkExceptions("9+8)");
     }
 }

@@ -29,7 +29,7 @@ public class MCalcActivity extends Activity {
         setContentView(R.layout.main);
         TestCase test = new CalcTest();
         TestResult result = test.run();
-        if (!result.wasSuccessful()){
+        if (!result.wasSuccessful()) {
             ((EditText) findViewById(R.id.inputExpression)).setText("Tests failed!");
             ((EditText) findViewById(R.id.inputExpression)).setTextColor(0xFFBF00FF);
             ((EditText) findViewById(R.id.inputExpression)).setActivated(false);
@@ -46,6 +46,7 @@ public class MCalcActivity extends Activity {
     private Editable getInput() {
         return ((EditText) findViewById(R.id.inputExpression)).getText();
     }
+
 
     private void initButtons() {
         //inti digitButtons
@@ -126,8 +127,10 @@ public class MCalcActivity extends Activity {
         findViewById(R.id.backspace).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((EditText) findViewById(R.id.inputExpression))
-                        .setText(getInput().delete(getInput().length() - 1, getInput().length()));
+                if (getInput().length() != 0) {
+                    ((EditText) findViewById(R.id.inputExpression))
+                            .setText(getInput().delete(getInput().length() - 1, getInput().length()));
+                }
             }
         });
 

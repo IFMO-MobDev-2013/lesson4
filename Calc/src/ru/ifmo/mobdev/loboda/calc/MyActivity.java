@@ -70,6 +70,9 @@ public class MyActivity extends Activity {
                     if (sequence.length() > 0 && lastChar == ')') {
                         opened += 1;
                     }
+                    if(lastChar == '.'){
+                        point.setEnabled(true);
+                    }
                     textView.setText(sequence.subSequence(0, sequence.length() > 0 ? sequence.length() - 1 : 0));
                     return;
                 }

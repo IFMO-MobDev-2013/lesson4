@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import junit.framework.TestCase;
-import junit.framework.TestResult;
 
 public class MyActivity extends Activity {
     TextView tvInput;
@@ -111,23 +109,10 @@ public class MyActivity extends Activity {
         tvInput.setText(tvInput.getText() + "/");
     }
 
-    public static String normalizeString(String source) {
-        for (int i = 0; i < source.length(); i++)
-            if (source.charAt(i) == '-') {
-                int j = i + 1;
-                while (j < source.length() && (Character.isDigit(source.charAt(j)))) j++;
-                source = source.substring(0, i) + "+(" + source.substring(i, j) + ")" + source.substring(j);
-                i = j;
-            }
-        return source;
-
-    }
-
     public void btResListener(View view) {
         tvResult.setText("");
         CharSequence tmp = tvInput.getText();
         flag = false;
-        tmp = normalizeString(tmp.toString());
         double result = evaluate(tmp.toString());
         if (flag)
             tvResult.setText("ERROR");
@@ -144,8 +129,9 @@ public class MyActivity extends Activity {
 
     static boolean isNumber(String source) {
         boolean t = true;
+        boolean tt = false;
         int count = 0;
-        if (source.charAt(0) != '.' && source.charAt(0) != '+' && source.charAt(0) != '-' && !Character.isDigit(source.charAt(0)))
+        if (source.length() != 1 && source.charAt(0) != '.' && source.charAt(0) != '+' && source.charAt(0) != '-' && !Character.isDigit(source.charAt(0)))
             t = false;
 
         for (int i = 1; i < source.length() && t; i++)
@@ -153,26 +139,11 @@ public class MyActivity extends Activity {
                 count++;
             } else {
                 t = Character.isDigit(source.charAt(i));
+                tt = t;
             }
         if (count > 1) t = false;
+        t &= tt;
         return t;
-    }
-
-    static String delBrackets(String source) {
-        if (source.charAt(0) == '(') {
-            int i = 1;
-            while (i < source.length()) {
-                if (source.charAt(i) == ')')
-                    break;
-                i++;
-            }
-            if (i == source.length() - 1) {
-                return source.substring(1, source.length() - 1);
-            } else {
-                return source;
-
-            }
-        } else return source;
     }
 
     static boolean flag = false;
@@ -183,9 +154,8 @@ public class MyActivity extends Activity {
         if (isNumber(expression)) {
             return Double.parseDouble(expression);
         } else {
-            //expression = delBrackets(expression);
             int balance = 0;
-            for (int i = 0; i < expression.length(); i++) {
+            for (int i = expression.length() - 1; i >= 0; i--) {
                 if (expression.charAt(i) == '(') balance++;
                 if (expression.charAt(i) == ')') balance--;
                 if (expression.charAt(i) == '+' && balance == 0) {
@@ -218,12 +188,6 @@ public class MyActivity extends Activity {
         setContentView(R.layout.main);
         tvInput = (TextView) findViewById(R.id.tvInput);
         tvResult = (TextView) findViewById(R.id.tvResult);
-        TestCase test = new TestModule();
-        TestResult result = test.run();
-
-        if (!result.wasSuccessful()) {
-            tvResult.setText("Тесты не пройдены");
-        }
     }
 
 

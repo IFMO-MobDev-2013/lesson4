@@ -29,7 +29,7 @@ public class MyActivity extends Activity {
 
         expText = (TextView) findViewById(R.id.expText);
 
-        TestCase test = new CalcTest();
+        /*TestCase test = new CalcTest();
         TestResult result = test.run();
 
         if (!result.wasSuccessful()){
@@ -39,7 +39,7 @@ public class MyActivity extends Activity {
             expText.setActivated(false);
             String s = "";
             expText.setText(s.charAt(-1));
-        }
+        } */
 
 
 

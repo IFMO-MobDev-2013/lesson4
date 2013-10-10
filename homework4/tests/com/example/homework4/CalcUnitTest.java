@@ -2,7 +2,6 @@ package com.example.homework4;
 
 
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -160,7 +159,7 @@ public class CalcUnitTest extends Assert{
     @Test
     public void testParentheses()
     {
-        checkParser("(-2+3)*7-(+5)", (-2+3)*7-(+5));   // danger
+        checkParser("(-2+3)*7-(+5)", (-2+3)*7-(+5));
         checkParser("((2+10)/2%5+2)*3", ((2+10)/2%5+2)*3);
     }
 

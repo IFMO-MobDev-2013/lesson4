@@ -40,21 +40,27 @@ public class ButtonAdapter extends BaseAdapter {
         Button b;
         int x = position / 4;
         int y = position % 4;
-        if (convertView == null) {
-            b = new Button(mc);
-            b.setText(labels[x][y]);
+        //if (convertView == null) {
+        b = new Button(mc);
+
             //
             //b.setMinHeight(buttonHeight);
-            setListener(b, labels[x][y]);
 
-        }
-        else {
-            b = (Button)convertView;
-        }
+
+
+
+        //}
+        //else {
+//            b = (Button)convertView;
+//        }
+        //b.setClickable(false);
+        b.setText(labels[x][y]);
+        setListener(b, labels[x][y]);
         b.setLayoutParams(new GridView.LayoutParams(GridView.LayoutParams.FILL_PARENT, buttonHeight ));
         return b;
     }
-    private void setListener(Button b, final String label) {
+    private void setListener(Button b, String label1) {
+        final String label  = label1;
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,7 +69,7 @@ public class ButtonAdapter extends BaseAdapter {
         });
 
     }
-    private final String[][] labels = {
+    public static final String[][] labels = {
             {"1", "2", "3", "*"},
             {"4", "5", "6", "/"},
             {"7", "8", "9", "+"},

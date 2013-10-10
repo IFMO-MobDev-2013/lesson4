@@ -14,20 +14,26 @@
               android:layout_above="@+id/clear"
               android:layout_below="@id/inputField"
               android:stretchMode="columnWidth"
-
+              android:clickable="false"
               android:verticalSpacing="3.5sp" />
     <View android:id="@+id/strut"
           android:layout_width="0dp"
           android:layout_height="0dp"
           android:layout_centerHorizontal="true"/>
+    <Button android:id="@+id/dotButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:text="." />
     <Button android:id="@id/clear"
             android:layout_height="wrap_content"
             android:layout_width="0dp"
-
+            android:layout_toRightOf="@id/dotButton"
             android:layout_toLeftOf="@+id/clearAll"
             android:layout_alignRight="@id/strut"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
+
             android:text="&lt;=" />
     <Button android:id="@id/clearAll"
             android:layout_height="wrap_content"

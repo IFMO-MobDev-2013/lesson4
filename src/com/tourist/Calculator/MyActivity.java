@@ -21,6 +21,7 @@ public class MyActivity extends Activity {
         Expression expr = ExpressionParser.parse(expression);
         String value = "" + expr.evaluate();
         if (value.contains("N") || value.contains("I")) {
+            value = "Division by zero";
             error = true;
         }
         if (value.endsWith(".0")) {

@@ -34,10 +34,10 @@ public class ExpressionParser {
             return parseOperand();
         }
         if ("(".equals(token)) {
-            Expression x = parseFull();
+            Expression expr = parseFull();
             if (")".equals(token)) {
                 token = getToken();
-                return x;
+                return expr;
             }
             throw new ParserException("Expected \")\", found \"" + token + "\"");
         }
@@ -70,13 +70,13 @@ public class ExpressionParser {
         return expr;
     }
 
-    public static Expression parse(String st) throws ParserException {
-        s = st;
+    public static Expression parse(String str) throws ParserException {
+        s = str;
         pos = 0;
-        Expression x = parseFull();
+        Expression expr = parseFull();
         if (token != null) {
             throw new ParserException("Expected end of expression, found \"" + token + "\"");
         }
-        return x;
+        return expr;
     }
 }

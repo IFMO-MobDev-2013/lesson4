@@ -232,11 +232,15 @@ public class MainActivity extends Activity {
                     for (int i = 0; i < scope_balance; i++)
                         input += ")";
                     input = Double.toString(parser.parse(input));
+                    text.setText(input);
                 } catch (ArithmeticException e) {
                     text.setText("Error: " + e.getMessage());
                     input = "";
+                } catch (Exception e) {
+                    input = "";
+                    text.setText("Wrong input");
                 }
-                text.setText(input);
+
             }
         });
 

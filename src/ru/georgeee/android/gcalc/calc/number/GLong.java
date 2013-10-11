@@ -98,7 +98,6 @@ public class GLong extends GIntegerNumber {
     @Override
     public GLong factorial() {
         if (value < 0) throw new UnsupportedOperationException("Factorial's argument shouldn't be negative");
-        if (value > 20) throw new UnsupportedOperationException("Factorial's argument shouldn't exceed 20");
         long result = 1;
         for (int i = 2; i <= value; ++i) {
             result *= i;

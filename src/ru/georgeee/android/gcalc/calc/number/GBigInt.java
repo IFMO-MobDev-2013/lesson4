@@ -104,8 +104,6 @@ public class GBigInt extends GIntegerNumber {
     public GBigInt factorial() {
         if (value.compareTo(BigInteger.ZERO) == -1)
             throw new UnsupportedOperationException("Factorial's argument shouldn't be negative");
-        if (value.compareTo(BigInteger.valueOf(150)) == 1)
-            throw new UnsupportedOperationException("Factorial's argument shouldn't exceed 150");
         int val = value.intValue();
         BigInteger result = BigInteger.ONE;
         for (int i = 2; i <= val; ++i) {

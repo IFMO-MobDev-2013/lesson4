@@ -365,19 +365,19 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case R.id.btn4:
                 switch (functionSet) {
                     case EXP_FUNCTION_SET:
-                        addToExpression("exp(");
+                        addToExpression("exp ");
                         break;
                     case TRIG_FUNCTION_SET:
-                        addToExpression("sin(");
+                        addToExpression("sin ");
                         break;
                     case ATRIG_FUNCTION_SET:
-                        addToExpression("asin(");
+                        addToExpression("asin ");
                         break;
                     case HYP_FUNCTION_SET:
-                        addToExpression("sinh(");
+                        addToExpression("sinh ");
                         break;
                     case AHYP_FUNCTION_SET:
-                        addToExpression("asinh(");
+                        addToExpression("asinh ");
                         break;
                     case INT_FUNCTION_SET:
                         addToExpression("~");
@@ -387,19 +387,19 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case R.id.btn5:
                 switch (functionSet) {
                     case EXP_FUNCTION_SET:
-                        addToExpression("lg(");
+                        addToExpression("lg ");
                         break;
                     case TRIG_FUNCTION_SET:
-                        addToExpression("tan(");
+                        addToExpression("tan ");
                         break;
                     case ATRIG_FUNCTION_SET:
-                        addToExpression("atan(");
+                        addToExpression("atan ");
                         break;
                     case HYP_FUNCTION_SET:
-                        addToExpression("tanh(");
+                        addToExpression("tanh ");
                         break;
                     case AHYP_FUNCTION_SET:
-                        addToExpression("atanh(");
+                        addToExpression("atanh ");
                         break;
                     case INT_FUNCTION_SET:
                         addToExpression("|");
@@ -431,19 +431,19 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case R.id.btn7:
                 switch (functionSet) {
                     case EXP_FUNCTION_SET:
-                        addToExpression("ln(");
+                        addToExpression("ln ");
                         break;
                     case TRIG_FUNCTION_SET:
-                        addToExpression("cos(");
+                        addToExpression("cos ");
                         break;
                     case ATRIG_FUNCTION_SET:
-                        addToExpression("acos(");
+                        addToExpression("acos ");
                         break;
                     case HYP_FUNCTION_SET:
-                        addToExpression("cosh(");
+                        addToExpression("cosh ");
                         break;
                     case AHYP_FUNCTION_SET:
-                        addToExpression("acosh(");
+                        addToExpression("acosh ");
                         break;
                     case INT_FUNCTION_SET:
                         addToExpression("!");
@@ -453,19 +453,19 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case R.id.btn8:
                 switch (functionSet) {
                     case EXP_FUNCTION_SET:
-                        addToExpression("log2(");
+                        addToExpression("log2 ");
                         break;
                     case TRIG_FUNCTION_SET:
-                        addToExpression("cot(");
+                        addToExpression("cot ");
                         break;
                     case ATRIG_FUNCTION_SET:
-                        addToExpression("acot(");
+                        addToExpression("acot ");
                         break;
                     case HYP_FUNCTION_SET:
-                        addToExpression("coth(");
+                        addToExpression("coth ");
                         break;
                     case AHYP_FUNCTION_SET:
-                        addToExpression("acoth(");
+                        addToExpression("acoth ");
                         break;
                     case INT_FUNCTION_SET:
                         addToExpression(" XOR ");

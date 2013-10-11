@@ -19,7 +19,7 @@
 
 Галерея скриншотов: http://ge.tt/7r5LC7u?c
 
-APK: http://ge.tt/api/1/files/7IqpK7u/0/blob?download
+APK: https://dl.dropboxusercontent.com/u/3693476/apk/GCalc.apk
 
 Материалы четвёртой лекции:
 =======

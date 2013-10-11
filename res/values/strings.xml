@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GCalc</string>
+    <string name="clear">C</string>
+    <string name="leftBracket">(</string>
+    <string name="rightBracket">)</string>
+    <string name="delete">←</string>
+    <string name="num7">7</string>
+    <string name="num8">8</string>
+    <string name="num9">9</string>
+    <string name="division">/</string>
+    <string name="num4">4</string>
+    <string name="num5">5</string>
+    <string name="num6">6</string>
+    <string name="multiply">*</string>
+    <string name="num1">1</string>
+    <string name="num2">2</string>
+    <string name="num3">3</string>
+    <string name="subtract">-</string>
+    <string name="point">.</string>
+    <string name="num0">0</string>
+    <string name="equal">=</string>
+    <string name="add">+</string>
+    <string name="power">^</string>
+    <string name="history">↑</string>
+
+    <string name="btn0_int">real</string>
+    <string name="btn1_int">&amp;</string>
+    <string name="btn2_int">%</string>
+    <string name="btn4_int">~</string>
+    <string name="btn5_int">|</string>
+    <string name="btn6_int">&gt;&gt;</string>
+    <string name="btn7_int">!</string>
+    <string name="btn8_int">XOR</string>
+    <string name="btn9_int">&lt;&lt;</string>
+
+
+    <string name="btn0_real">int</string>
+
+    <string name="btn1_real">exp</string>
+
+    <string name="btn2_real_exp">trig</string>
+    <string name="btn2_real_trig">atrig</string>
+    <string name="btn2_real_atrig">trig</string>
+    <string name="btn2_real_hyp">trig</string>
+    <string name="btn2_real_ahyp">trig</string>
+
+    <string name="btn3_real_exp">hyp</string>
+    <string name="btn3_real_trig">hyp</string>
+    <string name="btn3_real_atrig">hyp</string>
+    <string name="btn3_real_hyp">ahyp</string>
+    <string name="btn3_real_ahyp">hyp</string>
+
+    <string name="btn4_real_exp">exp</string>
+    <string name="btn4_real_trig">sin</string>
+    <string name="btn4_real_atrig">asin</string>
+    <string name="btn4_real_hyp">sinh</string>
+    <string name="btn4_real_ahyp">asinh</string>
+
+    <string name="btn5_real_exp">lg</string>
+    <string name="btn5_real_trig">tan</string>
+    <string name="btn5_real_atrig">atan</string>
+    <string name="btn5_real_hyp">tanh</string>
+    <string name="btn5_real_ahyp">atanh</string>
+
+    <string name="btn6_real_exp">e</string>
+    <string name="btn6_real_trig">π</string>
+    <string name="btn6_real_atrig">π</string>
+    <string name="btn6_real_hyp">e</string>
+    <string name="btn6_real_ahyp">e</string>
+
+    <string name="btn7_real_exp">ln</string>
+    <string name="btn7_real_trig">cos</string>
+    <string name="btn7_real_atrig">acos</string>
+    <string name="btn7_real_hyp">cosh</string>
+    <string name="btn7_real_ahyp">acosh</string>
+
+    <string name="btn8_real_exp">log2</string>
+    <string name="btn8_real_trig">cot</string>
+    <string name="btn8_real_atrig">acot</string>
+    <string name="btn8_real_hyp">coth</string>
+    <string name="btn8_real_ahyp">acoth</string>
+
+    <string name="btn9_real">√</string>
+</resources>

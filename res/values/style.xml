@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="GButton" parent="android:style/Widget.Holo.Button">
+        <item name="android:layout_margin">0dip</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textColor">@color/btn_color</item>
+    </style>
+    <style name="GButton.Portrait" parent="GButton">
+        <item name="android:textSize">25dp</item>
+    </style>
+    <style name="GPlaceHolderLayout">
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:focusable">false</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+    <style name="GTableRow">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+    <style name="GExpressionInput">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_alignParentTop">true</item>
+    </style>
+    <style name="GExpressionInput.Portrait" parent="GExpressionInput">
+        <item name="android:textSize">30dp</item>
+    </style>
+</resources>

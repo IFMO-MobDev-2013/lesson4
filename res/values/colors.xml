@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="expression_input_error">#AA2211</color>
+    <color name="expression_input_ok">#000000</color>
+    <color name="system_btn_color">#859EE0</color>
+    <color name="system_btn_color_active">#00B9E0</color>
+    <color name="btn_color">#FFFFFF</color>
+</resources>

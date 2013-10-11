@@ -34,12 +34,12 @@ import java.lang.reflect.InvocationTargetException;
 public class TokenHolder {
     private static final int BRACKET_LEVEL = 0;
     private static final int CONST_LEVEL = BRACKET_LEVEL + 1;
-    private static final int FUNCTION_LEVEL = CONST_LEVEL + 1;
+    private static final int NEGATE_LEVEL = CONST_LEVEL + 1;
+    private static final int FUNCTION_LEVEL = NEGATE_LEVEL + 1;
     private static final int FACTORIAL_LEVEL = FUNCTION_LEVEL + 1;
     private static final int POWER_LEVEL = FACTORIAL_LEVEL + 1;
     private static final int MULTIPLY_LEVEL = POWER_LEVEL + 1;
-    private static final int NEGATE_LEVEL = MULTIPLY_LEVEL + 1;
-    private static final int ADD_LEVEL = NEGATE_LEVEL + 1;
+    private static final int ADD_LEVEL = MULTIPLY_LEVEL + 1;
     private static final int SHIFT_LEVEL = ADD_LEVEL + 1;
     private static final int AND_LEVEL = SHIFT_LEVEL + 1;
     private static final int XOR_LEVEL = AND_LEVEL + 1;

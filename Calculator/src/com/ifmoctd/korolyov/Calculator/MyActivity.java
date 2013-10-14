@@ -130,7 +130,7 @@ public class MyActivity extends Activity {
     static boolean isNumber(String source) {
         boolean t = true;
         int count = 0;
-        if (source.length() != 1 && source.charAt(0) != '.' && source.charAt(0) != '+' && source.charAt(0) != '-' && !Character.isDigit(source.charAt(0)))
+        if (!((source.length() != 1 && (source.charAt(0) == '.' || source.charAt(0) == '+' || source.charAt(0) == '-')) || Character.isDigit(source.charAt(0))))
             t = false;
 
         for (int i = 1; i < source.length() && t; i++)

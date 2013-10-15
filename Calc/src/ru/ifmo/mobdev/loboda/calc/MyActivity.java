@@ -63,6 +63,12 @@ public class MyActivity extends Activity {
                 }
                 CharSequence sequence = textView.getText();
                 char lastChar = sequence.length() > 0 ? sequence.charAt(sequence.length() - 1) : ' ';
+                if(text.equals("=")){
+                    if((lastChar == '+' || lastChar == '-' || lastChar == '*' || lastChar == '/') || (opened > 0)){
+                        Toast.makeText(view.getContext(), "Incorrect expression", 1).show();
+                        return;
+                    }
+                }
                 if (text.equals("<=")) {
                     if (sequence.length() > 0 && lastChar == '(') {
                         opened -= 1;
@@ -79,6 +85,7 @@ public class MyActivity extends Activity {
                 if (text.equals("C")) {
                     textView.setText("");
                     opened = 0;
+                    point.setEnabled(true);
                     return;
                 }
                 char sign = text.charAt(text.length() - 1);
@@ -101,19 +108,6 @@ public class MyActivity extends Activity {
                 if (text.equals("=")) {
                     // Append missing brackets and remove sign from end
                     isResult = true;
-                    while ((lastChar == '+' || lastChar == '-' || lastChar == '*' || lastChar == '/') || (opened > 0 && lastChar == '(')) {
-                        if (lastChar == '(') {
-                            --opened;
-                        }
-                        textView.setText(textView.getText().subSequence(0, textView.length() - 1));
-                        sequence = textView.getText();
-                        lastChar = sequence.length() > 0 ? sequence.charAt(sequence.length() - 1) : ' ';
-                    }
-                    if (opened > 0) {
-                        for (int i = 0; i < opened; ++i) {
-                            textView.append(")");
-                        }
-                    }
                     textView.setText(Parser.parse(textView.getText().toString()).toString());
                     ((Button) findViewById(R.id.button3)).setEnabled(false);
                     ((Button) findViewById(R.id.button7)).setEnabled(false);

@@ -23,7 +23,7 @@ public class MyActivity extends Activity {
             testCount++;
             String calc = "";
             try {
-                calc = Double.toString(rang_1(countString));
+                calc = Double.toString(rang_1(countString,true));
 
             } catch (Exception ex) {
                 assertTrue(false);
@@ -69,14 +69,14 @@ public class MyActivity extends Activity {
             if (s.charAt(i) == '(') bal++;
             if (s.charAt(i) == ')') bal--;
             if (s.charAt(i) == '*' && bal == 0) {
-                return rang_1(s.substring(0, i)) * rang_1(s.substring(i + 1, s.length()));
+                return rang_1(s.substring(0, i),false) * rang_1(s.substring(i + 1, s.length()),false);
             } else if (s.charAt(i) == '/' && bal == 0) {
-                return rang_1(s.substring(0, i)) / rang_1(s.substring(i + 1, s.length()));
+                return rang_1(s.substring(0, i),false) / rang_1(s.substring(i + 1, s.length()),false);
             }
         }
         if (s.charAt(0) == '(' && s.charAt(s.length() - 1) == ')') {
             s = s.substring(1, s.length() - 1);
-            return rang_1(s);
+            return rang_1(s,true);
         }
         f = true;
         return 0;
@@ -90,17 +90,25 @@ public class MyActivity extends Activity {
             if (s.charAt(i) == '(') bal++;
             if (s.charAt(i) == ')') bal--;
             if (s.charAt(i) == '+' && bal == 0) {
-                return rang_1(s.substring(0, i)) + rang_1(s.substring(i + 1, s.length()));
+                return rang_1(s.substring(0, i),true) + rang_1(s.substring(i + 1, s.length()),true);
             } else if (s.charAt(i) == '-' && bal == 0) {
-                return rang_1(s.substring(0, i)) - rang_1(s.substring(i + 1, s.length()));
+                return rang_1(s.substring(0, i),true) - rang_1(s.substring(i + 1, s.length()),true);
             }
         }
         return rang_3(s);
     }
 
-    public static double rang_1(String s) {
+    public static double rang_1(String s,boolean q) {
         if (f == true) return 0;
-        if (s.length() == 0) return 0;
+        if (s.length() == 0)
+        {
+            if (q==true)
+            return 0;else
+            {
+                f=true;
+                return 0;
+            }
+        }
         if (the_number(s) == true) return Double.parseDouble(s);
         return rang_2(s);
     }
@@ -134,7 +142,7 @@ public class MyActivity extends Activity {
         final Button close_bracket = (Button) findViewById(R.id.button_close);
 
 
-        /*TestCase test = new TestModule();
+       /* TestCase test = new TestModule();
         TestResult result = test.run();
 
         if (!result.wasSuccessful())
@@ -154,10 +162,10 @@ public class MyActivity extends Activity {
                     f=true;
                 }
                 else {
-                rang_1(text);
+                rang_1(text,true);
                 }
                 if (f == false) {
-                    answer.setText(Double.toString(rang_1(text)));
+                    answer.setText(Double.toString(rang_1(text,true)));
                 } else
                     answer.setText("ERROR");
             }
@@ -318,7 +326,8 @@ public class MyActivity extends Activity {
         point.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                expression.setText(expression.getText() + ".");
+                if (expression.getText().toString().length()==0 || expression.getText().charAt(expression.getText().length() - 1) != '.')
+                    expression.setText(expression.getText() + ".");
             }
         });
 

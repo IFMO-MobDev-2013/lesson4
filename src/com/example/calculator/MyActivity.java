@@ -105,7 +105,7 @@ public class MyActivity extends Activity {
     }
 
     public void printOpenBracket(View v) {
-            et.setText(et.getText() + "(");
+        et.setText(et.getText() + "(");
     }
 
     public void printCloseBracket(View v) {
@@ -114,7 +114,7 @@ public class MyActivity extends Activity {
 
     public void del(View v) {
         String s = et.getText().toString();
-        if (s.length() > 0 ) et.setText(s.substring(0, s.length() - 1));
+        if (s.length() > 0) et.setText(s.substring(0, s.length() - 1));
     }
 
     public void clear(View v) {

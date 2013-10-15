@@ -97,11 +97,20 @@ public class Parser {
         if ((expr.length() > 0) && (expr.charAt(0) >= '0') && (expr.charAt(0) <= '9')) {
             currentLexem = Lexem.CONST;
             String n = "";
+            int countOfPoints = 0;
             while ((expr.length() > 0) && (((expr.charAt(0) >= '0') && (expr.charAt(0) <= '9')) || (expr.charAt(0) == '.'))) {
                 n = n + (expr.charAt(0) + "");
+                if (expr.charAt(0) == '.') {
+                    countOfPoints++;
+                }
                 expr = expr.substring(1);
             }
+            if (countOfPoints > 1) {
+                parseError = true;
+                currentLexem = Lexem.ERROR;
+            } else {
             valueOfConst = Double.parseDouble(n);
+            }
         } else {
             if (expr.length() > 0) {
                 char tmp = expr.charAt(0);

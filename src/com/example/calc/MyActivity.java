@@ -12,11 +12,13 @@ import junit.framework.TestResult;
 public class MyActivity extends Activity {
     public class TestModule extends TestCase {
         private int testCount = 0;
+
         @Override
         protected void setUp() throws Exception {
             super.setUp();
 
         }
+
         private void checkTest(String countString, double result) {
             testCount++;
             String calc = "";
@@ -32,6 +34,7 @@ public class MyActivity extends Activity {
             assertTrue("Test #" + testCount + " failed", k < 1e-5);
 
         }
+
         public void runTest() {
             checkTest("1*1*1.1", 1 * 1 * 1.1);
             checkTest("-1/(-1)", -1 / (-1));
@@ -45,21 +48,22 @@ public class MyActivity extends Activity {
     }
 
 
-    static boolean f=false;
+    static boolean f = false;
+
     public static boolean the_number(String s) {
         int k = 0;
-        if (s.charAt(0)=='-' || s.charAt(0)=='+')
+        if (s.charAt(0) == '-' || s.charAt(0) == '+')
             s = s.substring(1, s.length());
         for (int i = 0; i < s.length(); i++)
             if (s.charAt(i) == '.') k++;
             else if (!(s.charAt(i) >= '0' && s.charAt(i) <= '9')) return false;
-        if (k>1)return false;
+        if (k > 1) return false;
         return true;
     }
 
     public static double rang_3(String s) {
         int bal = 0;
-        for (int i = s.length()-1; i >=0; i--) {
+        for (int i = s.length() - 1; i >= 0; i--) {
             if (s.charAt(i) == '(') bal++;
             if (s.charAt(i) == ')') bal--;
             if (s.charAt(i) == '*' && bal == 0) {
@@ -68,20 +72,19 @@ public class MyActivity extends Activity {
                 return rang_1(s.substring(0, i)) / rang_1(s.substring(i + 1, s.length()));
             }
         }
-        if (s.charAt(0) == '(' && s.charAt(s.length() - 1) == ')')
-        {
+        if (s.charAt(0) == '(' && s.charAt(s.length() - 1) == ')') {
             s = s.substring(1, s.length() - 1);
             return rang_1(s);
         }
-        f=true;
+        f = true;
         return 0;
     }
 
     public static double rang_2(String s) {
-        if (f==true)return 0;
+        if (f == true) return 0;
 
         int bal = 0;
-        for (int i = s.length()-1; i >=0; i--) {
+        for (int i = s.length() - 1; i >= 0; i--) {
             if (s.charAt(i) == '(') bal++;
             if (s.charAt(i) == ')') bal--;
             if (s.charAt(i) == '+' && bal == 0) {
@@ -94,7 +97,7 @@ public class MyActivity extends Activity {
     }
 
     public static double rang_1(String s) {
-        if (f==true)return 0;
+        if (f == true) return 0;
         if (s.length() == 0) return 0;
         if (the_number(s) == true) return Double.parseDouble(s);
         return rang_2(s);
@@ -137,19 +140,18 @@ public class MyActivity extends Activity {
             answer.setText("ТЕСТЫ НЕ ПРОЙДЕНЫ");
         }else
         {
-            answer.setText("ТЕСТЫ ПРОЦДЕНЫ");
-        }*/
+            answer.setText("ТЕСТЫ ПРОЙДЕНЫ");
+        } */
         equally.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String text = expression.getText().toString();
-                f=false;
+                f = false;
                 rang_1(text);
-                if (f==false)
-               {
-                if (text.length() == 0) answer.setText("");
-                answer.setText(Double.toString(rang_1(text)));
-                }else
+                if (f == false) {
+                    if (text.length() == 0) answer.setText("");
+                    answer.setText(Double.toString(rang_1(text)));
+                } else
                     answer.setText("ERROR");
             }
         }
@@ -228,8 +230,9 @@ public class MyActivity extends Activity {
         backspace.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (expression.getText().toString().length() == 0) expression.setText("");else
-                expression.setText(expression.getText().toString().substring(0, expression.getText().toString().length() - 1));
+                if (expression.getText().toString().length() == 0) expression.setText("");
+                else
+                    expression.setText(expression.getText().toString().substring(0, expression.getText().toString().length() - 1));
             }
         });
 
@@ -243,30 +246,51 @@ public class MyActivity extends Activity {
         division.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                expression.setText(expression.getText() + "/");
+                if (expression.getText().charAt(expression.getText().length() - 1) == '+' || expression.getText().charAt(expression.getText().length() - 1) == '-' ||
+                        expression.getText().charAt(expression.getText().length() - 1) == '/' || expression.getText().charAt(expression.getText().length() - 1) == '*') {
+                    expression.setText(expression.getText().toString().substring(0, expression.getText().toString().length() - 1) + "/");
+                } else {
+                    expression.setText(expression.getText() + "/");
+                }
             }
         });
 
         times.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                expression.setText(expression.getText() + "*");
+                if (expression.getText().charAt(expression.getText().length() - 1) == '+' || expression.getText().charAt(expression.getText().length() - 1) == '-' ||
+                        expression.getText().charAt(expression.getText().length() - 1) == '/' || expression.getText().charAt(expression.getText().length() - 1) == '*') {
+                    expression.setText(expression.getText().toString().substring(0, expression.getText().toString().length() - 1) + "*");
+                } else {
+                    expression.setText(expression.getText() + "*");
+                }
             }
         });
 
         minus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                expression.setText(expression.getText() + "-");
+                if (expression.getText().charAt(expression.getText().length() - 1) == '+' || expression.getText().charAt(expression.getText().length() - 1) == '-' ||
+                        expression.getText().charAt(expression.getText().length() - 1) == '/' || expression.getText().charAt(expression.getText().length() - 1) == '*') {
+                    expression.setText(expression.getText().toString().substring(0, expression.getText().toString().length() - 1) + "-");
+                } else {
+                    expression.setText(expression.getText() + "-");
+                }
             }
         });
 
         plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                expression.setText(expression.getText() + "+");
+                if (expression.getText().charAt(expression.getText().length() - 1) == '+' || expression.getText().charAt(expression.getText().length() - 1) == '-' ||
+                        expression.getText().charAt(expression.getText().length() - 1) == '/' || expression.getText().charAt(expression.getText().length() - 1) == '*') {
+                    expression.setText(expression.getText().toString().substring(0, expression.getText().toString().length() - 1) + "+");
+                } else {
+                    expression.setText(expression.getText() + "+");
+                }
             }
         });
+
 
         point.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -285,7 +309,8 @@ public class MyActivity extends Activity {
         close_bracket.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                expression.setText(expression.getText() + ")");
+                if (expression.getText().charAt(expression.getText().length() - 1) != '(')
+                    expression.setText(expression.getText() + ")");
             }
         });
     }

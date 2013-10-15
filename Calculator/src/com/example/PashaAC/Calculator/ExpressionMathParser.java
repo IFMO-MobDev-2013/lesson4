@@ -18,9 +18,10 @@ public class ExpressionMathParser {
         isGoodString();
         if (expression.charAt(expression.length() - 1) == '+' || expression.charAt(expression.length() - 1) == '-' ||
                 expression.charAt(expression.length() - 1) == '*' || expression.charAt(expression.length() - 1) == '/' ||
-                expression.charAt(expression.length() - 1) == '(' || expression.charAt(expression.length() - 1) == '.')
+                expression.charAt(expression.length() - 1) == '(')
             throw new Exception("Error: Syntax error");
         nextLexem();
+
         return plusMinusParser();
     }
 
@@ -64,7 +65,14 @@ public class ExpressionMathParser {
     private Expression brackets() throws Exception{
         Expression temporaryVariable;
         if (lexem.equals("(")) {
+            int oldpozition = pozition;
             nextLexem();
+
+            if (lexem.equals("+") || lexem.equals("-")) {
+                lexem = "0";
+                pozition = oldpozition;
+                answer = new Const(new BigDecimal(lexem));
+            }
             temporaryVariable = plusMinusParser();
             if (lexem.equals(")")) {
                 nextLexem();
@@ -96,6 +104,8 @@ public class ExpressionMathParser {
                     negative = !negative;
                 pozition++;
             }
+            if (pozition < expression.length() && expression.charAt(pozition) == '*' || expression.charAt(pozition) == '/')
+                throw new Exception("Error: Syntax error.");
             pozition--;
             if (negative == true)
                 lexem = "-";
@@ -116,6 +126,8 @@ public class ExpressionMathParser {
                 lexem = "-";
             else
                 lexem = "+";
+            if (pozition < expression.length() && expression.charAt(pozition) == '*' || expression.charAt(pozition) == '/')
+                throw new Exception("Error: Syntax error.");
             pozition--;
             isWas = true;
         } else
@@ -150,8 +162,12 @@ public class ExpressionMathParser {
             pozition++;
             if (lexem != "+" && lexem != "-")
                 return;
-            if ((pozition - 2 >= 0 && (expression.charAt(pozition - 2) == '/' || expression.charAt(pozition - 2) == '*' || expression.charAt(pozition - 2) == '(')) == false)
+            if ((pozition - 2 >= 0 && (expression.charAt(pozition - 2) == '/' || expression.charAt(pozition - 2) == '*')) == false)
                 return;
+        }
+
+        if ((Character.isDigit(expression.charAt(pozition)) || expression.charAt(pozition) == '.') == false) {
+            throw new Exception("Error: Syntax error.");
         }
 
         boolean flag = false;
@@ -164,12 +180,13 @@ public class ExpressionMathParser {
                 }
                 twoPoint = true;
             }
-            else
-                twoPoint = false;
             flag = true;
             pozition++;
             if (pozition == expression.length()) break;
         }
+        if (lexem.charAt(lexem.length() - 1) == '.')
+            lexem = lexem + "0";
+
         if (pozition < expression.length() && expression.charAt(pozition) == '(')
             throw new Exception("Error: Open bracket after digital symbol.");
         if (flag == true) {

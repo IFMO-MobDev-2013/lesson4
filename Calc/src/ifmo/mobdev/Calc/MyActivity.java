@@ -110,7 +110,7 @@ public class MyActivity extends Activity {
                 }
                 if (expr.length() > 0) {
                     if (expr.charAt(expr.length() - 1) == ' ') {
-                        expr = expr.substring(0, expr.length() - 2);
+                        expr = expr.substring(0, expr.length() - 3);
                     } else {
                         expr = expr.substring(0, expr.length() - 1);
                     }

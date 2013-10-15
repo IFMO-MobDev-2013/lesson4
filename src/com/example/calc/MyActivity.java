@@ -52,6 +52,7 @@ public class MyActivity extends Activity {
 
     public static boolean the_number(String s) {
         int k = 0;
+        if (s.equals("-.") || s.equals("+.") || s.equals("."))return false;
         if (s.charAt(0) == '-' || s.charAt(0) == '+')
             s = s.substring(1, s.length());
         for (int i = 0; i < s.length(); i++)
@@ -62,6 +63,7 @@ public class MyActivity extends Activity {
     }
 
     public static double rang_3(String s) {
+        if (f == true) return 0;
         int bal = 0;
         for (int i = s.length() - 1; i >= 0; i--) {
             if (s.charAt(i) == '(') bal++;
@@ -147,9 +149,14 @@ public class MyActivity extends Activity {
             public void onClick(View view) {
                 String text = expression.getText().toString();
                 f = false;
+                if (text.length()!=0)
+                if (text.charAt(text.length()-1)=='+' || text.charAt(text.length()-1)=='-' || text.charAt(text.length()-1)=='*' || text.charAt(text.length()-1)=='/'){
+                    f=true;
+                }
+                else {
                 rang_1(text);
+                }
                 if (f == false) {
-                    if (text.length() == 0) answer.setText("");
                     answer.setText(Double.toString(rang_1(text)));
                 } else
                     answer.setText("ERROR");
@@ -246,11 +253,15 @@ public class MyActivity extends Activity {
         division.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (expression.getText().charAt(expression.getText().length() - 1) == '+' || expression.getText().charAt(expression.getText().length() - 1) == '-' ||
-                        expression.getText().charAt(expression.getText().length() - 1) == '/' || expression.getText().charAt(expression.getText().length() - 1) == '*') {
-                    expression.setText(expression.getText().toString().substring(0, expression.getText().toString().length() - 1) + "/");
+                if (expression.getText().toString().length() == 0) {
+                    expression.setText("/");
                 } else {
-                    expression.setText(expression.getText() + "/");
+                    if (expression.getText().charAt(expression.getText().length() - 1) == '+' || expression.getText().charAt(expression.getText().length() - 1) == '-' ||
+                            expression.getText().charAt(expression.getText().length() - 1) == '/' || expression.getText().charAt(expression.getText().length() - 1) == '*') {
+                        expression.setText(expression.getText().toString().substring(0, expression.getText().toString().length() - 1) + "/");
+                    } else {
+                        expression.setText(expression.getText() + "/");
+                    }
                 }
             }
         });
@@ -258,11 +269,15 @@ public class MyActivity extends Activity {
         times.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (expression.getText().charAt(expression.getText().length() - 1) == '+' || expression.getText().charAt(expression.getText().length() - 1) == '-' ||
-                        expression.getText().charAt(expression.getText().length() - 1) == '/' || expression.getText().charAt(expression.getText().length() - 1) == '*') {
-                    expression.setText(expression.getText().toString().substring(0, expression.getText().toString().length() - 1) + "*");
+                if (expression.getText().toString().length() == 0) {
+                    expression.setText("*");
                 } else {
-                    expression.setText(expression.getText() + "*");
+                    if (expression.getText().charAt(expression.getText().length() - 1) == '+' || expression.getText().charAt(expression.getText().length() - 1) == '-' ||
+                            expression.getText().charAt(expression.getText().length() - 1) == '/' || expression.getText().charAt(expression.getText().length() - 1) == '*') {
+                        expression.setText(expression.getText().toString().substring(0, expression.getText().toString().length() - 1) + "*");
+                    } else {
+                        expression.setText(expression.getText() + "*");
+                    }
                 }
             }
         });
@@ -270,11 +285,15 @@ public class MyActivity extends Activity {
         minus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (expression.getText().charAt(expression.getText().length() - 1) == '+' || expression.getText().charAt(expression.getText().length() - 1) == '-' ||
-                        expression.getText().charAt(expression.getText().length() - 1) == '/' || expression.getText().charAt(expression.getText().length() - 1) == '*') {
-                    expression.setText(expression.getText().toString().substring(0, expression.getText().toString().length() - 1) + "-");
+                if (expression.getText().toString().length() == 0) {
+                    expression.setText("-");
                 } else {
-                    expression.setText(expression.getText() + "-");
+                    if (expression.getText().charAt(expression.getText().length() - 1) == '+' || expression.getText().charAt(expression.getText().length() - 1) == '-' ||
+                            expression.getText().charAt(expression.getText().length() - 1) == '/' || expression.getText().charAt(expression.getText().length() - 1) == '*') {
+                        expression.setText(expression.getText().toString().substring(0, expression.getText().toString().length() - 1) + "-");
+                    } else {
+                        expression.setText(expression.getText() + "-");
+                    }
                 }
             }
         });
@@ -282,11 +301,15 @@ public class MyActivity extends Activity {
         plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (expression.getText().charAt(expression.getText().length() - 1) == '+' || expression.getText().charAt(expression.getText().length() - 1) == '-' ||
-                        expression.getText().charAt(expression.getText().length() - 1) == '/' || expression.getText().charAt(expression.getText().length() - 1) == '*') {
-                    expression.setText(expression.getText().toString().substring(0, expression.getText().toString().length() - 1) + "+");
+                if (expression.getText().toString().length() == 0) {
+                    expression.setText("+");
                 } else {
-                    expression.setText(expression.getText() + "+");
+                    if (expression.getText().charAt(expression.getText().length() - 1) == '+' || expression.getText().charAt(expression.getText().length() - 1) == '-' ||
+                            expression.getText().charAt(expression.getText().length() - 1) == '/' || expression.getText().charAt(expression.getText().length() - 1) == '*') {
+                        expression.setText(expression.getText().toString().substring(0, expression.getText().toString().length() - 1) + "+");
+                    } else {
+                        expression.setText(expression.getText() + "+");
+                    }
                 }
             }
         });
@@ -309,7 +332,9 @@ public class MyActivity extends Activity {
         close_bracket.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (expression.getText().charAt(expression.getText().length() - 1) != '(')
+                if (expression.getText().charAt(expression.getText().length() - 1) != '(' && expression.getText().charAt(expression.getText().length() - 1) != '+' &&
+                        expression.getText().charAt(expression.getText().length() - 1) != '-' && expression.getText().charAt(expression.getText().length() - 1) != '*' &&
+                        expression.getText().charAt(expression.getText().length() - 1) != '/')
                     expression.setText(expression.getText() + ")");
             }
         });

@@ -83,7 +83,15 @@ public class MyActivity extends Activity {
 
         if (s.length()>0 && s.charAt(0) == '(' && s.charAt(s.length()-1) == ')')
             return calculate(s.substring(1,s.length()-1));
-        return s;
+        if ("".equals(s))
+            return s;
+        try{
+            Double d;
+            d = Double.parseDouble(s);
+            return d.toString();
+        } catch (Exception e){
+            return "Error";
+        }
     }
 
     private String operation(String s1, String s2, char oper){
@@ -135,7 +143,7 @@ public class MyActivity extends Activity {
         }else
         {
             textView.setText("ТЕСТЫ ПРОЙДЕНЫ");
-        }  */
+        }     */
 
         // Next init button and onClickListener
 

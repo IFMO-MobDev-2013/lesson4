@@ -91,7 +91,7 @@ public class MyActivity extends Activity {
             return "Error";
         Double d1,d2;
         try{
-            if ("".equals(s1))
+            if ("".equals(s1) &&(oper == '+' || oper == '-'))
                 d1 = 0.0;
             else
                 d1 = Double.parseDouble(s1);
@@ -339,7 +339,14 @@ public class MyActivity extends Activity {
             public void onClick(View view) {
                 if ("Error".equals(s))
                     s = "";
-                s += ".";
+                boolean flag = false;
+                for (int i = s.length() - 1;i>=0;i--)
+                    if (s.charAt(i) == '.')
+                        flag = true;
+                    else if (s.charAt(i) == '+' || s.charAt(i) == '-' || s.charAt(i) == '/' || s.charAt(i) == '*')
+                        break;
+                if (!flag)
+                    s += ".";
                 textView.setText(s);
             }
         });

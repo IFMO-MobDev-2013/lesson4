@@ -90,9 +90,9 @@ public class MyActivity extends Activity {
             if (s.charAt(i) == '(') bal++;
             if (s.charAt(i) == ')') bal--;
             if (s.charAt(i) == '+' && bal == 0) {
-                return rang_1(s.substring(0, i),true) + rang_1(s.substring(i + 1, s.length()),true);
+                return rang_1(s.substring(0, i),true) + rang_1(s.substring(i + 1, s.length()),false);
             } else if (s.charAt(i) == '-' && bal == 0) {
-                return rang_1(s.substring(0, i),true) - rang_1(s.substring(i + 1, s.length()),true);
+                return rang_1(s.substring(0, i),true) - rang_1(s.substring(i + 1, s.length()),false);
             }
         }
         return rang_3(s);
@@ -341,10 +341,17 @@ public class MyActivity extends Activity {
         close_bracket.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (expression.getText().toString().length()!=0)
+                {
                 if (expression.getText().charAt(expression.getText().length() - 1) != '(' && expression.getText().charAt(expression.getText().length() - 1) != '+' &&
                         expression.getText().charAt(expression.getText().length() - 1) != '-' && expression.getText().charAt(expression.getText().length() - 1) != '*' &&
                         expression.getText().charAt(expression.getText().length() - 1) != '/')
                     expression.setText(expression.getText() + ")");
+                }
+                else
+                {
+                    expression.setText(expression.getText() + ")");
+                }
             }
         });
     }

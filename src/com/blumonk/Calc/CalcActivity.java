@@ -52,6 +52,9 @@ public class CalcActivity extends Activity {
         @Override
         public void onClick(View view) {
             String curr = text.getText().toString();
+            if (curr.length() == 0) {
+                return;
+            }
             text.setText(curr.substring(0, curr.length() - 1));
         }
     };

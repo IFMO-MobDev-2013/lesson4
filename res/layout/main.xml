@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+        >
+
+    <LinearLayout
+            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+        <TextView
+                android:id="@+id/tvError"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/txtInvalidExpression"
+                android:alpha="0"
+                android:textSize="32sp"
+                android:textAllCaps="true"
+                android:textColor="@android:color/holo_red_dark"/>
+
+        <EditText
+                android:id="@+id/edtExpression"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:focusable="false"
+                android:singleLine="true"
+                android:gravity="bottom"
+                android:textSize="32sp"/>
+    </LinearLayout>
+
+    <TableLayout
+            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_weight="2">
+
+        <TableRow android:layout_weight="1">
+
+            <Button
+                    android:id="@+id/btnBrace"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="("/>
+
+            <Button
+                    android:id="@+id/btnClear"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="C"/>
+
+            <Button
+                    android:id="@+id/btnErase"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="&lt;"/>
+
+            <Button
+                    android:id="@+id/btnEquals"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="="/>
+
+        </TableRow>
+
+        <TableRow android:layout_weight="1">
+
+            <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="7"
+                    android:onClick="inputButtonClick"/>
+
+            <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="8"
+                    android:onClick="inputButtonClick"/>
+
+            <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="9"
+                    android:onClick="inputButtonClick"/>
+
+            <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="+"
+                    android:onClick="inputButtonClick"/>
+
+        </TableRow>
+
+        <TableRow android:layout_weight="1">
+
+            <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="4"
+                    android:onClick="inputButtonClick"/>
+
+            <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="5"
+                    android:onClick="inputButtonClick"/>
+
+            <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="6"
+                    android:onClick="inputButtonClick"/>
+
+            <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="-"
+                    android:onClick="inputButtonClick"/>
+        </TableRow>
+
+        <TableRow android:layout_weight="1">
+
+            <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="1"
+                    android:onClick="inputButtonClick"/>
+
+            <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="2"
+                    android:onClick="inputButtonClick"/>
+
+            <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="3"
+                    android:onClick="inputButtonClick"/>
+
+            <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="*"
+                    android:onClick="inputButtonClick"/>
+        </TableRow>
+
+        <TableRow android:layout_weight="1">
+
+            <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="."
+                    android:onClick="inputButtonClick"/>
+
+            <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="0"
+                    android:onClick="inputButtonClick"/>
+
+            <Space
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"/>
+
+            <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="/"
+                    android:onClick="inputButtonClick"/>
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>
+

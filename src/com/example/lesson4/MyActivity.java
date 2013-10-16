@@ -284,6 +284,8 @@ public class MyActivity extends Activity {
                 if ("Error".equals(s))
                     s="";
                 s = calculate(s);
+                if ("".equals(s))
+                    s = "Error";
                 textView.setText(s);
             }
         });

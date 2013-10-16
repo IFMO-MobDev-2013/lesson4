@@ -293,7 +293,10 @@ public class MyActivity extends Activity {
             public void onClick(View view) {
                 if ("Error".equals(s))
                     s="";
-                s += "+";
+                if (s.length() == 0 || (s.length() > 0 && s.charAt(s.length() - 1) != '+' && s.charAt(s.length() - 1) != '-' && s.charAt(s.length() - 1) != '*' && s.charAt(s.length() - 1) != '/'))
+                    s += "+";
+                else
+                    s = s.substring(0,s.length()-1) + "+";
                 textView.setText(s);
             }
         });
@@ -302,7 +305,10 @@ public class MyActivity extends Activity {
             public void onClick(View view) {
                 if ("Error".equals(s))
                     s="";
-                s += "-";
+                if (s.length()==0 || (s.length() > 0 && s.charAt(s.length() - 1) != '+' && s.charAt(s.length() - 1) != '-' && s.charAt(s.length() - 1) != '*' && s.charAt(s.length() - 1) != '/'))
+                    s += "-";
+                else
+                    s = s.substring(0,s.length()-1) + "-";
                 textView.setText(s);
             }
         });
@@ -311,7 +317,10 @@ public class MyActivity extends Activity {
             public void onClick(View view) {
                 if ("Error".equals(s))
                     s="";
-                s += "*";
+                if (s.length()==0 || (s.length() > 0 && s.charAt(s.length() - 1) != '+' && s.charAt(s.length() - 1) != '-' && s.charAt(s.length() - 1) != '*' && s.charAt(s.length() - 1) != '/'))
+                    s += "*";
+                else
+                    s = s.substring(0,s.length()-1) + "*";
                 textView.setText(s);
             }
         });
@@ -320,7 +329,10 @@ public class MyActivity extends Activity {
             public void onClick(View view) {
                 if ("Error".equals(s))
                     s="";
-                s += "/";
+                if (s.length()==0 || (s.length() > 0 && s.charAt(s.length() - 1) != '+' && s.charAt(s.length() - 1) != '-' && s.charAt(s.length() - 1) != '*' && s.charAt(s.length() - 1) != '/'))
+                    s += "/";
+                else
+                    s = s.substring(0,s.length()-1) + "/";
                 textView.setText(s);
             }
         });

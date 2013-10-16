@@ -5,7 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import org.mvel2.MVEL;
+import net.sourceforge.jeval.EvaluationException;
+import net.sourceforge.jeval.Evaluator;
 
 public class CalculatorActivity extends Activity {
 
@@ -24,9 +25,6 @@ public class CalculatorActivity extends Activity {
         result = (TextView) findViewById(R.id.result);
 
         input.setKeyListener(null);
-
-        //For MVEL framework
-        System.setProperty("java.version", "1.7");
     }
 
     public void oneListener(View view) {
@@ -140,9 +138,9 @@ public class CalculatorActivity extends Activity {
             return;
         }
         try {
-            String res = MVEL.eval(input.getText().toString()).toString();
+            String res = new Evaluator().evaluate(input.getText().toString());
             result.setText(res);
-        } catch (RuntimeException e) {
+        } catch (EvaluationException e) {
             result.setText("Invalid expression");
         }
     }

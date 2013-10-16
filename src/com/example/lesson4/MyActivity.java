@@ -193,12 +193,12 @@ public class MyActivity extends Activity {
                                 expression.setText(oldText.subSequence(0, oldText.length() - 1));
                                 expression.append("+");
                                 break;
-                            case '(':
-                                break;
                             default:
                                 expression.append("+");
                                 break;
                         }
+                    } else {
+                        expression.setText("+");
                     }
                     break;
             }

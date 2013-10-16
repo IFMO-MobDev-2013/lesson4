@@ -34,6 +34,7 @@ public class MainActivity extends Activity {
 	Button close_bracket;
 	Button point;
 	@Override
+	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
@@ -41,11 +42,7 @@ public class MainActivity extends Activity {
 		all_onClickListener();
 		TestCase MyTest = new CalcTest();
 		TestResult res = MyTest.run();
-		if (res.wasSuccessful()){
-			text.setText("ok");
-		} else {
-			text.setText("bad");
-		}
+		
 		
 	}
 	public double plus(int l, int r) {
@@ -326,7 +323,11 @@ public void all_onClickListener(){
 				s1 = s1 + s.charAt(i);
 			}
 			text.setText(s1);
-			text.setSelection(s.length() - 1);
+			if (s.length() > 0){
+				text.setSelection(s.length() - 1);
+			} else {
+				text.setSelection(0);
+			}
 		}
 	});
 	clear_all.setOnClickListener(new OnClickListener(){
@@ -340,11 +341,23 @@ public void all_onClickListener(){
 		@Override
 		public void onClick(View v){
 			s = text.getText().toString();
-			s = change();
-			double res = plus(0,s.length() - 1);
-			s = Double.toString(res);
-			text.setText(s);
-		    text.setSelection(s.length());
+			if ((s.length() == 0)|| (s.equals("ok"))){
+				s = "0";
+			} else{
+			   s = change();
+			   try{
+			   double res = plus(0,s.length() - 1);
+			   s = Double.toString(res);
+			   text.setText(s);
+			    text.setSelection(s.length());
+			   } catch(Exception E){
+				   text.setText("Error");
+				   text.setSelection(5);
+				   
+			   }
+			   
+			}
+			
 		}
 	});
 	

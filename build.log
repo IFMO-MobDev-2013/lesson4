@@ -1,0 +1,19 @@
+2013-10-10 20:24:40,831 [  75598]   INFO - j.compiler.server.BuildManager - BUILDER_PROCESS [stdout]: Build process started. Classpath: /home/erlond/IDEA/lib/jps-launcher.jar:/home/erlond/sdk/lib/tools.jar:/home/erlond/IDEA/lib/optimizedFileManager.jar:/home/erlond/IDEA/lib/ecj-4.2.1.jar 
+2013-10-10 20:24:44,142 [  78909]   INFO - lij.compiler.impl.CompilerUtil - 	COMPILATION FINISHED (BUILD PROCESS); Errors: 0; warnings: 0 took 3894 ms: 0 min 3sec 
+2013-10-10 20:24:46,575 [  81342]   INFO - s.impl.stores.FileBasedStorage - Document was not loaded for $APP_CONFIG$/consoleFolding.xml file is null 
+2013-10-10 20:24:46,883 [  81650]   INFO - ment.AndroidPsiAugmentProvider - R_CLASS_AUGMENT: 4 classes added 
+2013-10-10 20:24:46,883 [  81650]   INFO - ment.AndroidPsiAugmentProvider - R_CLASS_AUGMENT: 4 classes added 
+2013-10-10 20:25:17,747 [ 112514]   INFO -    #org.jetbrains.io.WebServer - web server stopped 
+2013-10-10 20:25:17,765 [ 112532]   INFO - ins.android.sdk.AndroidSdkData - DDMLib terminated 
+2013-10-10 20:25:17,766 [ 112533]   INFO - il.indexing.FileBasedIndexImpl - START INDEX SHUTDOWN 
+2013-10-10 20:25:17,802 [ 112569]   INFO - il.indexing.FileBasedIndexImpl - END INDEX SHUTDOWN 
+2013-10-10 20:25:17,802 [ 112569]   INFO - stubs.SerializationManagerImpl - START StubSerializationManager SHUTDOWN 
+2013-10-10 20:25:17,803 [ 112570]   INFO - stubs.SerializationManagerImpl - END StubSerializationManager SHUTDOWN 
+2013-10-10 20:25:17,804 [ 112571]   INFO - .history.utils.LocalHistoryLog - Purging local history... 
+2013-10-10 20:25:17,828 [ 112595]   INFO - .history.utils.LocalHistoryLog - Local history storage successfully closed. 
+2013-10-10 20:25:17,840 [ 112607]   WARN - api.vfs.impl.local.FileWatcher - Watcher terminated. 
+2013-10-10 20:25:17,855 [ 112622]   WARN - ution.process.OSProcessHandler - Cannot kill process tree. Trying to destroy process using Java API. Cmdline:
+null 
+2013-10-10 20:25:17,856 [ 112623]   INFO - newvfs.persistent.PersistentFS - VFS dispose started 
+2013-10-10 20:25:17,861 [ 112628]   INFO - newvfs.persistent.PersistentFS - VFS dispose completed 
+2013-10-10 20:25:17,868 [ 112635]   INFO -        #com.intellij.idea.Main - ------------------------------------------------------ IDE SHUTDOWN ------------------------------------------------------ 

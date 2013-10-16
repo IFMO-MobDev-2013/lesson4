@@ -94,7 +94,7 @@ public class Parser {
             expr = expr.substring(1);
         }
 
-        if ((expr.length() > 0) && (expr.charAt(0) >= '0') && (expr.charAt(0) <= '9')) {
+        if ((expr.length() > 0) && (((expr.charAt(0) >= '0') && (expr.charAt(0) <= '9')) || (expr.charAt(0) == '.'))) {
             currentLexem = Lexem.CONST;
             String n = "";
             int countOfPoints = 0;

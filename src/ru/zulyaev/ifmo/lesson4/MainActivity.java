@@ -72,6 +72,7 @@ public class MainActivity extends Activity {
                 .addOperator(2, getString(R.string.multiple_sign), DoubleBinaryOperator.TIMES)
                 .addOperator(2, getString(R.string.divide_sign), DoubleBinaryOperator.DIVISION)
                 .addOperator(3, getString(R.string.minus_sign), DoubleUnaryOperator.MINUS)
+                .addOperator(3, getString(R.string.plus_sign), DoubleUnaryOperator.PLUS)
                 .addOperator(4, getString(R.string.power_sign), DoubleBinaryOperator.POWER)
                 .addOperator(5, getString(R.string.sqrt_sign), new UnaryOperator<Double>() {
                     @Override

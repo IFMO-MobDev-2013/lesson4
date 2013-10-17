@@ -122,10 +122,8 @@ public class ExpressionParser<T> {
 			String s = expression.substring(initialPosition, position);
 			skip(" ");
 			if(Character.isDigit(s.charAt(0))){
-				// �� ������ ��������� �����
 				return new Const<T>(finder.find(s));
 			}
-			// �� ����� � ������ ����������
 			return new Variable<T>(s);
 		}
 		throw new IllegalArgumentException("constant or value expexted, but not found");

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="swipe_background"> #222222 </color>
+    <color name="swipe_border"> #cccccc </color>
+    <color name="swipe_operator_background"> #2244cc </color>
+    <color name="swipe_touched_background"> #bbbbbb </color>
+    <color name="text_color"> #eeeeee </color>
+
+</resources>

@@ -1,6 +1,6 @@
 package mazinva.Calculator;
 
 public interface Expression {
-    public double calculate();
+    public double calculate() throws SyntaxException;
 }
 

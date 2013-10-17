@@ -18,8 +18,11 @@ public class CalculatorTest extends Assert {
         map.put("5.0*2.5", 12.5);
 
         map.put("5", 5.0);
+        map.put("0.1", 0.1);
+        map.put("001", 1.0);
         map.put("(5.0)", 5.0);
         map.put("5.0E2", 5.0E2);
+        map.put(".1", 0.1);
 
         map.put("5.0*2.5+2.5", 15.0);
         map.put("5.0*(2.5+2.5)",25.0);

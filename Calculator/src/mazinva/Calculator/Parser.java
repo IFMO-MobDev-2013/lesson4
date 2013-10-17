@@ -5,7 +5,6 @@ import java.util.regex.Pattern;
 
 public class Parser {
 
-    private Pattern numberWithoutLeadingZeroPattern = Pattern.compile("[1-9]+[0-9]*");
     private Pattern numberWithMaybeLeadingMinusPattern = Pattern.compile("-?[0-9]+");
     private Pattern numberPattern = Pattern.compile("[0-9]+");
     private Matcher matcher;
@@ -109,8 +108,8 @@ public class Parser {
         int i = 0;
 
         while (i < s.length() && (Character.isDigit(s.charAt(i))
-                                    || (s.charAt(i) == '.' && i > 0)
-                                    || (s.charAt(i) == 'E' && i > 0) )) {
+                                    || (s.charAt(i) == '.')
+                                    || (s.charAt(i) == 'E') )) {
             i++;
         }
 
@@ -121,19 +120,17 @@ public class Parser {
         String currentString = s.substring(0, i);
 
         String[] stringsSplitedByDot = currentString.split("\\.");
-        if ((stringsSplitedByDot.length > 2) || (currentString.charAt(i - 1) == '.')) {
-
-            throw new SyntaxException("Can't get valid number in '" + currentString + "'" );
+        if (stringsSplitedByDot.length > 2 || stringsSplitedByDot.length < 1) {
+            throw new SyntaxException("Too many dots in '" + currentString + "'" );
         } else {
-            matcher = numberWithoutLeadingZeroPattern.matcher(stringsSplitedByDot[0]);
-            if (!matcher.matches()) {
+            matcher = numberPattern.matcher(stringsSplitedByDot[0]);
+            if (currentString.charAt(0) != '.' && !matcher.matches()) {
                 throw new SyntaxException("Can't get valid number in '" + currentString + "'" );
             }
 
             if (stringsSplitedByDot.length == 2) {
                 String[] stringsSplitedByExp = stringsSplitedByDot[1].split("E");
                 if ((stringsSplitedByExp.length > 2) || (currentString.charAt(i - 1) == 'E')) {
-
                     throw new SyntaxException("Can't get valid number in '" + currentString + "'" );
                 } else {
                     matcher = numberPattern.matcher(stringsSplitedByExp[0]);
@@ -143,11 +140,15 @@ public class Parser {
                     if (stringsSplitedByExp.length == 2) {
                        matcher = numberWithMaybeLeadingMinusPattern.matcher(stringsSplitedByExp[1]);
                         if (!matcher.matches()) {
-                            throw new SyntaxException("Can't get valid number in '" + s + "'" );
+                            throw new SyntaxException("Can't get valid number in '" + currentString + "'" );
                         }
                     }
                 }
             }
+        }
+
+        if (currentString.charAt(0) == '.' && currentString.length() == 1) {
+            throw new SyntaxException("Incorrect expression");
         }
 
         double dPart = Double.parseDouble(s.substring(0, i));

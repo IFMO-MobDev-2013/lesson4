@@ -5,7 +5,7 @@ public class Minus extends AbstractBinaryOperation {
         super(left, right);
     }
 
-    public double calculate() {
+    public double calculate() throws SyntaxException {
         return left.calculate() - right.calculate();
     }
 }

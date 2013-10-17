@@ -7,7 +7,7 @@ public class Const implements Expression {
         this.value = value;
     }
 
-    public double calculate() {
+    public double calculate() throws SyntaxException{
         return value;
     }
 }

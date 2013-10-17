@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="bottom">
+    <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:focusable="true"
+            android:layout_gravity="top">
+        <EditText android:layout_width="fill_parent"
+                  android:layout_height="fill_parent"
+                  android:id="@+id/input"
+                  android:selectAllOnFocus="true"
+                  android:singleLine="false"
+                  android:scrollbars="vertical"
+                  android:maxLines="3"
+                  android:minLines="2"
+                  android:focusable="true" android:layout_gravity="center_vertical" android:textSize="48dp"
+                />
+    </FrameLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center_vertical"
+            android:weightSum="5" android:layout_weight="1">
+        <Button android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:id="@+id/count"
+                android:text="="
+                android:adjustViewBounds="true"
+                android:onClick="countListener"
+                android:layout_weight="1" android:width="0dp"/>
+        <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="3.7">
+            <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="0"
+                    android:id="@+id/result"
+                    android:textSize="20dp"
+                    android:gravity="center_vertical|right"
+                    android:singleLine="true"
+                    android:clickable="false"/>
+        </FrameLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal"
+                  android:layout_width="fill_parent"
+                  android:layout_height="wrap_content"
+                  android:weightSum="5"
+                  android:id="@+id/linearLayout1"
+                  android:layout_gravity="center" android:layout_weight="1">
+        <Button android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/seven"
+                android:layout_weight="1"
+                android:onClick="sevenListener"
+                android:text="7"/>
+        <Button android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/eight"
+                android:layout_weight="1"
+                android:onClick="eightListener"
+                android:text="8"/>
+        <Button android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/nine"
+                android:layout_weight="1"
+                android:onClick="nineListener"
+                android:text="9"/>
+        <Button android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/times"
+                android:layout_weight="1"
+                android:onClick="timesListener"
+                android:text="*"/>
+        <Button android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/backspace"
+                android:layout_weight="1"
+                android:onClick="backspaceListener"
+                android:text="←"/>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" android:weightSum="5" android:layout_weight="1">
+        <Button android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/four"
+                android:layout_weight="1"
+                android:onClick="fourListener"
+                android:text="4"/>
+        <Button android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/five"
+                android:layout_weight="1"
+                android:onClick="fiveListener"
+                android:text="5"/>
+        <Button android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/six"
+                android:layout_weight="1"
+                android:onClick="sixListener"
+                android:text="6"/>
+        <Button android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/division"
+                android:layout_weight="1"
+                android:onClick="divisionListener"
+                android:text="/"/>
+        <Button android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/closeBracket"
+                android:layout_weight="1"
+                android:onClick="closeBracketListener"
+                android:text=")"/>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:weightSum="5"
+            android:padding="0dp" android:layout_weight="1">
+        <Button android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:id="@+id/one"
+                android:layout_weight="1"
+                android:onClick="oneListener"
+                android:text="1"/>
+        <Button android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:id="@+id/two"
+                android:layout_weight="1"
+                android:onClick="twoListener"
+                android:text="2"/>
+        <Button android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:id="@+id/three"
+                android:layout_weight="1"
+                android:onClick="threeListener"
+                android:text="3"/>
+        <Button android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:id="@+id/substract"
+                android:layout_weight="1"
+                android:onClick="substractListener"
+                android:text="-"/>
+        <Button android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:id="@+id/openBracket"
+                android:layout_weight="1"
+                android:onClick="openBracketListener"
+                android:text="("/>
+    </LinearLayout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="horizontal"
+                  android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="5"
+                  android:id="@+id/linearLayout" android:layout_gravity="center" android:padding="0dp"
+                  android:layout_weight="1">
+        <Button android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:id="@+id/zero"
+                android:layout_weight="1"
+                android:onClick="zeroListener"
+                android:text="0"/>
+        <Button android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:id="@+id/point"
+                android:layout_weight="1"
+                android:onClick="pointListener"
+                android:text="."/>
+        <!--<Button android:layout_width="0dp"-->
+                <!--android:layout_height="fill_parent"-->
+                <!--android:id="@+id/space"-->
+                <!--android:layout_weight="1"-->
+                <!--android:onClick="spaceListener"-->
+                <!--android:text="__"/>-->
+        <Button android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:id="@+id/plus"
+                android:layout_weight="2"
+                android:onClick="plusListener"
+                android:text="+"/>
+        <Button android:layout_width="0dp"
+              android:layout_height="fill_parent"
+              android:id="@+id/c"
+              android:layout_weight="1"
+              android:onClick="cListener"
+              android:text="С"/>
+    </LinearLayout>
+</LinearLayout>

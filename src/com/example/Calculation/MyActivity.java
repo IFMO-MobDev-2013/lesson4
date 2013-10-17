@@ -1,4 +1,4 @@
-package com.example.Calculator;
+package com.example.Calculation;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -19,7 +19,7 @@ public class MyActivity extends Activity {
 
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         textView = (TextView) findViewById(R.id.textView);
@@ -33,18 +33,18 @@ public class MyActivity extends Activity {
         try {
             if (brackets != 0 || lastSumbol.equals("point") || lastSumbol.equals("leftBr") || lastSumbol.equals("token")) {
                 error("Введено неверное выражение");
-            } else {
+            }else {
                 expression = textView.getText().toString();
                 if (expression.equals("")) {
                     error("Введено неверное выражение");
-                } else {
+                }else {
                     Parser parser = new Parser();
                     Double answer = parser.operationParser(expression);
-                    if (answer - answer.intValue() == 0) {
+                    if (answer - answer.intValue() == 0 ) {
                         Integer ans = answer.intValue();
                         point = false;
                         expression = ans.toString();
-                    } else {
+                    }else {
                         answer = new BigDecimal(answer).setScale(10, RoundingMode.HALF_UP).doubleValue();
                         expression = answer.toString();
                         point = true;
@@ -54,7 +54,7 @@ public class MyActivity extends Activity {
                     lastSumbol = "digit";
                 }
             }
-        } catch (CalculationException e) {
+        }catch (CalculationException e) {
             error(e.getMessage());
         }
     }
@@ -75,20 +75,20 @@ public class MyActivity extends Activity {
             expression = expression.substring(0, expression.length() - 1);
             if (expression.equals("")) {
                 lastSumbol = "";
-            } else {
+            }else {
                 str = expression.substring(expression.length() - 1, expression.length());
                 if (str.equals(".")) {
                     lastSumbol = "point";
-                } else {
+                }else {
                     if (str.equals("(")) {
                         lastSumbol = "leftBr";
-                    } else {
+                    }else {
                         if (str.equals(")")) {
                             lastSumbol = "rightBr";
-                        } else {
+                        }else {
                             if (str.equals("+") || str.equals("/") || str.equals("*") || str.equals("-")) {
                                 lastSumbol = "token";
-                            } else {
+                            }else {
                                 lastSumbol = "digit";
                             }
                         }
@@ -110,7 +110,7 @@ public class MyActivity extends Activity {
     public void onClick_1(View view) {
         if (lastSumbol.equals("rightBr")) {
             error("Введено неверное выражение");
-        } else {
+        }else {
             expression = expression.concat("1");
             textView.setText(expression);
             lastSumbol = "digit";
@@ -120,7 +120,7 @@ public class MyActivity extends Activity {
     public void onClick_2(View view) {
         if (lastSumbol.equals("rightBr")) {
             error("Введено неверное выражение");
-        } else {
+        }else {
             expression = expression.concat("2");
             textView.setText(expression);
             lastSumbol = "digit";
@@ -130,7 +130,7 @@ public class MyActivity extends Activity {
     public void onClick_3(View view) {
         if (lastSumbol.equals("rightBr")) {
             error("Введено неверное выражение");
-        } else {
+        }else {
             expression = expression.concat("3");
             textView.setText(expression);
             lastSumbol = "digit";
@@ -140,7 +140,7 @@ public class MyActivity extends Activity {
     public void onClick_4(View view) {
         if (lastSumbol.equals("rightBr")) {
             error("Введено неверное выражение");
-        } else {
+        }else {
             expression = expression.concat("4");
             textView.setText(expression);
             lastSumbol = "digit";
@@ -150,7 +150,7 @@ public class MyActivity extends Activity {
     public void onClick_5(View view) {
         if (lastSumbol.equals("rightBr")) {
             error("Введено неверное выражение");
-        } else {
+        }else {
             expression = expression.concat("5");
             textView.setText(expression);
             lastSumbol = "digit";
@@ -160,7 +160,7 @@ public class MyActivity extends Activity {
     public void onClick_6(View view) {
         if (lastSumbol.equals("rightBr")) {
             error("Введено неверное выражение");
-        } else {
+        }else {
             expression = expression.concat("6");
             textView.setText(expression);
             lastSumbol = "digit";
@@ -170,7 +170,7 @@ public class MyActivity extends Activity {
     public void onClick_7(View view) {
         if (lastSumbol.equals("rightBr")) {
             error("Введено неверное выражение");
-        } else {
+        }else {
             expression = expression.concat("7");
             textView.setText(expression);
             lastSumbol = "digit";
@@ -180,7 +180,7 @@ public class MyActivity extends Activity {
     public void onClick_8(View view) {
         if (lastSumbol.equals("rightBr")) {
             error("Введено неверное выражение");
-        } else {
+        }else {
             expression = expression.concat("8");
             textView.setText(expression);
             lastSumbol = "digit";
@@ -190,7 +190,7 @@ public class MyActivity extends Activity {
     public void onClick_9(View view) {
         if (lastSumbol.equals("rightBr")) {
             error("Введено неверное выражение");
-        } else {
+        }else {
             expression = expression.concat("9");
             textView.setText(expression);
             lastSumbol = "digit";
@@ -200,7 +200,7 @@ public class MyActivity extends Activity {
     public void onClick_0(View view) {
         if (lastSumbol.equals("rightBr")) {
             error("Введено неверное выражение");
-        } else {
+        }else {
             expression = expression.concat("0");
             textView.setText(expression);
             lastSumbol = "digit";
@@ -210,10 +210,10 @@ public class MyActivity extends Activity {
     public void onClick_point(View view) {
         if (lastSumbol.equals("rightBr") || lastSumbol.equals("point") || point) {
             error("Введено неверное выражение");
-        } else {
+        }else {
             if (!lastSumbol.equals("digit")) {
                 expression = expression.concat("0.");
-            } else {
+            }else {
                 expression = expression.concat(".");
             }
             textView.setText(expression);
@@ -225,7 +225,7 @@ public class MyActivity extends Activity {
     public void onClick_leftBr(View view) {
         if (lastSumbol.equals("digit") || lastSumbol.equals("rightBr") || lastSumbol.equals("point")) {
             error("Введено неверное выражение");
-        } else {
+        }else {
             expression = expression.concat("(");
             textView.setText(expression);
             brackets++;
@@ -237,7 +237,7 @@ public class MyActivity extends Activity {
     public void onClick_RightBr(View view) {
         if (brackets == 0 || lastSumbol.equals("token") || lastSumbol.equals("leftBr") || lastSumbol.equals("point") || lastSumbol == "") {
             error("Введено неверное выражение");
-        } else {
+        }else {
             expression = expression.concat(")");
             textView.setText(expression);
             brackets--;
@@ -249,7 +249,7 @@ public class MyActivity extends Activity {
     public void onClick_Plus(View view) {
         if (lastSumbol.equals("token") || lastSumbol.equals("point")) {
             error("Введено неверное выражение");
-        } else {
+        }else {
             expression = expression.concat("+");
             textView.setText(expression);
             lastSumbol = "token";
@@ -260,7 +260,7 @@ public class MyActivity extends Activity {
     public void onClick_Minus(View view) {
         if (lastSumbol.equals("token") || lastSumbol.equals("point")) {
             error("Введено неверное выражение");
-        } else {
+        }else {
             expression = expression.concat("-");
             textView.setText(expression);
             lastSumbol = "token";
@@ -271,7 +271,7 @@ public class MyActivity extends Activity {
     public void onClick_Devision(View view) {
         if (lastSumbol.equals("token") || lastSumbol.equals("point") || lastSumbol.equals("leftBr") || lastSumbol == "") {
             error("Введено неверное выражение");
-        } else {
+        }else {
             expression = expression.concat("/");
             textView.setText(expression);
             lastSumbol = "token";
@@ -282,7 +282,7 @@ public class MyActivity extends Activity {
     public void onClick_Times(View view) {
         if (lastSumbol.equals("token") || lastSumbol.equals("point") || lastSumbol.equals("leftBr") || lastSumbol == "") {
             error("Введено неверное выражение");
-        } else {
+        }else {
             expression = expression.concat("*");
             textView.setText(expression);
             lastSumbol = "token";
@@ -296,4 +296,3 @@ public class MyActivity extends Activity {
         myToast.show();
     }
 }
-

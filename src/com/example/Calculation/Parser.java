@@ -1,7 +1,7 @@
-package com.example.Calculator;
+package com.example.Calculation;
 
 public class Parser {
-    public Double operationParser(String str) throws CalculationException {
+    public Double operationParser(String str) throws CalculationException{
         return orderPlus(str);
     }
 
@@ -10,17 +10,17 @@ public class Parser {
         int pointer = findOperation(str, action);
         if (pointer == -1) {
             return orderTimes(str);
-        } else {
+        }else {
             if (pointer == 0 && str.charAt(pointer) == '+') {
                 return orderPlus(str.substring(1, str.length()));
-            } else {
+            }else {
                 if (str.charAt(pointer) == '+') {
                     return orderPlus(str.substring(0, pointer)) + orderPlus(str.substring(pointer + 1));
-                } else {
+                }else {
                     if (pointer == 0) {
                         return 0 - orderPlus(str.substring(pointer + 1));
                     }
-                    return orderPlus(str.substring(0, pointer)) - orderPlus(str.substring(pointer + 1));
+                    return orderPlus(str.substring(0,pointer)) - orderPlus(str.substring(pointer + 1));
                 }
             }
         }
@@ -31,24 +31,24 @@ public class Parser {
         int pointer = findOperation(str, action);
         if (pointer == -1) {
             return orderBrackets(str);
-        } else {
+        }else {
             if (str.charAt(pointer) == '*') {
                 return orderPlus(str.substring(0, pointer)) * orderPlus(str.substring(pointer + 1));
-            } else {
+            }else {
                 Double right = orderPlus(str.substring(pointer + 1));
                 if (right == 0) {
                     throw new CalculationException("Деление на ноль");
-                } else {
-                    return orderPlus(str.substring(0, pointer)) / right;
+                }else {
+                    return orderPlus(str.substring(0,pointer)) / right;
                 }
             }
         }
     }
 
     public Double orderBrackets(String str) throws CalculationException {
-        if (str.charAt(0) == '(') {
+        if (str.charAt(0) == '('){
             return orderPlus(str.substring(1, str.length() - 1));
-        } else {
+        }else{
             return orderConst(str);
         }
     }

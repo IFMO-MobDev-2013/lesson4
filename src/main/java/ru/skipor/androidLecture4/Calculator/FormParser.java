@@ -34,7 +34,6 @@ public class FormParser { // tail recursive parser
         formPattern = Pattern.compile(tokenRegex);
         constantMatcher = Pattern.compile(constantRegex).matcher("");
 
-        System.out.println(tokenRegex);
     }
 
     static class IllegalExpressionFormatException extends ParserException {
@@ -53,6 +52,7 @@ public class FormParser { // tail recursive parser
 
 
     public static Form formParse(String expression) throws ParserException {
+
         FormParser parser = new FormParser(expression);
         Form result = parser.operationParse(MIN_PRIORITY);
         if (!parser.currentToken.equals("")) {
@@ -126,7 +126,7 @@ public class FormParser { // tail recursive parser
             }
             nextToken();
         } else if (currentToken.equals("-")) {
-            result = new BinaryOperation(new Const(-1), operationParse(MAX_PRIORITY - 1), TIMES);
+            result = new BinaryOperation(new Const(-1), identifierParse(), TIMES);
         } else if (currentToken.equals("+")) {
             result = identifierParse();
         } else {

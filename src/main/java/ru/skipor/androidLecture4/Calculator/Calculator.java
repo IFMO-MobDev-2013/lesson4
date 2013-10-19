@@ -6,9 +6,12 @@ import ru.skipor.androidLecture4.Calculator.Form.FormEvaluationException;
  * Created by vladimirskipor on 10/10/13.
  */
 public class Calculator {
+    private static final String OUTPUT_FORMAT = "%s";
+    private static final String UNAR_OPERATION_REGEX = "[+-]";
     private StringBuilder stringBuilder;
     public static String errorMessage = "Error";
     private int bracketCounter;
+
 
 
     public Calculator() {
@@ -56,9 +59,13 @@ public class Calculator {
             if (!lastInBuilder().equals("(")){
             stringBuilder.append(operationToken);
             } else {
+                if(operationToken.matches(UNAR_OPERATION_REGEX)) {
+                    stringBuilder.append(operationToken);
+                } else {
                 stringBuilder.append(last);
+                }
             }
-        } else if (!lastInBuilder().equals("(") || operationToken.equals("-")) {
+        } else if (!lastInBuilder().equals("(") || operationToken.matches(UNAR_OPERATION_REGEX)) {
             stringBuilder.append(operationToken);
         }
 
@@ -81,9 +88,11 @@ public class Calculator {
     public String addDot() {
 
 
-        if (lastInBuilder().matches("[0-9]")) {
-            stringBuilder.append('.');
 
+        if (lastInBuilder().matches("[0-9]")) {
+            int lastDot = stringBuilder.lastIndexOf(".");
+            if(lastDot < 0 || !stringBuilder.substring(lastDot + 1, stringBuilder.length()).matches("[0-9]+"))
+            stringBuilder.append('.');
         }
 
         return stringBuilder.toString();
@@ -100,6 +109,11 @@ public class Calculator {
 
     private void deleteLastToken() {
         if (!empty()) {
+            if (lastInBuilder().equals("(")) {
+                bracketCounter--;
+            } else if (lastInBuilder().equals(")")) {
+                bracketCounter++;
+            }
 
             stringBuilder.deleteCharAt(stringBuilder.length() - 1);
         }
@@ -126,17 +140,18 @@ public class Calculator {
 
     public String evaluate() {
 
-        if (!empty() && !isValidOperation(lastInBuilder())) {
+        if (!empty() && !isValidOperation(lastInBuilder()) && bracketCounter == 0) {
             for (; bracketCounter > 0; bracketCounter--) {
                 stringBuilder.append(")");
             }
 
 
             try {
-                String result = String.valueOf(FormParser.formParse(stringBuilder.toString()).evaluate());
-                stringBuilder = new StringBuilder(result);
-                return String.valueOf(result);
+                double result = FormParser.formParse(stringBuilder.toString()).evaluate();
+                stringBuilder = new StringBuilder(String.valueOf(result));
+                return String.format(OUTPUT_FORMAT, result);
             } catch (ParserException e) {
+
                 clearAll();
                 e.printStackTrace();
                 return errorMessage;

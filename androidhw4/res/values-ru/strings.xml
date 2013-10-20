@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Калькулятор</string>
+    <string name="error_div_by_zero">Деление на ноль :( </string>
+    <string name="error_invalid_expression">Недопустимое выражение  :(</string>
+    <string name="error_infinite">Бесконечность</string>
+</resources>

@@ -60,7 +60,7 @@ class Parser {
         try {
             double value = Double.parseDouble(expression.substring(start, end));
             if (negativeSign) {
-                return new Const(value);
+                return new Const(-value);
             } else {
                 return new Const(value);
             }
@@ -71,7 +71,7 @@ class Parser {
 
     private static Evaluable factor(boolean negativeSign) throws ParseException {
         char nextChar = getChar();
-        if (Character.isDigit(nextChar)) {
+        if (Character.isDigit(nextChar) || nextChar == '.') {
             returnChar();
             return getConst(negativeSign);
         } else if (nextChar == '(') {

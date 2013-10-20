@@ -38,8 +38,10 @@ public class MainActivity extends Activity {
     }
 
     public void onClickDelete(View v) {
-        expression = expression.substring(0, expression.length() - 1);
-        textView1.setText(expression);
+        if (expression.length() > 0) {
+            expression = expression.substring(0, expression.length() - 1);
+            textView1.setText(expression);
+        }
     }
 
     public void onClickCalculate(View v) {

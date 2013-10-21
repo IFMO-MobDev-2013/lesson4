@@ -90,6 +90,7 @@ public class Calculator {
         }
         while (!operators.isEmpty())
             calculate(operators.removeLast());
+        if (digits.size() == 0) return 0;
         return digits.get(0);  // возврат результата
     }
 }

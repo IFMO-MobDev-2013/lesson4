@@ -16,8 +16,15 @@ public class ExpressionMathParserTest extends TestCase {
     @Test
     public void testNumber() throws Exception {
         assertEquals(5, Double.parseDouble(testParser.ExpressionMathParser("5").evaluate().toString()), DELTA);
+        assertEquals(((5)), Double.parseDouble(testParser.ExpressionMathParser("((5))").evaluate().toString()), DELTA);
         assertEquals(3, Double.parseDouble(testParser.ExpressionMathParser("3").evaluate().toString()), DELTA);
         assertEquals(1, Double.parseDouble(testParser.ExpressionMathParser("1").evaluate().toString()), DELTA);
+        assertEquals(-25, Double.parseDouble(testParser.ExpressionMathParser("-25").evaluate().toString()), DELTA);
+        assertEquals((((53))), Double.parseDouble(testParser.ExpressionMathParser("(((53)))").evaluate().toString()), DELTA);
+        assertEquals(7, Double.parseDouble(testParser.ExpressionMathParser("-(+(-(+7)))").evaluate().toString()), DELTA);
+        assertEquals(-7, Double.parseDouble(testParser.ExpressionMathParser("-(+(-(-7)))").evaluate().toString()), DELTA);
+        assertEquals(-8, Double.parseDouble(testParser.ExpressionMathParser("-(-(-8))").evaluate().toString()), DELTA);
+        assertEquals(0, Double.parseDouble(testParser.ExpressionMathParser("-3-(-3)").evaluate().toString()), DELTA);
     }
 
     @Test
@@ -34,7 +41,9 @@ public class ExpressionMathParserTest extends TestCase {
         assertEquals(6, Double.parseDouble(testParser.ExpressionMathParser("-2--8").evaluate().toString()), DELTA);
         assertEquals(54.2 - 16.03, Double.parseDouble(testParser.ExpressionMathParser("54.2-16.03").evaluate().toString()), DELTA);
         assertEquals(5, Double.parseDouble(testParser.ExpressionMathParser("2--3").evaluate().toString()), DELTA);
-        assertEquals(-25.0, Double.parseDouble(testParser.ExpressionMathParser("-(--(----25))").evaluate().toString()), DELTA);
+        assertEquals(-25.0, Double.parseDouble(testParser.ExpressionMathParser("-(25)").evaluate().toString()), DELTA);
+        assertEquals(3, Double.parseDouble(testParser.ExpressionMathParser("(--3)").evaluate().toString()), DELTA);
+        assertEquals(-6.9, Double.parseDouble(testParser.ExpressionMathParser("-(7-.1)").evaluate().toString()), DELTA);
     }
 
     @Test
@@ -43,6 +52,8 @@ public class ExpressionMathParserTest extends TestCase {
         assertEquals(-2*3, Double.parseDouble(testParser.ExpressionMathParser("-2*3").evaluate().toString()), DELTA);
         assertEquals(-2*-3, Double.parseDouble(testParser.ExpressionMathParser("-2*-3").evaluate().toString()), DELTA);
         assertEquals(54.2 * 16.03, Double.parseDouble(testParser.ExpressionMathParser("54.2*16.03").evaluate().toString()), DELTA);
+        assertEquals(9, Double.parseDouble(testParser.ExpressionMathParser("(-3)(-3)").evaluate().toString()), DELTA);
+        assertEquals(-6, Double.parseDouble(testParser.ExpressionMathParser("-3(+2)").evaluate().toString()), DELTA);
     }
 
     @Test

@@ -8,50 +8,76 @@ public class ExpressionMathParser {
     private int pozition;
     private String expression;
 
-    public ExpressionMathParser() {}
     public Expression ExpressionMathParser(String expression) throws Exception {
         this.expression = expression;
-        if (expression.length() == 0)
-            throw  new Exception("Error: Expression is empty.");
         pozition = 0;
         lexem = "";
         isGoodString();
-        if (expression.charAt(expression.length() - 1) == '+' || expression.charAt(expression.length() - 1) == '-' ||
-                expression.charAt(expression.length() - 1) == '*' || expression.charAt(expression.length() - 1) == '/' ||
-                expression.charAt(expression.length() - 1) == '(')
-            throw new Exception("Error: Syntax error");
         nextLexem();
-
         return plusMinusParser();
     }
 
-    private void isGoodString() {
+    private void isGoodString() throws Exception{
+        if (expression.length() == 0)
+            throw  new Exception("Error: Expression is empty.");
+        if (expression.charAt(0) == '*' || expression.charAt(0) == '/')
+            throw new Exception("Error: Syntax error");
         if (expression.charAt(0) == '+' || expression.charAt(0) == '-')
             expression = "0" + expression;
-        if (expression.charAt(0) == '*' || expression.charAt(0) == '/')
-            expression = "1" + expression;
+        int bracketsInExpression = 0;
+        for (int i = 0; i < expression.length(); i++) {
+            if (expression.charAt(i) == ')')
+                bracketsInExpression--;
+            if (expression.charAt(i) == '(')
+               bracketsInExpression++;
+            if (bracketsInExpression < 0)
+                throw new Exception("Error: Brackets error.");
+        }
+        if (bracketsInExpression != 0)
+            throw new Exception("Error: Brackets error.");
+        if (Character.isDigit(expression.charAt(expression.length() - 1)) == false && expression.charAt(expression.length() - 1) != ')' && expression.charAt(expression.length() - 1) != '.')
+            throw new Exception("Error: Syntax error.");
     }
 
     private Expression plusMinusParser() throws Exception{
         Expression temporaryVariable = multyDivisionParser();
         while (lexem.equals("+") || lexem.equals("-")) {
-            String copy = lexem;
-            nextLexem();
-            if (copy.equals("+")) {
+            boolean negative = false;
+            while (lexem.equals("+") || lexem.equals("-")) {
+                if (lexem.equals("-"))
+                    negative = !negative;
+                nextLexem();
+            }
+            if (lexem.equals("*") || lexem.equals("/") || lexem.equals(")"))
+                throw new Exception("Error: Syntax error.");
+            if (negative == false) {
                 temporaryVariable = new Plus(temporaryVariable, multyDivisionParser());
             }
-            if (copy.equals("-")) {
+            if (negative == true) {
                 temporaryVariable = new Minus(temporaryVariable, multyDivisionParser());
             }
         }
         return temporaryVariable;
+
     }
 
     private Expression multyDivisionParser() throws Exception{
         Expression temporaryVariable = brackets();
         while (lexem.equals("*") || lexem.equals("/")) {
             String obr = lexem;
+            boolean negative = false;
             nextLexem();
+            while (lexem.equals("+") || lexem.equals("-")) {
+                if (lexem.equals("-"))
+                    negative = !negative;
+                nextLexem();
+            }
+            if (lexem.equals("*") || lexem.equals("/") || lexem.equals(")"))
+                throw new Exception("Error: Syntax error.");
+            if (negative == true) {
+                lexem = "-" + lexem;
+                answer = new Const(new BigDecimal(lexem));
+            }
             if (obr.equals("*")) {
                 temporaryVariable = new Multiplication(temporaryVariable, brackets());
             }
@@ -65,133 +91,79 @@ public class ExpressionMathParser {
     private Expression brackets() throws Exception{
         Expression temporaryVariable;
         if (lexem.equals("(")) {
-            int oldpozition = pozition;
             nextLexem();
-
-            if (lexem.equals("+") || lexem.equals("-")) {
-                lexem = "0";
-                pozition = oldpozition;
-                answer = new Const(new BigDecimal(lexem));
-            }
-            temporaryVariable = plusMinusParser();
-            if (lexem.equals(")")) {
+            boolean negative = false;
+            while (lexem.equals("+") || lexem.equals("-")) {
+                if (lexem.equals("-"))
+                    negative = !negative;
                 nextLexem();
             }
-            else {
-                throw new Exception("Error: There is no close bracket.");
+            if (lexem.equals("*") || lexem.equals("/"))
+                throw new Exception("Error: Several operations in a row.");
+            if (lexem.equals(")"))
+                throw new Exception("Error: Syntax error.");
+
+            if (Character.isDigit(lexem.charAt(0)) && negative == true)
+                answer = new Const(new BigDecimal("-" + lexem));
+            if (Character.isDigit(lexem.charAt(0)) && negative == false)
+                answer = new Const(new BigDecimal("+" + lexem));
+
+            if (negative == true && lexem.equals("("))
+                temporaryVariable = new Minus(new Const(new BigDecimal("0")),plusMinusParser());
+            else
+                temporaryVariable = plusMinusParser();
+            if (lexem.equals(")")) {
+                nextLexem();
+                if (lexem.equals("(") || Character.isDigit(lexem.charAt(0)))
+                    temporaryVariable = new Multiplication(temporaryVariable, plusMinusParser());
             }
         }
         else {
-            if (lexem.equals(")")) {
-                throw new Exception("Error: Close bracket before open bracket.");
-            }
             temporaryVariable = answer;
+            String oldLexem = lexem;
             nextLexem();
+            if (Character.isDigit(oldLexem.charAt(0)) && lexem.equals("("))
+                temporaryVariable = new Multiplication(temporaryVariable, plusMinusParser());
+
         }
         return temporaryVariable;
     }
 
     private void nextLexem() throws Exception{
         lexem = "";
-        if (pozition == expression.length()) return;
-        boolean isWas = false;
-        if (expression.charAt(pozition) == '+') {
-            lexem = "+";
-            pozition++;
-            boolean negative = false;
-            while (pozition < expression.length() && (expression.charAt(pozition) == '-' || expression.charAt(pozition) == '+')) {
-                if (expression.charAt(pozition) == '-')
-                    negative = !negative;
-                pozition++;
-            }
-            if (pozition < expression.length() && expression.charAt(pozition) == '*' || expression.charAt(pozition) == '/')
-                throw new Exception("Error: Syntax error.");
-            pozition--;
-            if (negative == true)
-                lexem = "-";
-            else
-                lexem = "+";
-            isWas = true;
-        } else
-        if (expression.charAt(pozition) == '-') {
-            lexem = "-";
-            pozition++;
-            boolean negative = true;
-            while (pozition < expression.length() && (expression.charAt(pozition) == '-' ||expression.charAt(pozition) == '+')) {
-                if (expression.charAt(pozition) == '-')
-                    negative = !negative;
-                pozition++;
-            }
-            if (negative == true)
-                lexem = "-";
-            else
-                lexem = "+";
-            if (pozition < expression.length() && expression.charAt(pozition) == '*' || expression.charAt(pozition) == '/')
-                throw new Exception("Error: Syntax error.");
-            pozition--;
-            isWas = true;
-        } else
-        if (expression.charAt(pozition) == '*') {
-            lexem = "*";
-            if (pozition + 1 < expression.length() && (expression.charAt(pozition + 1) == '*' ||
-                    expression.charAt(pozition + 1) == '/'))
-                throw new Exception("Error: Several operations in a row.");
-            isWas = true;
-        } else
-        if (expression.charAt(pozition) == '/') {
-            lexem = "/";
-            if (pozition + 1 < expression.length() && (expression.charAt(pozition + 1) == '*' ||
-                    expression.charAt(pozition + 1) == '/'))
-                throw new Exception("Error: Several operations in a row.");
-            isWas = true;
-        } else
-        if (expression.charAt(pozition) == '(') {
-            lexem = "(";
-            if (pozition + 1 < expression.length() && (expression.charAt(pozition + 1) == '*' ||
-                    expression.charAt(pozition + 1) == '/'))
-                throw new Exception("Error: Bad operations after open bracket.");
-            isWas = true;
-        } else
-        if (expression.charAt(pozition) == ')') {
-            lexem = ")";
-            if (pozition + 1 < expression.length() && Character.isDigit(expression.charAt(pozition + 1)))
-                throw new Exception("Error: Some digital symbol after close bracket.");
-            isWas = true;
+        if (pozition == expression.length()) {
+            lexem = "!";
+            return;
         }
-        if (isWas == true) {
+        if (expression.charAt(pozition) == '+') lexem = "+";
+        if (expression.charAt(pozition) == '-') lexem = "-";
+        if (expression.charAt(pozition) == '*') lexem = "*";
+        if (expression.charAt(pozition) == '/') lexem = "/";
+        if (expression.charAt(pozition) == '(') lexem = "(";
+        if (expression.charAt(pozition) == ')') lexem = ")";
+        if (lexem.length() > 0) {
             pozition++;
-            if (lexem != "+" && lexem != "-")
-                return;
-            if ((pozition - 2 >= 0 && (expression.charAt(pozition - 2) == '/' || expression.charAt(pozition - 2) == '*')) == false)
-                return;
+            return;
         }
 
-        if ((Character.isDigit(expression.charAt(pozition)) || expression.charAt(pozition) == '.') == false) {
-            throw new Exception("Error: Syntax error.");
-        }
-
-        boolean flag = false;
         boolean twoPoint = false;
         while (Character.isDigit(expression.charAt(pozition)) || expression.charAt(pozition) == '.') {
-            lexem += expression.charAt(pozition);
             if (expression.charAt(pozition) == '.') {
                 if (twoPoint == true) {
                     throw new Exception("Error: Several points in a row");
                 }
                 twoPoint = true;
             }
-            flag = true;
+            lexem += expression.charAt(pozition);
             pozition++;
             if (pozition == expression.length()) break;
         }
+        if (twoPoint == true && lexem.length() == 1)
+            throw new Exception("Error: Syntax error.");
         if (lexem.charAt(lexem.length() - 1) == '.')
             lexem = lexem + "0";
-
-        if (pozition < expression.length() && expression.charAt(pozition) == '(')
-            throw new Exception("Error: Open bracket after digital symbol.");
-        if (flag == true) {
-            answer = new Const(new BigDecimal(lexem));
-            return;
-        }
+        if (lexem.charAt(0) == '.')
+            lexem = "0" + lexem;
+        answer = new Const(new BigDecimal(lexem));
     }
 }

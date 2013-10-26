@@ -32,13 +32,57 @@ public class CalcActivity extends Activity {
         findViewById(R.id.minus).setOnClickListener(pushSymbol);
         findViewById(R.id.division).setOnClickListener(pushSymbol);
         findViewById(R.id.times).setOnClickListener(pushSymbol);
-        findViewById(R.id.dot).setOnClickListener(pushSymbol);
+        findViewById(R.id.dot).setOnClickListener(addDot);
         findViewById(R.id.open).setOnClickListener(pushSymbol);
-        findViewById(R.id.close).setOnClickListener(pushSymbol);
+        findViewById(R.id.close).setOnClickListener(closeParentheses);
         findViewById(R.id.delete).setOnClickListener(deleteSymbol);
         findViewById(R.id.clear).setOnClickListener(clearAll);
         findViewById(R.id.equals).setOnClickListener(updateScreen);
     }
+
+    boolean isOperation(char c) {
+        return c == '+' || c == '-' || c == '/' || c == '*';
+    }
+
+    Button.OnClickListener addDot = new Button.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            String s = text.getText().toString();
+            if (s.isEmpty()) {
+                text.setText("0.");
+                return;
+            }
+            char last = s.charAt(s.length() - 1);
+            if (last == '.') {
+                return;
+            }
+            if (Character.isDigit(last)) {
+                int i = s.length() - 1;
+                while (Character.isDigit(s.charAt(i))) {
+                    --i;
+                }
+                if (i >= 0 && s.charAt(i) == '.')
+                    return;
+            }
+            if (last == '(' || isOperation(last)) {
+                text.setText(s + "0.");
+            } else {
+                text.setText(s + '.');
+            }
+        }
+    };
+
+    Button.OnClickListener closeParentheses = new Button.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            String s = text.getText().toString();
+            if (s.isEmpty() || s.charAt(s.length() - 1) == '(') {
+                return;
+            } else {
+                text.setText(s + ')');
+            }
+        }
+    };
 
     Button.OnClickListener pushSymbol = new Button.OnClickListener() {
         @Override
@@ -79,7 +123,6 @@ public class CalcActivity extends Activity {
             }
         }
     };
-
 
 
 }

@@ -24,7 +24,7 @@ public class ParserTest extends Assert {
 
     public ParserTest() {
         super();
-       tests.put("2*2",4.0);
+       tests.put("3)",3.0);
         tests.put("(((((2*2)))))",4.0);
         tests.put("(2^2)+(2^2)",8.0);
         tests.put("(28)+(1)+(5)*(0.2)+(3*(2)*4)/(3*(4)*2)",31.0);

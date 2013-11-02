@@ -31,7 +31,13 @@ public class MyActivity extends Activity {
 
     public void btBrCloseListener(View view) {
         tvResult.setText("");
-        tvInput.setText(tvInput.getText() + ")");
+        String s = tvInput.getText().toString();
+        if (s.length() > 0) {
+            s = s.substring(s.length() - 1);
+            String example = "+-*/(";
+            if (!example.contains(s))
+                tvInput.setText(tvInput.getText() + ")");
+        }
     }
 
     public void btDotListener(View view) {
@@ -91,29 +97,63 @@ public class MyActivity extends Activity {
 
     public void btSumListener(View view) {
         tvResult.setText("");
-        tvInput.setText(tvInput.getText() + "+");
+        String s = tvInput.getText().toString();
+        if (s.length() > 0) {
+            s = s.substring(s.length() - 1);
+            String example = "+-*/";
+            if (!example.contains(s))
+                tvInput.setText(tvInput.getText() + "+");
+        } else
+            tvInput.setText(tvInput.getText() + "+");
     }
 
     public void btSubListener(View view) {
         tvResult.setText("");
-        tvInput.setText(tvInput.getText() + "-");
+        String s = tvInput.getText().toString();
+        if (s.length() > 0) {
+            s = s.substring(s.length() - 1);
+            String example = "+-*/";
+            if (!example.contains(s))
+
+                tvInput.setText(tvInput.getText() + "-");
+        } else
+            tvInput.setText(tvInput.getText() + "-");
     }
 
     public void btMultListener(View view) {
         tvResult.setText("");
-        tvInput.setText(tvInput.getText() + "*");
+        String s = tvInput.getText().toString();
+        if (s.length() > 0) {
+            s = s.substring(s.length() - 1);
+            String example = "+-*/";
+            if (!example.contains(s))
+                tvInput.setText(tvInput.getText() + "*");
+        } else
+            tvInput.setText(tvInput.getText() + "*");
     }
 
     public void btDivListener(View view) {
         tvResult.setText("");
-        tvInput.setText(tvInput.getText() + "/");
+        String s = tvInput.getText().toString();
+        if (s.length() > 0) {
+            s = s.substring(s.length() - 1);
+            String example = "+-*/";
+            if (!example.contains(s))
+                tvInput.setText(tvInput.getText() + "/");
+        } else
+            tvInput.setText(tvInput.getText() + "/");
     }
 
     public void btResListener(View view) {
         tvResult.setText("");
-        CharSequence tmp = tvInput.getText();
+        String s = tvInput.getText().toString();
         flag = false;
-        double result = evaluate(tmp.toString());
+        double result = 0;
+        if (s.length() == 0 || (s.charAt(s.length() - 1) != '+' && s.charAt(s.length() - 1) != '-' && s.charAt(s.length() - 1) != '*' && s.charAt(s.length() - 1) != '/')) {
+            result = evaluate(s);
+        } else {
+            flag = true;
+        }
         if (flag)
             tvResult.setText("ERROR");
         else {
@@ -129,6 +169,8 @@ public class MyActivity extends Activity {
 
     static boolean isNumber(String source) {
         boolean t = true;
+        if ("-.".equals(source) || "+.".equals(source))
+            t = false;
         int count = 0;
         if (!((source.length() != 1 && (source.charAt(0) == '.' || source.charAt(0) == '+' || source.charAt(0) == '-')) || Character.isDigit(source.charAt(0))))
             t = false;

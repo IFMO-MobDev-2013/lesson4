@@ -31,7 +31,7 @@ public class MyActivity extends Activity {
 
     public void onClick_equally(View view) throws CalculationException {
         try {
-            if (brackets != 0 || lastSumbol.equals("point") || lastSumbol.equals("leftBr") || lastSumbol.equals("token")) {
+            if (brackets != 0 || lastSumbol.equals("leftBr") || lastSumbol.equals("token")) {
                 error("Введено неверное выражение");
             } else {
                 expression = textView.getText().toString();
@@ -235,7 +235,7 @@ public class MyActivity extends Activity {
     }
 
     public void onClick_RightBr(View view) {
-        if (brackets == 0 || lastSumbol.equals("token") || lastSumbol.equals("leftBr") || lastSumbol.equals("point") || lastSumbol == "") {
+        if (brackets == 0 || lastSumbol.equals("token") || lastSumbol.equals("leftBr") || lastSumbol == "") {
             error("Введено неверное выражение");
         } else {
             expression = expression.concat(")");
@@ -247,7 +247,7 @@ public class MyActivity extends Activity {
     }
 
     public void onClick_Plus(View view) {
-        if (lastSumbol.equals("token") || lastSumbol.equals("point")) {
+        if (lastSumbol.equals("token")) {
             error("Введено неверное выражение");
         } else {
             expression = expression.concat("+");
@@ -258,7 +258,7 @@ public class MyActivity extends Activity {
     }
 
     public void onClick_Minus(View view) {
-        if (lastSumbol.equals("token") || lastSumbol.equals("point")) {
+        if (lastSumbol.equals("token")) {
             error("Введено неверное выражение");
         } else {
             expression = expression.concat("-");
@@ -269,7 +269,7 @@ public class MyActivity extends Activity {
     }
 
     public void onClick_Devision(View view) {
-        if (lastSumbol.equals("token") || lastSumbol.equals("point") || lastSumbol.equals("leftBr") || lastSumbol == "") {
+        if (lastSumbol.equals("token") || lastSumbol.equals("leftBr") || lastSumbol == "") {
             error("Введено неверное выражение");
         } else {
             expression = expression.concat("/");
@@ -280,7 +280,7 @@ public class MyActivity extends Activity {
     }
 
     public void onClick_Times(View view) {
-        if (lastSumbol.equals("token") || lastSumbol.equals("point") || lastSumbol.equals("leftBr") || lastSumbol == "") {
+        if (lastSumbol.equals("token")|| lastSumbol.equals("leftBr") || lastSumbol == "") {
             error("Введено неверное выражение");
         } else {
             expression = expression.concat("*");

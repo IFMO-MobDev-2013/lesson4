@@ -105,7 +105,7 @@ public class Parser {
                 }
                 expr = expr.substring(1);
             }
-            if (countOfPoints > 1) {
+            if (countOfPoints > 1 || ".".equals(n)) {
                 parseError = true;
                 currentLexem = Lexem.ERROR;
             } else {

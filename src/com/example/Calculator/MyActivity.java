@@ -118,6 +118,7 @@ public class MyActivity extends Activity {
                         break;
                     case R.id.clean:
                         string = "";
+                        balance = 0;
                         tv.setText(string);
                         break;
                     case R.id.div:
@@ -133,8 +134,15 @@ public class MyActivity extends Activity {
                         }
                         break;
                     case R.id.backspace:
-                        if(string.length() > 0)
+                        if(string.length() > 0) {
+                           if(string.charAt(string.length()-1) == '(') {
+                                balance--;
+                            } else if(string.charAt(string.length()-1) == ')') {
+                                balance++;
+                            }
+
                             string = string.substring(0, string.length()-1);
+                        }
                         tv.setText(string);
                         break;
                     case R.id.minus:
@@ -151,14 +159,22 @@ public class MyActivity extends Activity {
                         break;
                     case R.id.equal:
                         if(string.length() != 0) {
-                            char e = string.charAt(string.length() -1);
-                            if(!isArithmeticOperation(e) && !isPoint(e) && balanceIsGood()) {
-                                GetEqual gE = new GetEqual(string);
-                                string = gE.s();
-                                tv.setText(string);
-                                break;
-                            }
+                            if(balanceIsGood()) {
+                                if(isArithmeticOperation(string.charAt(string.length()-1))
+                                        || isPoint(string.charAt(string.length()-1))) {
+                                    Toast.makeText(getApplicationContext(), "ILLEGAL", Toast.LENGTH_SHORT).show();
+                                }
+                                char e = string.charAt(string.length() -1);
+                                if(!isArithmeticOperation(e) && !isPoint(e) && balanceIsGood()) {
+                                    GetEqual gE = new GetEqual(string);
+                                    string = gE.s();
+                                    tv.setText(string);
+                                    break;
+                                }
+                            } else
+                                Toast.makeText(getApplicationContext(), "ILLEGAL", Toast.LENGTH_SHORT).show();
                         }
+                        break;
                     case R.id.bracketsopen:
                         if(isOk(string + '(')) {
                             balance++;
@@ -174,7 +190,9 @@ public class MyActivity extends Activity {
                         }
                         break;
                     case R.id.point:
-                        if(isOk(string + '.')) {
+                        if(isBrackets(string.charAt(string.length()-1))) {
+
+                        } else if(isOk(string + '.')) {
                             string += '.';
                             tv.setText(string);
                         }
@@ -242,7 +260,7 @@ public class MyActivity extends Activity {
                     return true;
                 }
                 if(isArithmeticOperation(e)) {
-                    if(e == '-')
+                    if(e == '-' || e == '+')
                         return true;
                     else
                         return false;

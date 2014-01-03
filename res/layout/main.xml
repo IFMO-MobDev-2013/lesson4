@@ -20,7 +20,8 @@
         <TableRow
                 android:id="@+id/tableRow1"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
+                android:layout_height="fill_parent"
+                android:layout_weight="1">
             <Button
                     android:text="C"
                     android:id="@+id/clean"
@@ -61,7 +62,8 @@
         <TableRow
                 android:id="@+id/tableRow2"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
             <Button
                     android:text="7"
                     android:textStyle="bold"
@@ -102,7 +104,8 @@
         <TableRow
                 android:id="@+id/tableRow3"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
             <Button
                     android:text="4"
                     android:textStyle="bold"
@@ -143,7 +146,8 @@
         <TableRow
                 android:id="@+id/tableRow2"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
             <Button
                     android:text="1"
                     android:textStyle="bold"
@@ -184,7 +188,8 @@
         <TableRow
                 android:id="@+id/tableRow3"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
             <Button
                     android:text="0"
                     android:textStyle="bold"

@@ -6,7 +6,7 @@ import ru.skipor.androidLecture4.Calculator.Form.FormEvaluationException;
  * Created by vladimirskipor on 10/10/13.
  */
 public class Calculator {
-    private static final String OUTPUT_FORMAT = "%s";
+    private static final String OUTPUT_FORMAT = "%f";
     private static final String UNAR_OPERATION_REGEX = "[+-]";
     private StringBuilder stringBuilder;
     public static String errorMessage = "Error";
@@ -65,7 +65,7 @@ public class Calculator {
                 stringBuilder.append(last);
                 }
             }
-        } else if (!lastInBuilder().equals("(") || operationToken.matches(UNAR_OPERATION_REGEX)) {
+        } else if (!(empty() || lastInBuilder().equals("("))|| operationToken.matches(UNAR_OPERATION_REGEX)) {
             stringBuilder.append(operationToken);
         }
 
@@ -149,7 +149,7 @@ public class Calculator {
             try {
                 double result = FormParser.formParse(stringBuilder.toString()).evaluate();
                 stringBuilder = new StringBuilder(String.valueOf(result));
-                return String.format(OUTPUT_FORMAT, result);
+                return getFormat(result);
             } catch (ParserException e) {
 
                 clearAll();
@@ -163,5 +163,9 @@ public class Calculator {
             }
         }
         return stringBuilder.toString();
+    }
+
+    private String getFormat(double result) {
+        return String.format(OUTPUT_FORMAT, result);
     }
 }

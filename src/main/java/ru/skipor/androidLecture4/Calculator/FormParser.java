@@ -26,7 +26,7 @@ public class FormParser { // tail recursive parser
             binaryOperationBuilder.append('|');
         }
         String
-                constantRegex = "[0-9]+\\.?[0-9]*",//"\\d+(\\.\\d+)?",
+                constantRegex = "[-+]?[0-9]*\\.?[0-9]+([eE][-+]?[0-9]+)?",//"[0-9]+\\.?[0-9]*",//"\\d+(\\.\\d+)?",
                 operationRegex = "[-+()]",
                 binaryOperationRegex = binaryOperationBuilder.toString(), // empty, or have '|' at the end
                 tokenRegex = "(?x)(" + operationRegex + "|" + binaryOperationRegex + constantRegex + " | .??$)";

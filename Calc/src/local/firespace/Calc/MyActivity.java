@@ -149,8 +149,16 @@ public class MyActivity extends Activity {
 		@SuppressWarnings("ConstantConditions") String temp = field.getText().toString();
 		char lastChar = temp.charAt(temp.length()-1);
 		if (lastChar == ')') {
-			int i = temp.length()-1;
-			while (temp.charAt(i) != '(') { i--; }
+			int i = temp.length()-2;
+			int countPairBrackets = 1;
+			 do {
+				if (temp.charAt(i) == '(')
+					countPairBrackets--;
+				if (temp.charAt(i) == ')')
+					countPairBrackets++;
+				i--;
+			} while (countPairBrackets != 0);
+			i++;
 
 			field.setText(temp.substring(0, i) + "(-" + temp.substring(i, temp.length()) + ')');
 			countClosingBrackets++;

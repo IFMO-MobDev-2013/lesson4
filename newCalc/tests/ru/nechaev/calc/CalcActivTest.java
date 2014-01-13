@@ -11,7 +11,6 @@ import org.junit.Test;
  * To change this template use File | Settings | File Templates.
  */
 public class CalcActivTest {
-    @Before
     private CalcActiv calcActiv;
     public void setUp() throws Exception {
         calcActiv = new CalcActiv();
@@ -20,7 +19,6 @@ public class CalcActivTest {
 
     @Test
     public void testOnCreate() throws Exception {
-        assert.equals("13", calcActiv.MathPars.Parse("13"));
 
     }
 }

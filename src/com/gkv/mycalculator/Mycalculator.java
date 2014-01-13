@@ -2,10 +2,12 @@ package com.gkv.mycalculator;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Mycalculator extends Activity implements OnClickListener {
 
@@ -31,10 +33,20 @@ public class Mycalculator extends Activity implements OnClickListener {
 
 	public void onClick(View view) {
 		Button b = (Button) view;
-		ViewChar = textView1.getText();
+        ViewChar = textView1.getText();
+
 		c = (ViewChar.length() > 0) ? ViewChar.charAt(ViewChar.length() - 1)
 				: null;
-		if (R.id.delete == view.getId()) {
+        if(ViewChar.length() > 1){
+            if(ViewChar.charAt(1) == 'ш'){
+                Log.d(TAG, "after ILL");
+                textView1.setText("");
+                ViewChar = "";
+                c = null;
+            }
+        }
+
+        if (R.id.delete == view.getId()) {
 			if (!(c == null)) textView1.setText(ViewChar.subSequence(0, ViewChar.length() - 1));
 		} else if (R.id.allClear == view.getId()) {
 			textView1.setText("");
@@ -46,11 +58,13 @@ public class Mycalculator extends Activity implements OnClickListener {
 				bracketCnt--;
 				textView1.append(b.getText());
 			}
+            /*else{
+                Toast.makeText(this, "Скобка не открыта!", Toast.LENGTH_LONG).show();
+            } */
 		} else if (R.id.multiply == view.getId()) {
 			if (!(c == null)) {
 				if (acceptedChar.contains(c.toString())) {
-					textView1.setText(ViewChar.subSequence(0,
-							ViewChar.length() - 1));
+					textView1.setText(ViewChar.subSequence(0, ViewChar.length() - 1));
 					textView1.append(b.getText());
 				} else
 					textView1.append(b.getText());
@@ -87,9 +101,15 @@ public class Mycalculator extends Activity implements OnClickListener {
 			} else
 				textView1.append(b.getText());
 		} else if (R.id.equal == view.getId()) {
-			bracketCnt = 0;
-			CharSequence cs = new Calculate().solve(textView1.getText());
-			textView1.setText(cs);
+			/*if(bracketCnt != 0){
+                Toast.makeText(this, "Скобка не закрыто!", Toast.LENGTH_LONG).show();
+                return;
+            } */
+            if(ViewChar.length() != 0){
+                bracketCnt = 0;
+                CharSequence cs = new Calculate().solve(textView1.getText());
+                textView1.setText(cs);
+            }
 		} else
 			textView1.append(b.getText());
 

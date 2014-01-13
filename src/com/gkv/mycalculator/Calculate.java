@@ -107,7 +107,7 @@ public class Calculate {
 			cur1 = 0;
 
 		} else {
-			Log.d(TAG, "jopa");
+			Log.d(TAG, "J");
 			Log.d(TAG, ss);
 			cur1 = rec(ss.substring(0, position));
 		}
@@ -115,8 +115,9 @@ public class Calculate {
 		cur2 = rec(ss.substring(position + 1, ss.length()));
 		if (cur1 > 1e299 || cur2 > 1e299)
 			return 1e300;
-		if (ss.charAt(position) == '/' && Math.abs(cur2) < 1e-15)
+		if (ss.charAt(position) == '/' && Math.abs(cur2) < 1e-15){
 			return 1e300;
+        }
 		if (ss.charAt(position) == '+')
 			return cur1 + cur2;
 		if (ss.charAt(position) == '*')

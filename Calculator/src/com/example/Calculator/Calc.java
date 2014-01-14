@@ -6,9 +6,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.text.NumberFormat;
+
 
 public class Calc extends Activity {
     private static String expression = "";
+    private static boolean needToBeCleared = false;
+    private static int brackets = 0;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +43,11 @@ public class Calc extends Activity {
         b0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (needToBeCleared) {
+                    edit.setText("");
+                    needToBeCleared = false;
+                    brackets = 0;
+                }
                 edit.setText(edit.getEditableText() + "0");
             }
         });
@@ -45,6 +55,11 @@ public class Calc extends Activity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (needToBeCleared) {
+                    edit.setText("");
+                    needToBeCleared = false;
+                    brackets = 0;
+                }
                 edit.setText(edit.getEditableText() + "1");
             }
         });
@@ -52,6 +67,11 @@ public class Calc extends Activity {
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (needToBeCleared) {
+                    edit.setText("");
+                    needToBeCleared = false;
+                    brackets = 0;
+                }
                 edit.setText(edit.getEditableText() + "2");
             }
         });
@@ -59,6 +79,11 @@ public class Calc extends Activity {
         b3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (needToBeCleared) {
+                    edit.setText("");
+                    needToBeCleared = false;
+                    brackets = 0;
+                }
                 edit.setText(edit.getEditableText() + "3");
             }
         });
@@ -66,6 +91,11 @@ public class Calc extends Activity {
         b4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (needToBeCleared) {
+                    edit.setText("");
+                    needToBeCleared = false;
+                    brackets = 0;
+                }
                 edit.setText(edit.getEditableText() + "4");
             }
         });
@@ -73,6 +103,11 @@ public class Calc extends Activity {
         b5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (needToBeCleared) {
+                    edit.setText("");
+                    needToBeCleared = false;
+                    brackets = 0;
+                }
                 edit.setText(edit.getEditableText() + "5");
             }
         });
@@ -80,6 +115,11 @@ public class Calc extends Activity {
         b6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (needToBeCleared) {
+                    edit.setText("");
+                    needToBeCleared = false;
+                    brackets = 0;
+                }
                 edit.setText(edit.getEditableText() + "6");
             }
         });
@@ -87,6 +127,11 @@ public class Calc extends Activity {
         b7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (needToBeCleared) {
+                    edit.setText("");
+                    needToBeCleared = false;
+                    brackets = 0;
+                }
                 edit.setText(edit.getEditableText() + "7");
             }
         });
@@ -94,6 +139,11 @@ public class Calc extends Activity {
         b8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (needToBeCleared) {
+                    edit.setText("");
+                    needToBeCleared = false;
+                    brackets = 0;
+                }
                 edit.setText(edit.getEditableText() + "8");
             }
         });
@@ -101,6 +151,11 @@ public class Calc extends Activity {
         b9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (needToBeCleared) {
+                    edit.setText("");
+                    needToBeCleared = false;
+                    brackets = 0;
+                }
                 edit.setText(edit.getEditableText() + "9");
             }
         });
@@ -108,10 +163,20 @@ public class Calc extends Activity {
         bclear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (needToBeCleared) {
+                    edit.setText("");
+                    brackets = 0;
+                    needToBeCleared = false;
+                }
                 String temp = edit.getEditableText().toString();
                 if (!"".equals(temp)) {
-                temp = temp.substring(0, temp.length() - 1);
-                edit.setText(temp);
+                    if (temp.charAt(temp.length() - 1) == '(') {
+                        brackets--;
+                    } else if (temp.charAt(temp.length() - 1) == ')') {
+                        brackets++;
+                    }
+                    temp = temp.substring(0, temp.length() - 1);
+                    edit.setText(temp);
                 }
             }
         });
@@ -120,6 +185,7 @@ public class Calc extends Activity {
             @Override
             public boolean onLongClick(View view) {
                 edit.setText("");
+                brackets = 0;
                 return false;
             }
         });
@@ -127,48 +193,162 @@ public class Calc extends Activity {
         badd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                edit.setText(edit.getEditableText() + "+");
+                if (needToBeCleared) {
+                    edit.setText("");
+                    brackets = 0;
+                    needToBeCleared = false;
+                }
+                String temp = edit.getEditableText().toString();
+                if (!temp.isEmpty()) {
+                    if (temp.charAt(temp.length() - 1) == '-') {
+                        if (temp.length() > 1) {
+                            char t = temp.charAt(temp.length() - 2);
+                            if (t == '-' || t == '+' || t == '*' || t == '/') {
+                                temp = temp.substring(0, temp.length() - 2) + '+';
+                            }
+                        }
+                    }
+                    char t = temp.charAt(temp.length() - 1);
+                    if (!(t == '+' || t == '-' || t =='*' || t == '/' || t == '(')) {
+                        temp += '+';
+                    } else {
+                        if (t != '(') {
+                            temp = temp.substring(0, temp.length() - 1) + '+';
+                        }
+                    }
+                }
+                edit.setText(temp);
             }
         });
 
         bsub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                edit.setText(edit.getEditableText() + "-");
+                if (needToBeCleared) {
+                    edit.setText("");
+                    brackets = 0;
+                    needToBeCleared = false;
+                }
+                String temp = edit.getEditableText().toString();
+                if (!(temp.isEmpty() || temp.charAt(temp.length() - 1) == '(')) {
+                    if (!(temp.charAt(temp.length() - 1) == '-')) {
+                        temp += '-';
+                    } else {
+                        temp = temp.substring(0, temp.length() - 1) + '-';
+                    }
+                } else {
+                    temp += "0-";
+                }
+                edit.setText(temp);
             }
         });
 
         bmul.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                edit.setText(edit.getEditableText() + "*");
+                if (needToBeCleared) {
+                    edit.setText("");
+                    brackets = 0;
+                    needToBeCleared = false;
+                }
+                String temp = edit.getEditableText().toString();
+                if (!temp.isEmpty()) {
+                    if (temp.charAt(temp.length() - 1) == '-') {
+                        if (temp.length() > 1) {
+                            char t = temp.charAt(temp.length() - 2);
+                            if (t == '-' || t == '+' || t == '*' || t == '/') {
+                                temp = temp.substring(0, temp.length() - 2) + '*';
+                            }
+                        }
+                    }
+                    char t = temp.charAt(temp.length() - 1);
+                    if (!(t == '+' || t == '-' || t =='*' || t == '/' || t == '(')) {
+                        temp += '*';
+                    } else {
+                        if (t != '(') {
+                            temp = temp.substring(0, temp.length() - 1) + '*';
+                        }
+                    }
+                }
+                edit.setText(temp);
             }
         });
 
         bdiv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                edit.setText(edit.getEditableText() + "/");
+                if (needToBeCleared) {
+                    edit.setText("");
+                    brackets = 0;
+                    needToBeCleared = false;
+                }
+                String temp = edit.getEditableText().toString();
+                if (!temp.isEmpty()) {
+                    if (temp.charAt(temp.length() - 1) == '-') {
+                        if (temp.length() > 1) {
+                            char t = temp.charAt(temp.length() - 2);
+                            if (t == '-' || t == '+' || t == '*' || t == '/') {
+                                temp = temp.substring(0, temp.length() - 2) + '/';
+                            }
+                        }
+                    }
+                    char t = temp.charAt(temp.length() - 1);
+                    if (!(t == '+' || t == '-' || t =='*' || t == '/' || t == '(')) {
+                        temp += '/';
+                    } else {
+                        if (t != '(') {
+                            temp = temp.substring(0, temp.length() - 1) + '/';
+                        }
+                    }
+                }
+                edit.setText(temp);
             }
         });
 
         bopbr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                edit.setText(edit.getEditableText() + "(");
+                if (needToBeCleared) {
+                    edit.setText("");
+                    needToBeCleared = false;
+                    brackets = 0;
+                }
+                String temp = edit.getEditableText().toString();
+                if (!temp.isEmpty()) {
+                    if (temp.charAt(temp.length() - 1) == ')' || Character.isDigit(temp.charAt(temp.length() - 1))) {
+                        temp += "*(";
+                    } else {
+                        temp += '(';
+                    }
+                } else {
+                    temp += "(";
+                }
+                brackets++;
+                edit.setText(temp);
             }
         });
 
         bclbr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (needToBeCleared) {
+                    edit.setText("");
+                    brackets = 0;
+                    needToBeCleared = false;
+                }
                 edit.setText(edit.getEditableText() + ")");
+                brackets--;
             }
         });
 
         bpoint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (needToBeCleared) {
+                    edit.setText("");
+                    brackets = 0;
+                    needToBeCleared = false;
+                }
                 edit.setText(edit.getEditableText() + ".");
             }
         });
@@ -176,9 +356,28 @@ public class Calc extends Activity {
         bequal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (needToBeCleared) {
+                    edit.setText("");
+                    brackets = 0;
+                    needToBeCleared = false;
+                }
                 expression = edit.getEditableText().toString();
-                Double res = MatchParser.parse(expression).evaluate();
-                edit.setText(res.toString());
+                if (brackets != 0) {
+                    edit.setText("Error");
+                    needToBeCleared = true;
+                    return;
+                }
+                try {
+                    Double res = MatchParser.parse(expression);
+                    NumberFormat a = NumberFormat.getInstance();
+                    a.setMaximumFractionDigits(100);
+                    a.setMinimumFractionDigits(0);
+                    a.setGroupingUsed(false);
+                    edit.setText(a.format(res).toString());
+                } catch (Exception e) {
+                    edit.setText("Error");
+                }
+                needToBeCleared = true;
             }
         });
     }

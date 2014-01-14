@@ -29,8 +29,10 @@ public class ParserExpression {
 				}
 			}
 			if (s.charAt(i) == ')') {
+				if (i+1 != s.length() && s.charAt(i+1) == '(')  throw new ExceptionWrongExpression();
 				k--;
 			} else if (s.charAt(i) == '(') {
+				if (i-1 != -1 && s.charAt(i+1) == ')' )  throw new ExceptionWrongExpression();
 				k++;
 			}
 		}

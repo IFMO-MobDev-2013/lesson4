@@ -1,6 +1,7 @@
 package md.zoidberg.android.lesson4;
 
 import android.app.Activity;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CalculatorActivity extends Activity {
+    public static final String EXPRESSION_TAG = "expression";
     /**
      * Called when the activity is first created.
      */
@@ -50,7 +52,13 @@ public class CalculatorActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         calcText = (TextView)findViewById(R.id.calcText);
-        if (expression == null) erase();
+
+        if (savedInstanceState != null && savedInstanceState.getString(EXPRESSION_TAG) != null) {
+            expression = savedInstanceState.getString(EXPRESSION_TAG);
+            sync();
+        } else {
+            expression = "";
+        }
     }
 
     private void appendString(String s) {
@@ -90,7 +98,6 @@ public class CalculatorActivity extends Activity {
     private void solve() {
         try {
             expression = new Evaluator().evaluate(expression);
-            toErase = true;
         } catch (EvaluationException e) {
             isError = true;
             errorMessage = "Invalid";
@@ -113,5 +120,10 @@ public class CalculatorActivity extends Activity {
         if (expression.length() == 0) return;
         expression = expression.substring(0, expression.length() - 1);
         sync();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle state) {
+        state.putString(EXPRESSION_TAG, expression);
     }
 }

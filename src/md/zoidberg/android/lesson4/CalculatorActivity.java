@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-import net.sourceforge.jeval.EvaluationException;
-import net.sourceforge.jeval.Evaluator;
+import md.zoidberg.java.evaluator.EvaluationException;
+import md.zoidberg.java.evaluator.Evaluator;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -101,6 +101,10 @@ public class CalculatorActivity extends Activity {
         } catch (EvaluationException e) {
             isError = true;
             errorMessage = "Invalid";
+            Log.d("calcException", e.getMessage());
+        } catch (ArithmeticException e) {
+            isError = true;
+            errorMessage = "Division by zero";
             Log.d("calcException", e.getMessage());
         }
 

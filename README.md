@@ -28,7 +28,3 @@ http://yadi.sk/d/MyR0wn17AWeA3
 Оценки:
 =======
 https://docs.google.com/spreadsheet/ccc?key=0AkYNnR0IM6SpdEJPcWRpUGNKYzRCUExnamJ4NmJMYXc&usp=sharing
-
-Тесты:
-=======
-https://docs.google.com/spreadsheet/ccc?key=0AtA7122yflnBdDF1Ujc5YjB5WkpyMWxUM1JVS3Zya3c&usp=drive_web#gid=0
